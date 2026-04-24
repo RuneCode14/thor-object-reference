@@ -1,0 +1,11 @@
+name: mutex
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-mutex
+fields:
+- name: mutex
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

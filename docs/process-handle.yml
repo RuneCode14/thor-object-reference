@@ -1,0 +1,19 @@
+name: process handle
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/process-handle
+fields:
+- name: handle
+  type: integer
+  required: true
+  description: ''
+- name: handle_type
+  type: string
+  required: false
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

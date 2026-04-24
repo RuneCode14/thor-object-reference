@@ -1,0 +1,11 @@
+name: Tomcat user
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/tomcat-user
+fields:
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,63 @@
+name: Linux kernel module
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/linux-kernel-module
+fields:
+- name: author
+  type: string
+  required: true
+  description: ''
+- name: description
+  type: array of string
+  required: true
+  description: ''
+- name: file
+  type: object
+  required: true
+  description: ''
+- name: in_proc_modules
+  type: boolean
+  required: true
+  description: ''
+- name: in_sys_module
+  type: boolean
+  required: true
+  description: ''
+- name: in_vmallocinfo
+  type: boolean
+  required: true
+  description: ''
+- name: included_in_kernel
+  type: boolean
+  required: true
+  description: ''
+- name: load_state
+  type: string
+  required: false
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: parameters
+  type: object (string)
+  required: false
+  description: ''
+- name: ref_count
+  type: integer
+  required: true
+  description: ''
+- name: size
+  type: integer
+  required: false
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: used_by
+  type: array of string
+  required: true
+  description: ''
+- name: version
+  type: string
+  required: true
+  description: ''

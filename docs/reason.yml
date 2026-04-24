@@ -1,0 +1,19 @@
+name: reason
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/reason
+fields:
+- name: matched
+  type: array | null
+  required: true
+  description: ''
+- name: signature
+  type: object
+  required: true
+  description: ''
+- name: summary
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

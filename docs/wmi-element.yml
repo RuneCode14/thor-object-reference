@@ -1,0 +1,31 @@
+name: WMI element
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/wmi-element
+fields:
+- name: event_consumer
+  type: string
+  required: true
+  description: ''
+- name: event_consumer_name
+  type: string
+  required: true
+  description: ''
+- name: event_filter
+  type: string
+  required: true
+  description: ''
+- name: event_filter_name
+  type: string
+  required: true
+  description: ''
+- name: filter_type
+  type: string
+  required: true
+  description: ''
+- name: key
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

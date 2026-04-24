@@ -1,0 +1,11 @@
+name: hotfix summary
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/hotfix-summary
+fields:
+- name: last_hotfix
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

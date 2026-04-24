@@ -1,0 +1,15 @@
+name: antivirus exclusion
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/anti-virus-exclude
+fields:
+- name: exclusion
+  type: string
+  required: true
+  description: ''
+- name: exclusion_type
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

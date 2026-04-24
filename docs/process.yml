@@ -1,0 +1,67 @@
+name: process
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/process
+fields:
+- name: beacon_config
+  type: object
+  required: false
+  description: ''
+- name: command
+  type: string
+  required: true
+  description: ''
+- name: connections
+  type: array | null
+  required: true
+  description: ''
+- name: created
+  type: string (date-time)
+  required: true
+  description: ''
+- name: dead
+  type: boolean
+  required: false
+  description: ''
+- name: image
+  type: object
+  required: true
+  description: ''
+- name: listen_ports
+  type: array | null
+  required: true
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: owner
+  type: string
+  required: true
+  description: ''
+- name: parent_info
+  type: object
+  required: false
+  description: ''
+- name: pe_sieve
+  type: object
+  required: false
+  description: ''
+- name: pid
+  type: integer
+  required: true
+  description: ''
+- name: sections
+  type: array of object
+  required: false
+  description: ''
+- name: session
+  type: string
+  required: true
+  description: ''
+- name: tree
+  type: array | null
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

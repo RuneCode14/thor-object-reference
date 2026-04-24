@@ -1,0 +1,23 @@
+name: THOR message
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/message
+fields:
+- name: fields
+  type: null | object
+  required: true
+  description: ''
+- name: log_version
+  type: string
+  required: true
+  description: ''
+- name: message
+  type: string
+  required: true
+  description: ''
+- name: meta
+  type: object
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

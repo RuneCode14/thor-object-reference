@@ -1,0 +1,31 @@
+name: network session
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-session
+fields:
+- name: active
+  type: integer
+  required: true
+  description: ''
+- name: client
+  type: string
+  required: true
+  description: ''
+- name: client_type
+  type: string
+  required: true
+  description: ''
+- name: idle
+  type: integer
+  required: true
+  description: ''
+- name: num_opens
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user_name
+  type: string
+  required: true
+  description: ''

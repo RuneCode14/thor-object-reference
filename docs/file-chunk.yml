@@ -1,0 +1,23 @@
+name: file chunk
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/deep-dive-chunk
+fields:
+- name: beacon_config
+  type: object
+  required: false
+  description: ''
+- name: chunk_end
+  type: integer
+  required: true
+  description: ''
+- name: chunk_offset
+  type: integer
+  required: true
+  description: ''
+- name: content
+  type: object
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,19 @@
+name: WMI startup command
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/wmi-startup-command
+fields:
+- name: caption
+  type: string
+  required: true
+  description: ''
+- name: command
+  type: string
+  required: true
+  description: ''
+- name: location
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

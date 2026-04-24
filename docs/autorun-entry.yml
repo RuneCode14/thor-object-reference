@@ -1,0 +1,35 @@
+name: autorun entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/autorun-entry
+fields:
+- name: arguments
+  type: string
+  required: true
+  description: ''
+- name: autorun_type
+  type: string
+  required: true
+  description: ''
+- name: entry
+  type: string
+  required: true
+  description: ''
+- name: image
+  type: object
+  required: true
+  description: ''
+- name: launch_string
+  type: string
+  required: true
+  description: ''
+- name: location
+  type: string
+  required: true
+  description: ''
+- name: old_md5
+  type: string
+  required: false
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,47 @@
+name: jump list entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/jumplist-entry
+fields:
+- name: access_count
+  type: integer
+  required: true
+  description: ''
+- name: birth_volume_id
+  type: array of integer
+  required: true
+  description: ''
+- name: checksum
+  type: integer
+  required: true
+  description: ''
+- name: entry_id
+  type: integer
+  required: true
+  description: ''
+- name: last_access
+  type: string (date-time)
+  required: true
+  description: ''
+- name: netbios_name
+  type: string
+  required: true
+  description: ''
+- name: object_id
+  type: array of integer
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: pinned
+  type: boolean
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: volume_id
+  type: array of integer
+  required: true
+  description: ''

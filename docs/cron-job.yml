@@ -1,0 +1,19 @@
+name: cron job
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/cron-job
+fields:
+- name: command
+  type: string
+  required: true
+  description: ''
+- name: schedule
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

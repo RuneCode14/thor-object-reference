@@ -1,0 +1,11 @@
+name: eventlog entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-eventlog-entry
+fields:
+- name: entry
+  type: object (string)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

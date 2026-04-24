@@ -1,0 +1,11 @@
+name: shim database entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/sdb-entry
+fields:
+- name: entry
+  type: object (string)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

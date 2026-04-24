@@ -1,0 +1,27 @@
+name: quarantine event
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/quarantine-event
+fields:
+- name: event_type
+  type: string
+  required: true
+  description: ''
+- name: id
+  type: string
+  required: true
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: timestamp
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: url
+  type: string
+  required: true
+  description: ''

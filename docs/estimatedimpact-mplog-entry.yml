@@ -1,0 +1,23 @@
+name: EstimatedImpact MPLog entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/estimated-impact-entry
+fields:
+- name: file
+  type: string
+  required: true
+  description: ''
+- name: image
+  type: string
+  required: true
+  description: ''
+- name: pid
+  type: integer
+  required: true
+  description: ''
+- name: time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

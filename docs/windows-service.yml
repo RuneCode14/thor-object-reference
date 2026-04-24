@@ -1,0 +1,47 @@
+name: Windows service
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-service
+fields:
+- name: description
+  type: string
+  required: true
+  description: ''
+- name: failure_command
+  type: string
+  required: true
+  description: ''
+- name: image
+  type: object
+  required: true
+  description: ''
+- name: key
+  type: string
+  required: true
+  description: ''
+- name: key_name
+  type: string
+  required: true
+  description: ''
+- name: modified
+  type: string (date-time)
+  required: true
+  description: ''
+- name: service_name
+  type: string
+  required: true
+  description: ''
+- name: service_type
+  type: string
+  required: true
+  description: ''
+- name: start_type
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

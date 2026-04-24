@@ -1,0 +1,15 @@
+name: environment variable
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/environment-variable
+fields:
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: value
+  type: string
+  required: true
+  description: ''
+- name: variable
+  type: string
+  required: true
+  description: ''

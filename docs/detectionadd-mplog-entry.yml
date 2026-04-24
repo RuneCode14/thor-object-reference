@@ -1,0 +1,19 @@
+name: DetectionAdd MPLog entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/detection-add-entry
+fields:
+- name: detected
+  type: object (string)
+  required: true
+  description: ''
+- name: threat_name
+  type: string
+  required: true
+  description: ''
+- name: time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

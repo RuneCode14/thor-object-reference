@@ -1,0 +1,19 @@
+name: network share
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-share
+fields:
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: permissions
+  type: array of object
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

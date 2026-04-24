@@ -1,0 +1,11 @@
+name: event
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-event
+fields:
+- name: event
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

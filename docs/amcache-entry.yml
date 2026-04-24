@@ -1,0 +1,39 @@
+name: AmCache entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/amcache-entry
+fields:
+- name: company
+  type: string
+  required: true
+  description: ''
+- name: created
+  type: string (date-time)
+  required: true
+  description: ''
+- name: desc
+  type: string
+  required: true
+  description: ''
+- name: file
+  type: object
+  required: true
+  description: ''
+- name: first_run
+  type: string (date-time)
+  required: true
+  description: ''
+- name: product
+  type: string
+  required: true
+  description: ''
+- name: sha1
+  type: string
+  required: true
+  description: ''
+- name: size
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

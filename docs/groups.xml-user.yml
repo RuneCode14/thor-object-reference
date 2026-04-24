@@ -1,0 +1,15 @@
+name: groups.xml user
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/groups-xml-user
+fields:
+- name: password
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

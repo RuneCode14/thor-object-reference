@@ -1,0 +1,15 @@
+name: DNS cache entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/dns-cache-entry
+fields:
+- name: host
+  type: string
+  required: true
+  description: ''
+- name: ip
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

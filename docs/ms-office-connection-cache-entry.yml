@@ -1,0 +1,19 @@
+name: MS Office connection cache entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ms-office-connection-cache-entry
+fields:
+- name: entry
+  type: string
+  required: true
+  description: ''
+- name: key
+  type: string
+  required: true
+  description: ''
+- name: modified
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

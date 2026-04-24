@@ -1,0 +1,15 @@
+name: structured data from plugin
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/plugin-structured-data
+fields:
+- name: data
+  type: object (string)
+  required: true
+  description: ''
+- name: plugin
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

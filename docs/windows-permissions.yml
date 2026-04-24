@@ -1,0 +1,15 @@
+name: Windows permissions
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-permissions
+fields:
+- name: acl
+  type: array | null
+  required: true
+  description: ''
+- name: owner
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

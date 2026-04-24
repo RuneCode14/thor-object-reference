@@ -1,0 +1,15 @@
+name: log line
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/log-line
+fields:
+- name: line
+  type: string
+  required: true
+  description: ''
+- name: line_index
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

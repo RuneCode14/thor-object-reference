@@ -1,0 +1,43 @@
+name: THOR assessment
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/assessment
+fields:
+- name: context
+  type: array | null
+  required: true
+  description: ''
+- name: issues
+  type: array of object
+  required: false
+  description: ''
+- name: log_version
+  type: string
+  required: true
+  description: ''
+- name: message
+  type: string
+  required: true
+  description: ''
+- name: meta
+  type: object
+  required: true
+  description: ''
+- name: reason_count
+  type: integer
+  required: false
+  description: ''
+- name: reasons
+  type: array of object
+  required: true
+  description: ''
+- name: score
+  type: integer
+  required: true
+  description: ''
+- name: subject
+  type: any
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

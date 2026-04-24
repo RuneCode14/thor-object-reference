@@ -1,0 +1,19 @@
+name: registry key
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/registry-key
+fields:
+- name: key
+  type: string
+  required: true
+  description: ''
+- name: modified
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: values
+  type: string
+  required: true
+  description: ''

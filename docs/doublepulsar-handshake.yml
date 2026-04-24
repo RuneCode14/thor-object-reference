@@ -1,0 +1,15 @@
+name: DoublePulsar Handshake
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/double-pulsar-handshake
+fields:
+- name: handshake_type
+  type: string
+  required: true
+  description: ''
+- name: key
+  type: integer
+  required: false
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,23 @@
+name: logged in user
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/logged-in-user
+fields:
+- name: domain
+  type: string
+  required: false
+  description: ''
+- name: other_domains
+  type: string
+  required: false
+  description: ''
+- name: server
+  type: string
+  required: false
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

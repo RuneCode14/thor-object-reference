@@ -1,0 +1,55 @@
+name: eBPF program
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ebpf-program
+fields:
+- name: attach_target
+  type: object
+  required: true
+  description: ''
+- name: content
+  type: object
+  required: false
+  description: ''
+- name: functions
+  type: array of string
+  required: true
+  description: ''
+- name: link_type
+  type: string
+  required: true
+  description: ''
+- name: load_time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: maps
+  type: array of string
+  required: true
+  description: ''
+- name: memory_locked
+  type: integer
+  required: true
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: program_type
+  type: string
+  required: true
+  description: ''
+- name: size
+  type: integer
+  required: true
+  description: ''
+- name: tag
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,47 @@
+name: MFT entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/mft-file-entry
+fields:
+- name: accessed
+  type: string (date-time)
+  required: true
+  description: ''
+- name: changed
+  type: string (date-time)
+  required: true
+  description: ''
+- name: created
+  type: string (date-time)
+  required: true
+  description: ''
+- name: deleted
+  type: boolean
+  required: false
+  description: ''
+- name: dir
+  type: boolean
+  required: true
+  description: ''
+- name: filename
+  type: string
+  required: true
+  description: ''
+- name: flags
+  type: integer
+  required: false
+  description: ''
+- name: modified
+  type: string (date-time)
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: size
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

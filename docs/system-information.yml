@@ -1,0 +1,51 @@
+name: system information
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/host-info
+fields:
+- name: cpu_count
+  type: integer
+  required: true
+  description: ''
+- name: domain
+  type: string
+  required: true
+  description: ''
+- name: hostname
+  type: string
+  required: true
+  description: ''
+- name: interfaces
+  type: array of object
+  required: true
+  description: ''
+- name: language
+  type: string
+  required: true
+  description: ''
+- name: memory
+  type: integer
+  required: true
+  description: ''
+- name: mount_points
+  type: array of object
+  required: true
+  description: ''
+- name: platform
+  type: any
+  required: true
+  description: ''
+- name: system_type
+  type: string
+  required: true
+  description: ''
+- name: timezone
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: uptime
+  type: integer
+  required: true
+  description: ''

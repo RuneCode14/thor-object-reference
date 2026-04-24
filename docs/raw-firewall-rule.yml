@@ -1,0 +1,11 @@
+name: raw firewall rule
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/raw-firewall-rule
+fields:
+- name: rule
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

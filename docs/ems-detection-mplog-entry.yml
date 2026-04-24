@@ -1,0 +1,19 @@
+name: EMS detection MPLog entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ems-detection-entry
+fields:
+- name: pid
+  type: integer
+  required: true
+  description: ''
+- name: threat_name
+  type: string
+  required: true
+  description: ''
+- name: time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

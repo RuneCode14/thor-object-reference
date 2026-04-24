@@ -1,0 +1,19 @@
+name: USN entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/usn-entry
+fields:
+- name: event_time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: filename
+  type: string
+  required: true
+  description: ''
+- name: reasons
+  type: array of string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,11 @@
+name: multiChoiceA
+schema: https://git.bsk/thorx/lib/features/truncate/testobject/multi-choice-object-a
+fields:
+- name: FieldA
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

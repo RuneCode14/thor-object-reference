@@ -1,0 +1,18 @@
+title: Linux kernel module without backing file
+status: experimental
+description: |
+  Detects kernel modules that are loaded but have no associated
+  file on disk. This is a strong indicator of a rootkit that
+  loads a module directly from memory.
+logsource:
+    product: THOR
+    service: "Linux kernel module"
+detection:
+    selection:
+        FILE: null
+        INCLUDED_IN_KERNEL: false
+    condition: selection
+falsepositives:
+    - Custom kernels with manually loaded modules
+    - Debugging sessions
+level: medium

@@ -1,0 +1,31 @@
+name: TestObject
+schema: https://git.bsk/thorx/lib/features/truncate/testobject/test-object
+fields:
+- name: FieldDirect
+  type: string
+  required: true
+  description: ''
+- name: Interface
+  type: any
+  required: true
+  description: ''
+- name: Map
+  type: object (string)
+  required: true
+  description: ''
+- name: PointedStruct
+  type: object
+  required: true
+  description: ''
+- name: Slice
+  type: array of object
+  required: true
+  description: ''
+- name: SubStruct
+  type: object
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

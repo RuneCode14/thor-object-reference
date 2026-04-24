@@ -1,0 +1,19 @@
+name: user profile
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/profile-folder
+fields:
+- name: created
+  type: string (date-time)
+  required: false
+  description: ''
+- name: modified
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

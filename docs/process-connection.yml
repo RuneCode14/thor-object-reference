@@ -1,0 +1,31 @@
+name: process connection
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/process-connection-object
+fields:
+- name: ip
+  type: string
+  required: true
+  description: ''
+- name: port
+  type: integer
+  required: true
+  description: ''
+- name: protocol
+  type: string
+  required: false
+  description: ''
+- name: remote_ip
+  type: string
+  required: false
+  description: ''
+- name: remote_port
+  type: integer
+  required: false
+  description: ''
+- name: status
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

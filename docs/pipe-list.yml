@@ -1,0 +1,11 @@
+name: pipe list
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-pipe-list
+fields:
+- name: pipes
+  type: array of string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

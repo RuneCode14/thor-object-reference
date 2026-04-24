@@ -1,0 +1,27 @@
+name: KnowledgeDB entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/knowledge-db-entry
+fields:
+- name: created
+  type: string (date-time)
+  required: true
+  description: ''
+- name: duration
+  type: integer
+  required: true
+  description: ''
+- name: entry
+  type: string
+  required: true
+  description: ''
+- name: primary_key
+  type: integer
+  required: true
+  description: ''
+- name: started
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

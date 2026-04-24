@@ -1,0 +1,19 @@
+name: Unix permissions
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/unix-permissions
+fields:
+- name: group
+  type: string
+  required: true
+  description: ''
+- name: mask
+  type: object
+  required: true
+  description: ''
+- name: owner
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

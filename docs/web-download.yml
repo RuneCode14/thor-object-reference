@@ -1,0 +1,19 @@
+name: web download
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/web-download
+fields:
+- name: file
+  type: object
+  required: true
+  description: ''
+- name: time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: url
+  type: string
+  required: true
+  description: ''

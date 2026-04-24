@@ -1,0 +1,27 @@
+name: systemd service
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/systemd-service
+fields:
+- name: command
+  type: string
+  required: true
+  description: ''
+- name: image
+  type: object
+  required: true
+  description: ''
+- name: run_as_group
+  type: string
+  required: true
+  description: ''
+- name: run_as_user
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: unit
+  type: object
+  required: true
+  description: ''

@@ -1,0 +1,19 @@
+name: shim cache entry
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/shim-cache-entry
+fields:
+- name: exec_flag
+  type: boolean
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: timestamp
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

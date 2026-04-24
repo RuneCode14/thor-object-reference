@@ -1,0 +1,23 @@
+name: prefetch info
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/prefetch-info
+fields:
+- name: accessed_files
+  type: array of string
+  required: true
+  description: ''
+- name: executable
+  type: object
+  required: true
+  description: ''
+- name: execution_count
+  type: integer
+  required: true
+  description: ''
+- name: execution_times
+  type: array of string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

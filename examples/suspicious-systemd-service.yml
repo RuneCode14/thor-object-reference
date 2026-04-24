@@ -1,0 +1,19 @@
+title: Suspicious systemd service from /tmp
+status: experimental
+description: |
+  Detects systemd services running executables from /tmp,
+  /var/tmp, or /dev/shm — common persistence locations.
+logsource:
+    product: THOR
+    service: "systemd service"
+detection:
+    selection:
+        IMAGE|contains:
+            - '/tmp/'
+            - '/var/tmp/'
+            - '/dev/shm/'
+    condition: selection
+falsepositives:
+    - Legitimate temporary services during installation
+    - Containerized workloads
+level: high

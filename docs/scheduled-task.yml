@@ -1,0 +1,55 @@
+name: scheduled task
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/scheduled-task
+fields:
+- name: com_handlers
+  type: array of string
+  required: false
+  description: ''
+- name: commands
+  type: array of string
+  required: true
+  description: ''
+- name: enabled
+  type: boolean
+  required: true
+  description: ''
+- name: last_run
+  type: string (date-time)
+  required: true
+  description: ''
+- name: logon_type
+  type: string
+  required: true
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: next_run
+  type: string (date-time)
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: privileges
+  type: array of string
+  required: false
+  description: ''
+- name: run_level
+  type: string
+  required: true
+  description: ''
+- name: triggers
+  type: array of string
+  required: false
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: user
+  type: string
+  required: true
+  description: ''

@@ -1,0 +1,23 @@
+name: network connecting thread
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-connecting-thread
+fields:
+- name: callback_interval
+  type: integer
+  required: true
+  description: ''
+- name: connections
+  type: array of object
+  required: true
+  description: ''
+- name: process
+  type: object
+  required: true
+  description: ''
+- name: thread_id
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

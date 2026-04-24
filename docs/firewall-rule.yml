@@ -1,0 +1,47 @@
+name: firewall rule
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/firewall-rule
+fields:
+- name: allow
+  type: boolean
+  required: true
+  description: ''
+- name: enabled
+  type: boolean
+  required: true
+  description: ''
+- name: inbound
+  type: boolean
+  required: true
+  description: ''
+- name: local_ips
+  type: array | null
+  required: true
+  description: ''
+- name: local_ports
+  type: array | null
+  required: true
+  description: ''
+- name: name
+  type: string
+  required: true
+  description: ''
+- name: path
+  type: string
+  required: true
+  description: ''
+- name: protocol
+  type: string
+  required: true
+  description: ''
+- name: remote_ips
+  type: array | null
+  required: true
+  description: ''
+- name: remote_ports
+  type: array | null
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

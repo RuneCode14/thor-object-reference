@@ -1,0 +1,19 @@
+name: web page visit
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/web-page-visit
+fields:
+- name: time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: title
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: url
+  type: string
+  required: true
+  description: ''

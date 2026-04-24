@@ -1,0 +1,65 @@
+name: Generate THOR Object Reference
+
+on:
+  workflow_dispatch:
+    inputs:
+      thor_binary:
+        description: 'URL to THOR binary (optional, auto-downloads latest dev)'
+        required: false
+        default: ''
+  schedule:
+    # Weekly on Mondays at 06:00 UTC
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Download THOR binary
+        run: |
+          if [ -n "${{ github.event.inputs.thor_binary }}" ]; then
+            curl -L -o thor-linux-64 "${{ github.event.inputs.thor_binary }}"
+          else
+            # Download latest dev techpreview via nextron update API
+            # (requires license; for public builds, adjust accordingly)
+            echo "Downloading latest THOR dev..."
+            # This is a placeholder - replace with actual download URL or CI token
+            curl -L -o thor-linux-64 "https://update1.nextron-systems.com/get/packages/thor10/thor-linux-64"
+          fi
+          chmod +x thor-linux-64
+
+      - name: Generate object types JSON
+        run: |
+          ./thor-linux-64 --describe-object-type all > thor-object-types.json
+
+      - name: Generate reference docs
+        run: |
+          python3 generate_reference.py thor-object-types.json --output-dir docs --format both
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git add thor-object-types.json
+          THOR_VERSION=$(./thor-linux-64 --version | head -1)
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: regenerate object reference for ${THOR_VERSION}"
+            git push
+          fi

@@ -1,0 +1,11 @@
+name: init.d service
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/initd-service
+fields:
+- name: file
+  type: object
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

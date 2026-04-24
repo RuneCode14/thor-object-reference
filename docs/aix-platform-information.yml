@@ -1,0 +1,39 @@
+name: AIX platform information
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/platform-info-aix
+fields:
+- name: build_sequence_id
+  type: integer
+  required: true
+  description: ''
+- name: model
+  type: string
+  required: true
+  description: ''
+- name: os_build_time
+  type: string (date-time)
+  required: true
+  description: ''
+- name: proc
+  type: string
+  required: true
+  description: ''
+- name: service_pack
+  type: integer
+  required: true
+  description: ''
+- name: technology_level
+  type: integer
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: vcpus
+  type: integer
+  required: true
+  description: ''
+- name: version
+  type: string
+  required: true
+  description: ''

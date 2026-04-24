@@ -1,0 +1,15 @@
+name: registered debugger
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/registered-debugger
+fields:
+- name: debugger
+  type: string
+  required: true
+  description: ''
+- name: executable
+  type: string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

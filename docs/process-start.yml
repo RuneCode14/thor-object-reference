@@ -1,0 +1,15 @@
+name: process start
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/eventlog-process-start
+fields:
+- name: process
+  type: string
+  required: true
+  description: ''
+- name: start_times
+  type: array of string
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''

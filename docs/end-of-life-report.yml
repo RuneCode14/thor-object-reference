@@ -1,0 +1,15 @@
+name: end of life report
+schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/end-of-life-report
+fields:
+- name: end_of_life
+  type: string (date-time)
+  required: true
+  description: ''
+- name: type
+  type: string
+  required: true
+  description: ''
+- name: version
+  type: string
+  required: true
+  description: ''
