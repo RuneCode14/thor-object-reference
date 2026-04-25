@@ -1,15 +1,18 @@
 name: environment variable
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/environment-variable
 fields:
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: value
+- sigma_name: VALUE
+  json_name: value
   type: string
   required: true
   description: ''
-- name: variable
+- sigma_name: VARIABLE
+  json_name: variable
   type: string
   required: true
   description: ''

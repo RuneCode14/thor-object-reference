@@ -1,23 +1,28 @@
 name: antivirus product
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/anti-virus-product
 fields:
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: signature_status
+- sigma_name: SIGNATURE_STATUS
+  json_name: signature_status
   type: string
   required: true
   description: ''
-- name: status
+- sigma_name: STATUS
+  json_name: status
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

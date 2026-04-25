@@ -1,71 +1,120 @@
 name: THOR invocation information
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/scan-info
 fields:
-- name: active_features
+- sigma_name: ACTIVE_FEATURES
+  json_name: active_features
   type: array of string
   required: true
   description: ''
-- name: active_modules
+- sigma_name: ACTIVE_MODULES
+  json_name: active_modules
   type: array of string
   required: true
   description: ''
-- name: arguments
+- sigma_name: ARGUMENTS
+  json_name: arguments
   type: array of string
   required: true
   description: ''
-- name: cpu_limit
+- sigma_name: CPU_LIMIT
+  json_name: cpu_limit
   type: integer
   required: true
   description: ''
-- name: elevated
+- sigma_name: ELEVATED
+  json_name: elevated
   type: boolean
   required: true
   description: ''
-- name: file_size_limit
+- sigma_name: FILE_SIZE_LIMIT
+  json_name: file_size_limit
   type: integer
   required: true
   description: ''
-- name: fp_filters
+- sigma_name: FP_FILTERS
+  json_name: fp_filters
   type: array of string
   required: true
   description: ''
-- name: free_memory_limit
+- sigma_name: FREE_MEMORY_LIMIT
+  json_name: free_memory_limit
   type: integer
   required: true
   description: ''
-- name: license
+- sigma_name: LICENSE
+  json_name: license
   type: object
   required: true
   description: ''
-- name: outputs
+  nested:
+  - sigma_name: OWNER
+    json_name: owner
+    type: string
+  - sigma_name: LICENSE_TYPE
+    json_name: license_type
+    type: string
+  - sigma_name: STARTS
+    json_name: starts
+    type: string
+  - sigma_name: EXPIRES
+    json_name: expires
+    type: string
+  - sigma_name: SCANNER
+    json_name: scanner
+    type: string
+  - sigma_name: HASH
+    json_name: hash
+    type: string
+- sigma_name: OUTPUTS
+  json_name: outputs
   type: array of object
   required: true
   description: ''
-- name: scan_id
+- sigma_name: SCAN_ID
+  json_name: scan_id
   type: string
   required: true
   description: ''
-- name: thor_dir
+- sigma_name: THOR_DIR
+  json_name: thor_dir
   type: string
   required: true
   description: ''
-- name: threads
+- sigma_name: THREADS
+  json_name: threads
   type: integer
   required: true
   description: ''
-- name: timeout
+- sigma_name: TIMEOUT
+  json_name: timeout
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''
-- name: versions
+- sigma_name: VERSIONS
+  json_name: versions
   type: object
   required: true
   description: ''
+  nested:
+  - sigma_name: THOR
+    json_name: thor
+    type: string
+  - sigma_name: BUILD
+    json_name: build
+    type: string
+  - sigma_name: SIGNATURES
+    json_name: signatures
+    type: string
+  - sigma_name: SIGMA_RULES
+    json_name: sigma_rules
+    type: string

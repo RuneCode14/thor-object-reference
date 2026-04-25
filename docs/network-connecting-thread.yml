@@ -1,23 +1,356 @@
 name: network connecting thread
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-connecting-thread
 fields:
-- name: callback_interval
+- sigma_name: CALLBACK_INTERVAL
+  json_name: callback_interval
   type: integer
   required: true
   description: ''
-- name: connections
+- sigma_name: CONNECTIONS
+  json_name: connections
   type: array of object
   required: true
   description: ''
-- name: process
+- sigma_name: PROCESS
+  json_name: process
   type: object
   required: true
   description: ''
-- name: thread_id
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: PID
+    json_name: pid
+    type: integer
+  - sigma_name: DEAD
+    json_name: dead
+    type: boolean
+  - sigma_name: NAME
+    json_name: name
+    type: string
+  - sigma_name: COMMAND
+    json_name: command
+    type: string
+  - sigma_name: OWNER
+    json_name: owner
+    type: string
+  - sigma_name: IMAGE|TYPE
+    json_name: image.type
+    type: string
+  - sigma_name: IMAGE|PATH
+    json_name: image.path
+    type: string
+  - sigma_name: IMAGE|EXISTS
+    json_name: image.exists
+    type: string
+  - sigma_name: IMAGE|EXTENSION
+    json_name: image.extension
+    type: string
+  - sigma_name: IMAGE|MAGIC_HEADER
+    json_name: image.magic_header
+    type: string
+  - sigma_name: IMAGE|HASHES|MD5
+    json_name: image.hashes.md5
+    type: any
+  - sigma_name: IMAGE|HASHES|SHA1
+    json_name: image.hashes.sha1
+    type: any
+  - sigma_name: IMAGE|HASHES|SHA256
+    json_name: image.hashes.sha256
+    type: any
+  - sigma_name: IMAGE|FIRST_BYTES|HEX
+    json_name: image.first_bytes.hex
+    type: any
+  - sigma_name: IMAGE|FIRST_BYTES|ASCII
+    json_name: image.first_bytes.ascii
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|MODIFIED
+    json_name: image.file_times.modified
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|ACCESSED
+    json_name: image.file_times.accessed
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|CHANGED
+    json_name: image.file_times.changed
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|CREATED
+    json_name: image.file_times.created
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|USN_CHANGE_TIME
+    json_name: image.file_times.usn_change_time
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|MFT_FILE_NAME_MODIFIED
+    json_name: image.file_times.mft_file_name_modified
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|MFT_FILE_NAME_ACCESSED
+    json_name: image.file_times.mft_file_name_accessed
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|MFT_FILE_NAME_CHANGED
+    json_name: image.file_times.mft_file_name_changed
+    type: any
+  - sigma_name: IMAGE|FILE_TIMES|MFT_FILE_NAME_CREATED
+    json_name: image.file_times.mft_file_name_created
+    type: any
+  - sigma_name: IMAGE|SIZE
+    json_name: image.size
+    type: integer
+  - sigma_name: IMAGE|PE_INFO|COMPANY
+    json_name: image.pe_info.company
+    type: any
+  - sigma_name: IMAGE|PE_INFO|DESCRIPTION
+    json_name: image.pe_info.description
+    type: any
+  - sigma_name: IMAGE|PE_INFO|LEGAL_COPYRIGHT
+    json_name: image.pe_info.legal_copyright
+    type: any
+  - sigma_name: IMAGE|PE_INFO|PRODUCT
+    json_name: image.pe_info.product
+    type: any
+  - sigma_name: IMAGE|PE_INFO|ORIGINAL_NAME
+    json_name: image.pe_info.original_name
+    type: any
+  - sigma_name: IMAGE|PE_INFO|INTERNAL_NAME
+    json_name: image.pe_info.internal_name
+    type: any
+  - sigma_name: IMAGE|PE_INFO|SIGNED
+    json_name: image.pe_info.signed
+    type: any
+  - sigma_name: IMAGE|PE_INFO|SIGNATURES
+    json_name: image.pe_info.signatures
+    type: any
+  - sigma_name: IMAGE|PE_INFO|IMPHASH
+    json_name: image.pe_info.imphash
+    type: any
+  - sigma_name: IMAGE|PE_INFO|RICH_HEADER_HASH
+    json_name: image.pe_info.rich_header_hash
+    type: any
+  - sigma_name: IMAGE|PE_INFO|CREATION_TIMESTAMP
+    json_name: image.pe_info.creation_timestamp
+    type: any
+  - sigma_name: IMAGE|TARGET
+    json_name: image.target
+    type: string
+  - sigma_name: IMAGE|UNPACK_SOURCE
+    json_name: image.unpack_source
+    type: any | null
+  - sigma_name: IMAGE|LINK_INFO|TARGET
+    json_name: image.link_info.target
+    type: any
+  - sigma_name: IMAGE|LINK_INFO|ARGUMENTS
+    json_name: image.link_info.arguments
+    type: any
+  - sigma_name: IMAGE|LINK_INFO|COMMAND_LINE
+    json_name: image.link_info.command_line
+    type: any
+  - sigma_name: IMAGE|LINK_INFO|CREATED
+    json_name: image.link_info.created
+    type: any
+  - sigma_name: IMAGE|LINK_INFO|MODIFIED
+    json_name: image.link_info.modified
+    type: any
+  - sigma_name: IMAGE|LINK_INFO|ACCESSED
+    json_name: image.link_info.accessed
+    type: any
+  - sigma_name: IMAGE|RECYCLE_BIN_INFO|ORIGINAL_FILE_NAME
+    json_name: image.recycle_bin_info.original_file_name
+    type: any
+  - sigma_name: IMAGE|RECYCLE_BIN_INFO|DELETION_TIME
+    json_name: image.recycle_bin_info.deletion_time
+    type: any
+  - sigma_name: IMAGE|RECYCLE_BIN_INFO|ORIGINAL_FILE_SIZE
+    json_name: image.recycle_bin_info.original_file_size
+    type: any
+  - sigma_name: IMAGE|WER_INFO|TYPE
+    json_name: image.wer_info.type
+    type: any
+  - sigma_name: IMAGE|WER_INFO|EVENT_NAME
+    json_name: image.wer_info.event_name
+    type: any
+  - sigma_name: IMAGE|WER_INFO|EVENT_TYPE
+    json_name: image.wer_info.event_type
+    type: any
+  - sigma_name: IMAGE|WER_INFO|DATE
+    json_name: image.wer_info.date
+    type: any
+  - sigma_name: IMAGE|WER_INFO|APP_PATH
+    json_name: image.wer_info.app_path
+    type: any
+  - sigma_name: IMAGE|WER_INFO|APP_NAME
+    json_name: image.wer_info.app_name
+    type: any
+  - sigma_name: IMAGE|WER_INFO|EXE
+    json_name: image.wer_info.exe
+    type: any
+  - sigma_name: IMAGE|WER_INFO|ERROR
+    json_name: image.wer_info.error
+    type: any
+  - sigma_name: IMAGE|WER_INFO|FAULT_IN_MODULE
+    json_name: image.wer_info.fault_in_module
+    type: any
+  - sigma_name: IMAGE|CONTENT|TYPE
+    json_name: image.content.type
+    type: any
+  - sigma_name: IMAGE|CONTENT|ELEMENTS
+    json_name: image.content.elements
+    type: any
+  - sigma_name: IMAGE|CONTENT|LENGTH
+    json_name: image.content.length
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|BEACON_TYPE
+    json_name: image.beacon_config.beacon_type
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|C2
+    json_name: image.beacon_config.c2
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|PORT
+    json_name: image.beacon_config.port
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|SPAWN_TO
+    json_name: image.beacon_config.spawn_to
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|INJECTION_PROCESS
+    json_name: image.beacon_config.injection_process
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|PIPE_NAME
+    json_name: image.beacon_config.pipe_name
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|USER_AGENT
+    json_name: image.beacon_config.user_agent
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|PROXY
+    json_name: image.beacon_config.proxy
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|FULL_CONFIG
+    json_name: image.beacon_config.full_config
+    type: any
+  - sigma_name: IMAGE|BEACON_CONFIG|CIPHER_PARAMETERS
+    json_name: image.beacon_config.cipher_parameters
+    type: any
+  - sigma_name: IMAGE|VIRUSTOTAL|RESULT
+    json_name: image.virustotal.result
+    type: any
+  - sigma_name: IMAGE|VIRUSTOTAL|POSITIVE_VERDICTS
+    json_name: image.virustotal.positive_verdicts
+    type: any
+  - sigma_name: IMAGE|VIRUSTOTAL|TOTAL_VERDICTS
+    json_name: image.virustotal.total_verdicts
+    type: any
+  - sigma_name: IMAGE|VIRUSTOTAL|HISTORY
+    json_name: image.virustotal.history
+    type: any
+  - sigma_name: PARENT_INFO|PID
+    json_name: parent_info.pid
+    type: integer
+  - sigma_name: PARENT_INFO|EXE
+    json_name: parent_info.exe
+    type: string
+  - sigma_name: PARENT_INFO|COMMAND
+    json_name: parent_info.command
+    type: string
+  - sigma_name: TREE
+    json_name: tree
+    type: array | null
+  - sigma_name: CREATED
+    json_name: created
+    type: string (date-time)
+  - sigma_name: SESSION
+    json_name: session
+    type: string
+  - sigma_name: LISTEN_PORTS
+    json_name: listen_ports
+    type: array | null
+  - sigma_name: CONNECTIONS
+    json_name: connections
+    type: array | null
+  - sigma_name: SECTIONS
+    json_name: sections
+    type: array of object
+  - sigma_name: BEACON_CONFIG|BEACON_TYPE
+    json_name: beacon_config.beacon_type
+    type: string
+  - sigma_name: BEACON_CONFIG|C2
+    json_name: beacon_config.c2
+    type: string
+  - sigma_name: BEACON_CONFIG|PORT
+    json_name: beacon_config.port
+    type: string
+  - sigma_name: BEACON_CONFIG|SPAWN_TO
+    json_name: beacon_config.spawn_to
+    type: string
+  - sigma_name: BEACON_CONFIG|INJECTION_PROCESS
+    json_name: beacon_config.injection_process
+    type: string
+  - sigma_name: BEACON_CONFIG|PIPE_NAME
+    json_name: beacon_config.pipe_name
+    type: string
+  - sigma_name: BEACON_CONFIG|USER_AGENT
+    json_name: beacon_config.user_agent
+    type: string
+  - sigma_name: BEACON_CONFIG|PROXY
+    json_name: beacon_config.proxy
+    type: string
+  - sigma_name: BEACON_CONFIG|FULL_CONFIG
+    json_name: beacon_config.full_config
+    type: object
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XAF_ENCODED
+    json_name: beacon_config.cipher_parameters.xaf_encoded
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR
+    json_name: beacon_config.cipher_parameters.xaf_encoding_anchor
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XOR_KEY
+    json_name: beacon_config.cipher_parameters.xor_key
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BEACON_OFFSET
+    json_name: beacon_config.cipher_parameters.beacon_offset
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BEACON_LENGTH
+    json_name: beacon_config.cipher_parameters.beacon_length
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BLOCK_START
+    json_name: beacon_config.cipher_parameters.block_start
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|PAIRWISE_SWAPPED
+    json_name: beacon_config.cipher_parameters.pairwise_swapped
+    type: any
+  - sigma_name: PE_SIEVE|SUSPICIOUS_SECTIONS
+    json_name: pe_sieve.suspicious_sections
+    type: integer
+  - sigma_name: PE_SIEVE|REPLACED
+    json_name: pe_sieve.replaced
+    type: integer
+  - sigma_name: PE_SIEVE|HDR_MOD
+    json_name: pe_sieve.hdr_mod
+    type: integer
+  - sigma_name: PE_SIEVE|UNREACHABLE_FILE
+    json_name: pe_sieve.unreachable_file
+    type: integer
+  - sigma_name: PE_SIEVE|PATCHED
+    json_name: pe_sieve.patched
+    type: integer
+  - sigma_name: PE_SIEVE|IAT_HOOKED
+    json_name: pe_sieve.iat_hooked
+    type: integer
+  - sigma_name: PE_SIEVE|IMPLANTED
+    json_name: pe_sieve.implanted
+    type: integer
+  - sigma_name: PE_SIEVE|OTHER
+    json_name: pe_sieve.other
+    type: integer
+  - sigma_name: PE_SIEVE|SKIPPED
+    json_name: pe_sieve.skipped
+    type: integer
+  - sigma_name: PE_SIEVE|ERRORS
+    json_name: pe_sieve.errors
+    type: integer
+- sigma_name: THREAD_ID
+  json_name: thread_id
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

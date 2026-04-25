@@ -1,15 +1,18 @@
 name: registered debugger
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/registered-debugger
 fields:
-- name: debugger
+- sigma_name: DEBUGGER
+  json_name: debugger
   type: string
   required: true
   description: ''
-- name: executable
+- sigma_name: EXECUTABLE
+  json_name: executable
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

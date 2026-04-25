@@ -4,15 +4,34 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `FieldDirect` | string | ✅ |  |
-| `Interface` | any | ✅ |  |
-| `Map` | object (string) | ✅ |  |
-| `PointedStruct` | object | ✅ | nested: `Field`: string |
-| `Slice` | array of object | ✅ | nested: `Field`: string |
-| `SubStruct` | object | ✅ | nested: `Field`: string |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `FIELDDIRECT` | `FieldDirect` | string | ✅ |  |
+| `INTERFACE` | `Interface` | any | ✅ |  |
+| `MAP` | `Map` | object (string) | ✅ |  |
+| `POINTEDSTRUCT` | `PointedStruct` | object | ✅ | nested: `FIELD`: string |
+| `SLICE` | `Slice` | array of object | ✅ |  |
+| `SUBSTRUCT` | `SubStruct` | object | ✅ | nested: `FIELD`: string |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+**POINTEDSTRUCT** (`PointedStruct` — object):
+
+| Sigma Field | JSON Path | Type |
+|-------------|-----------|------|
+| `FIELD` | `Field` | string |
+
+**SUBSTRUCT** (`SubStruct` — object):
+
+| Sigma Field | JSON Path | Type |
+|-------------|-----------|------|
+| `FIELD` | `Field` | string |
 
 ## Sigma Rule Template
 
@@ -23,6 +42,6 @@ logsource:
 
 detection:
     selection:
-        FIELDDIRECT: null
+        TYPE: 'relevant_type'
     condition: selection
 ```

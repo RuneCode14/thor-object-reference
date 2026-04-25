@@ -1,19 +1,51 @@
 name: Unix permissions
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/unix-permissions
 fields:
-- name: group
+- sigma_name: GROUP
+  json_name: group
   type: string
   required: true
   description: ''
-- name: mask
+- sigma_name: MASK
+  json_name: mask
   type: object
   required: true
   description: ''
-- name: owner
+  nested:
+  - sigma_name: USER|READABLE
+    json_name: user.readable
+    type: boolean
+  - sigma_name: USER|WRITABLE
+    json_name: user.writable
+    type: boolean
+  - sigma_name: USER|EXECUTABLE
+    json_name: user.executable
+    type: boolean
+  - sigma_name: GROUP|READABLE
+    json_name: group.readable
+    type: boolean
+  - sigma_name: GROUP|WRITABLE
+    json_name: group.writable
+    type: boolean
+  - sigma_name: GROUP|EXECUTABLE
+    json_name: group.executable
+    type: boolean
+  - sigma_name: WORLD|READABLE
+    json_name: world.readable
+    type: boolean
+  - sigma_name: WORLD|WRITABLE
+    json_name: world.writable
+    type: boolean
+  - sigma_name: WORLD|EXECUTABLE
+    json_name: world.executable
+    type: boolean
+- sigma_name: OWNER
+  json_name: owner
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

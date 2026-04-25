@@ -1,19 +1,23 @@
 name: USN entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/usn-entry
 fields:
-- name: event_time
+- sigma_name: EVENT_TIME
+  json_name: event_time
   type: string (date-time)
   required: true
   description: ''
-- name: filename
+- sigma_name: FILENAME
+  json_name: filename
   type: string
   required: true
   description: ''
-- name: reasons
+- sigma_name: REASONS
+  json_name: reasons
   type: array of string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

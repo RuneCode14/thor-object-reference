@@ -1,79 +1,321 @@
 name: file
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/file
 fields:
-- name: beacon_config
+- sigma_name: BEACON_CONFIG
+  json_name: beacon_config
   type: object
   required: false
   description: ''
-- name: content
+  nested:
+  - sigma_name: BEACON_TYPE
+    json_name: beacon_type
+    type: string
+  - sigma_name: C2
+    json_name: c2
+    type: string
+  - sigma_name: PORT
+    json_name: port
+    type: string
+  - sigma_name: SPAWN_TO
+    json_name: spawn_to
+    type: string
+  - sigma_name: INJECTION_PROCESS
+    json_name: injection_process
+    type: string
+  - sigma_name: PIPE_NAME
+    json_name: pipe_name
+    type: string
+  - sigma_name: USER_AGENT
+    json_name: user_agent
+    type: string
+  - sigma_name: PROXY
+    json_name: proxy
+    type: string
+  - sigma_name: FULL_CONFIG
+    json_name: full_config
+    type: object
+  - sigma_name: CIPHER_PARAMETERS|XAF_ENCODED
+    json_name: cipher_parameters.xaf_encoded
+    type: boolean
+  - sigma_name: CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR
+    json_name: cipher_parameters.xaf_encoding_anchor
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|XOR_KEY
+    json_name: cipher_parameters.xor_key
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BEACON_OFFSET
+    json_name: cipher_parameters.beacon_offset
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BEACON_LENGTH
+    json_name: cipher_parameters.beacon_length
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BLOCK_START|HEX
+    json_name: cipher_parameters.block_start.hex
+    type: any
+  - sigma_name: CIPHER_PARAMETERS|BLOCK_START|ASCII
+    json_name: cipher_parameters.block_start.ascii
+    type: any
+  - sigma_name: CIPHER_PARAMETERS|PAIRWISE_SWAPPED
+    json_name: cipher_parameters.pairwise_swapped
+    type: boolean
+- sigma_name: CONTENT
+  json_name: content
   type: object
   required: false
   description: ''
-- name: exists
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: ELEMENTS
+    json_name: elements
+    type: array | null
+  - sigma_name: LENGTH
+    json_name: length
+    type: integer
+- sigma_name: EXISTS
+  json_name: exists
   type: string
   required: true
   description: ''
-- name: extension
+- sigma_name: EXTENSION
+  json_name: extension
   type: string
   required: true
   description: ''
-- name: file_times
+- sigma_name: FILE_TIMES
+  json_name: file_times
   type: object
   required: false
   description: ''
-- name: first_bytes
+  nested:
+  - sigma_name: MODIFIED
+    json_name: modified
+    type: string (date-time)
+  - sigma_name: ACCESSED
+    json_name: accessed
+    type: string (date-time)
+  - sigma_name: CHANGED
+    json_name: changed
+    type: string (date-time)
+  - sigma_name: CREATED
+    json_name: created
+    type: string (date-time)
+  - sigma_name: USN_CHANGE_TIME
+    json_name: usn_change_time
+    type: string (date-time)
+  - sigma_name: MFT_FILE_NAME_MODIFIED
+    json_name: mft_file_name_modified
+    type: string (date-time)
+  - sigma_name: MFT_FILE_NAME_ACCESSED
+    json_name: mft_file_name_accessed
+    type: string (date-time)
+  - sigma_name: MFT_FILE_NAME_CHANGED
+    json_name: mft_file_name_changed
+    type: string (date-time)
+  - sigma_name: MFT_FILE_NAME_CREATED
+    json_name: mft_file_name_created
+    type: string (date-time)
+- sigma_name: FIRST_BYTES
+  json_name: first_bytes
   type: object
   required: false
   description: ''
-- name: hashes
+  nested:
+  - sigma_name: HEX
+    json_name: hex
+    type: string
+  - sigma_name: ASCII
+    json_name: ascii
+    type: string
+- sigma_name: HASHES
+  json_name: hashes
   type: object
   required: false
   description: ''
-- name: link_info
+  nested:
+  - sigma_name: MD5
+    json_name: md5
+    type: string
+  - sigma_name: SHA1
+    json_name: sha1
+    type: string
+  - sigma_name: SHA256
+    json_name: sha256
+    type: string
+- sigma_name: LINK_INFO
+  json_name: link_info
   type: object
   required: false
   description: ''
-- name: magic_header
+  nested:
+  - sigma_name: TARGET
+    json_name: target
+    type: string
+  - sigma_name: ARGUMENTS
+    json_name: arguments
+    type: string
+  - sigma_name: COMMAND_LINE
+    json_name: command_line
+    type: string
+  - sigma_name: CREATED
+    json_name: created
+    type: string (date-time)
+  - sigma_name: MODIFIED
+    json_name: modified
+    type: string (date-time)
+  - sigma_name: ACCESSED
+    json_name: accessed
+    type: string (date-time)
+- sigma_name: MAGIC_HEADER
+  json_name: magic_header
   type: string
   required: false
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: pe_info
+- sigma_name: PE_INFO
+  json_name: pe_info
   type: object
   required: false
   description: ''
-- name: permissions
+  nested:
+  - sigma_name: COMPANY
+    json_name: company
+    type: string
+  - sigma_name: DESCRIPTION
+    json_name: description
+    type: string
+  - sigma_name: LEGAL_COPYRIGHT
+    json_name: legal_copyright
+    type: string
+  - sigma_name: PRODUCT
+    json_name: product
+    type: string
+  - sigma_name: ORIGINAL_NAME
+    json_name: original_name
+    type: string
+  - sigma_name: INTERNAL_NAME
+    json_name: internal_name
+    type: string
+  - sigma_name: SIGNED
+    json_name: signed
+    type: boolean
+  - sigma_name: SIGNATURES
+    json_name: signatures
+    type: array | null
+  - sigma_name: IMPHASH
+    json_name: imphash
+    type: string
+  - sigma_name: RICH_HEADER_HASH
+    json_name: rich_header_hash
+    type: string
+  - sigma_name: CREATION_TIMESTAMP
+    json_name: creation_timestamp
+    type: string (date-time)
+- sigma_name: PERMISSIONS
+  json_name: permissions
   type: any
   required: false
   description: ''
-- name: recycle_bin_info
+- sigma_name: RECYCLE_BIN_INFO
+  json_name: recycle_bin_info
   type: object
   required: false
   description: ''
-- name: size
+  nested:
+  - sigma_name: ORIGINAL_FILE_NAME
+    json_name: original_file_name
+    type: string
+  - sigma_name: DELETION_TIME
+    json_name: deletion_time
+    type: string (date-time)
+  - sigma_name: ORIGINAL_FILE_SIZE
+    json_name: original_file_size
+    type: integer
+- sigma_name: SIZE
+  json_name: size
   type: integer
   required: false
   description: ''
-- name: target
+- sigma_name: TARGET
+  json_name: target
   type: string
   required: false
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: unpack_source
+- sigma_name: UNPACK_SOURCE
+  json_name: unpack_source
   type: array | null
   required: false
   description: ''
-- name: virustotal
+- sigma_name: VIRUSTOTAL
+  json_name: virustotal
   type: object
   required: false
   description: ''
-- name: wer_info
+  nested:
+  - sigma_name: RESULT
+    json_name: result
+    type: string
+  - sigma_name: POSITIVE_VERDICTS
+    json_name: positive_verdicts
+    type: integer
+  - sigma_name: TOTAL_VERDICTS
+    json_name: total_verdicts
+    type: integer
+  - sigma_name: HISTORY|NAMES
+    json_name: history.names
+    type: any | null
+  - sigma_name: HISTORY|TAGS
+    json_name: history.tags
+    type: any | null
+  - sigma_name: HISTORY|SUBMISSIONS
+    json_name: history.submissions
+    type: integer
+  - sigma_name: HISTORY|FIRST_SUBMISSION
+    json_name: history.first_submission
+    type: string (date-time)
+  - sigma_name: HISTORY|LAST_SUBMISSION
+    json_name: history.last_submission
+    type: string (date-time)
+- sigma_name: WER_INFO
+  json_name: wer_info
   type: object
   required: false
   description: ''
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: EVENT_NAME
+    json_name: event_name
+    type: string
+  - sigma_name: EVENT_TYPE
+    json_name: event_type
+    type: string
+  - sigma_name: DATE
+    json_name: date
+    type: string (date-time)
+  - sigma_name: APP_PATH
+    json_name: app_path
+    type: string
+  - sigma_name: APP_NAME
+    json_name: app_name
+    type: string
+  - sigma_name: EXE
+    json_name: exe
+    type: string
+  - sigma_name: ERROR
+    json_name: error
+    type: string
+  - sigma_name: FAULT_IN_MODULE
+    json_name: fault_in_module
+    type: string

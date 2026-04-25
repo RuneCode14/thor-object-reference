@@ -1,39 +1,48 @@
 name: registry scheduled task
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/registry-scheduled-task
 fields:
-- name: created
+- sigma_name: CREATED
+  json_name: created
   type: string (date-time)
   required: true
   description: ''
-- name: guid
+- sigma_name: GUID
+  json_name: guid
   type: string
   required: true
   description: ''
-- name: last_result
+- sigma_name: LAST_RESULT
+  json_name: last_result
   type: string
   required: true
   description: ''
-- name: last_run
+- sigma_name: LAST_RUN
+  json_name: last_run
   type: string (date-time)
   required: true
   description: ''
-- name: last_stopped
+- sigma_name: LAST_STOPPED
+  json_name: last_stopped
   type: string (date-time)
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: status
+- sigma_name: STATUS
+  json_name: status
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: version
+- sigma_name: VERSION
+  json_name: version
   type: integer
   required: true
   description: ''

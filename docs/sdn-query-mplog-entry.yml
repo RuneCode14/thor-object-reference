@@ -1,23 +1,28 @@
 name: SDN query MPLog entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/sdn-query-entry
 fields:
-- name: file
+- sigma_name: FILE
+  json_name: file
   type: string
   required: true
   description: ''
-- name: sha1
+- sigma_name: SHA1
+  json_name: sha1
   type: string
   required: true
   description: ''
-- name: sha256
+- sigma_name: SHA256
+  json_name: sha256
   type: string
   required: true
   description: ''
-- name: time
+- sigma_name: TIME
+  json_name: time
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

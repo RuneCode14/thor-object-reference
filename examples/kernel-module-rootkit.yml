@@ -1,18 +1,29 @@
-title: Linux kernel module without backing file
+title: Linux Kernel Module Rootkit Indicators
+id: a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d
 status: experimental
-description: |
-  Detects kernel modules that are loaded but have no associated
-  file on disk. This is a strong indicator of a rootkit that
-  loads a module directly from memory.
+description: Detects signs of Linux kernel module rootkits
+references:
+    - https://github.com/RuneCode14/thor-object-reference
+author: Johannes Roth
+date: 2026/04/26
 logsource:
     product: THOR
     service: "Linux kernel module"
 detection:
-    selection:
-        FILE: null
+    selection_hidden_module:
+        IN_PROC_MODULES: false
+        IN_SYS_MODULE: false
+    selection_unsigned:
+        FILE|PE_INFO|SIGNED: 'false'
+    selection_suspicious_name:
+        NAME|contains:
+            - 'rootkit'
+            - 'hide_'
+            - 'injector'
+    selection_suspicious_path:
+        FILE|PATH|contains:
+            - '/tmp/'
+            - '/dev/shm/'
+    selection_not_builtin:
         INCLUDED_IN_KERNEL: false
-    condition: selection
-falsepositives:
-    - Custom kernels with manually loaded modules
-    - Debugging sessions
-level: medium
+    condition: (selection_hidden_module or selection_suspicious_name or selection_suspicious_path) and selection_not_builtin

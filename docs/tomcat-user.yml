@@ -1,11 +1,13 @@
 name: Tomcat user
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/tomcat-user
 fields:
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

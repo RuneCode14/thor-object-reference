@@ -1,39 +1,48 @@
 name: Unix user
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/unix-user
 fields:
-- name: access_files
+- sigma_name: ACCESS_FILES
+  json_name: access_files
   type: array | null
   required: true
   description: ''
-- name: crontab
+- sigma_name: CRONTAB
+  json_name: crontab
   type: string
   required: true
   description: ''
-- name: full_name
+- sigma_name: FULL_NAME
+  json_name: full_name
   type: string
   required: true
   description: ''
-- name: gid
+- sigma_name: GID
+  json_name: gid
   type: string
   required: true
   description: ''
-- name: home
+- sigma_name: HOME
+  json_name: home
   type: string
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: shell
+- sigma_name: SHELL
+  json_name: shell
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: uid
+- sigma_name: UID
+  json_name: uid
   type: string
   required: true
   description: ''

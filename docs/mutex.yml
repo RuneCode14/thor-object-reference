@@ -1,11 +1,13 @@
 name: mutex
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-mutex
 fields:
-- name: mutex
+- sigma_name: MUTEX
+  json_name: mutex
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

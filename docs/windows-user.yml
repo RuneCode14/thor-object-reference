@@ -1,51 +1,63 @@
 name: Windows user
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-user
 fields:
-- name: active
+- sigma_name: ACTIVE
+  json_name: active
   type: boolean
   required: true
   description: ''
-- name: bad_password_count
+- sigma_name: BAD_PASSWORD_COUNT
+  json_name: bad_password_count
   type: integer
   required: true
   description: ''
-- name: comment
+- sigma_name: COMMENT
+  json_name: comment
   type: string
   required: true
   description: ''
-- name: full_name
+- sigma_name: FULL_NAME
+  json_name: full_name
   type: string
   required: true
   description: ''
-- name: is_admin
+- sigma_name: IS_ADMIN
+  json_name: is_admin
   type: boolean
   required: true
   description: ''
-- name: last_logon
+- sigma_name: LAST_LOGON
+  json_name: last_logon
   type: string (date-time)
   required: true
   description: ''
-- name: locked
+- sigma_name: LOCKED
+  json_name: locked
   type: boolean
   required: true
   description: ''
-- name: no_expire
+- sigma_name: NO_EXPIRE
+  json_name: no_expire
   type: boolean
   required: true
   description: ''
-- name: num_logons
+- sigma_name: NUM_LOGONS
+  json_name: num_logons
   type: integer
   required: true
   description: ''
-- name: pass_age
+- sigma_name: PASS_AGE
+  json_name: pass_age
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

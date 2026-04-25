@@ -4,15 +4,24 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `ip` | string | ✅ |  |
-| `port` | integer | ✅ |  |
-| `protocol` | string |  |  |
-| `remote_ip` | string |  |  |
-| `remote_port` | integer |  |  |
-| `status` | string | ✅ |  |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `IP` | `ip` | string | ✅ |  |
+| `PORT` | `port` | integer | ✅ |  |
+| `PROTOCOL` | `protocol` | string |  |  |
+| `REMOTE_IP` | `remote_ip` | string |  |  |
+| `REMOTE_PORT` | `remote_port` | integer |  |  |
+| `STATUS` | `status` | string | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -23,6 +32,9 @@ logsource:
 
 detection:
     selection:
-        IP: null
+        TYPE: 'relevant_type'
+        IP|contains:
+            - '192.168.'
+            - '10.'
     condition: selection
 ```

@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-thor-object-reference
+thor-object-reference v3
 Convert THOR's --describe-object-type all JSON output into readable documentation.
+
+Changes from v2:
+- Field names shown in UPPERCASE (as used in Sigma rules), with lowercase JSON name noted
+- More complete Sigma rule templates with multiple fields and realistic detection logic
+- Nested object fields shown with UPPERCASE dot-notation (e.g., IMAGE|PATH, UNIT|HASHES|SHA256)
 
 Usage:
     python3 generate-reference.py /path/to/thor-object-types.json --output-dir ./docs
@@ -12,7 +17,7 @@ import sys
 import os
 import argparse
 from pathlib import Path
-from typing import Any, Optional, Dict
+from typing import Any, Optional, Dict, List, Tuple
 
 
 def get_ref_name(ref: str) -> str:
@@ -37,7 +42,6 @@ def get_type_label(field_schema: dict, defs: dict) -> str:
 
     if "$ref" in field_schema:
         ref_name = get_ref_name(field_schema["$ref"])
-        # Avoid resolving the full ref recursively for the label
         return ref_name
 
     t = field_schema.get("type", "any")
@@ -99,7 +103,6 @@ def resolve_properties(def_obj: dict, defs: dict) -> Dict[str, dict]:
     if not isinstance(def_obj, dict):
         return {}
 
-    # Resolve $ref first
     if "$ref" in def_obj:
         resolved = resolve_ref(def_obj["$ref"], defs)
         return resolve_properties(resolved, defs)
@@ -107,14 +110,12 @@ def resolve_properties(def_obj: dict, defs: dict) -> Dict[str, dict]:
     props = {}
     required = set()
 
-    # Direct properties
     if "properties" in def_obj and isinstance(def_obj["properties"], dict):
         props.update(def_obj["properties"])
 
     if "required" in def_obj:
         required.update(def_obj["required"])
 
-    # allOf merge
     for sub in def_obj.get("allOf", []):
         sub_props = resolve_properties(sub, defs)
         if isinstance(sub, dict) and "properties" in sub:
@@ -124,7 +125,6 @@ def resolve_properties(def_obj: dict, defs: dict) -> Dict[str, dict]:
         elif sub_props:
             props.update(sub_props)
 
-    # Mark required fields in the final props dict
     for name in props:
         if not isinstance(props[name], dict):
             props[name] = {"_type": props[name]}
@@ -147,60 +147,331 @@ def flatten_references(field_schema: dict, defs: dict, depth: int = 0) -> dict:
     if "$ref" in field_schema:
         resolved = resolve_ref(field_schema["$ref"], defs)
         merged = flatten_references(resolved, defs, depth + 1)
-        # Keep the original ref name
         if isinstance(merged, dict):
             merged["_ref"] = get_ref_name(field_schema["$ref"])
         return merged
 
     result = {}
     for k, v in field_schema.items():
-        if k == "properties" and isinstance(v, dict):
+        k_lower = k.lower()
+        if k_lower == "properties" and isinstance(v, dict):
             result[k] = {nk: flatten_references(nv, defs, depth + 1) for nk, nv in v.items()}
-        elif k == "items" and isinstance(v, dict):
+        elif k_lower == "items" and isinstance(v, dict):
             result[k] = flatten_references(v, defs, depth + 1)
-        elif k == "allOf" and isinstance(v, list):
+        elif k_lower == "allof" and isinstance(v, list):
             result[k] = [flatten_references(item, defs, depth + 1) for item in v]
-        elif k == "anyOf" and isinstance(v, list):
+        elif k_lower == "anyof" and isinstance(v, list):
             result[k] = [flatten_references(item, defs, depth + 1) for item in v]
-        elif k == "oneOf" and isinstance(v, list):
+        elif k_lower == "oneof" and isinstance(v, list):
             result[k] = [flatten_references(item, defs, depth + 1) for item in v]
-        elif k == "additionalProperties" and isinstance(v, dict):
+        elif k_lower == "additionalproperties" and isinstance(v, dict):
             result[k] = flatten_references(v, defs, depth + 1)
         else:
             result[k] = v
     return result
 
 
-def get_nested_fields(flat_schema: dict, defs: dict) -> list:
-    """Extract nested sub-fields for display, if any."""
-    if not isinstance(flat_schema, dict):
+def get_nested_fields_flat(flat_schema: dict, defs: dict, sigma_prefix: str = "", json_prefix: str = "", depth: int = 0) -> List[Tuple[str, str, str]]:
+    """
+    Extract nested sub-fields as flat (sigma_name, type, json_name) tuples.
+    sigma_name uses UPPERCASE with | separator (e.g., IMAGE|PATH).
+    json_name uses lowercase with . separator (e.g., image.path).
+    
+    sigma_prefix/json_prefix track the accumulated path independently.
+    """
+    if depth > 3 or not isinstance(flat_schema, dict):
         return []
+
     nested = []
-    ref_name = flat_schema.get("_ref", "")
+
     if "properties" in flat_schema:
         for sub_name, sub_schema in flat_schema["properties"].items():
+            if not isinstance(sub_schema, dict):
+                continue
             sub_type = get_type_label(sub_schema, defs)
-            nested.append((sub_name, sub_type))
+            sigma_name = f"{sigma_prefix}{sub_name.upper()}" if sigma_prefix else sub_name.upper()
+            json_name = f"{json_prefix}{sub_name}" if json_prefix else sub_name
+
+            # If it's a nested object with its own properties, recurse
+            sub_flat = flatten_references(sub_schema, defs) if "$ref" in sub_schema else sub_schema
+            if isinstance(sub_flat, dict) and "properties" in sub_flat:
+                deeper = get_nested_fields_flat(
+                    sub_flat, defs,
+                    sigma_prefix=f"{sigma_name}|",
+                    json_prefix=f"{json_name}.",
+                    depth=depth + 1
+                )
+                nested.extend(deeper)
+            else:
+                nested.append((sigma_name, sub_type, json_name))
     elif flat_schema.get("type") == "array" and "items" in flat_schema:
         items = flat_schema["items"]
-        if isinstance(items, dict) and "properties" in items:
-            for sub_name, sub_schema in items["properties"].items():
-                sub_type = get_type_label(sub_schema, defs)
-                nested.append((sub_name, sub_type))
+        if isinstance(items, dict) and "$ref" in items:
+            items_flat = flatten_references(items, defs)
+            if isinstance(items_flat, dict) and "properties" in items_flat:
+                deeper = get_nested_fields_flat(
+                    items_flat, defs,
+                    sigma_prefix=sigma_prefix,
+                    json_prefix=json_prefix,
+                    depth=depth + 1
+                )
+                nested.extend(deeper)
+
     return nested
+
+
+def get_nested_fields(flat_schema: dict, defs: dict, parent_sigma: str = "", parent_json: str = "") -> List[Tuple[str, str]]:
+    """Extract nested sub-fields for display (sigma_name, type)."""
+    results = get_nested_fields_flat(flat_schema, defs, sigma_prefix=parent_sigma, json_prefix=parent_json)
+    return [(s, t) for s, t, j in results]
+
+
+def sigma_field_name(json_name: str) -> str:
+    """Convert a lowercase JSON field name to UPPERCASE Sigma field name."""
+    return json_name.upper()
+
+
+def guess_field_category(field_name: str, field_schema: dict) -> str:
+    """Guess a semantic category for a field to help build better Sigma templates."""
+    name_lower = field_name.lower()
+    ftype = ""
+    if isinstance(field_schema, dict):
+        if "$ref" in field_schema:
+            ftype = get_ref_name(field_schema["$ref"]).lower()
+        else:
+            ftype = str(field_schema.get("type", ""))
+
+    if "path" in name_lower and ftype in ("string", ""):
+        return "path"
+    if "command" in name_lower and "string" in ftype:
+        return "command"
+    if "hash" in name_lower or name_lower == "hashes":
+        return "hash"
+    if "ip" in name_lower and "string" in ftype:
+        return "ip"
+    if "port" in name_lower and ftype in ("string", "integer"):
+        return "port"
+    if "user" in name_lower and "string" in ftype:
+        return "user"
+    if "name" in name_lower and "string" in ftype:
+        return "name"
+    if "image" in name_lower and ftype in ("file", "object", ""):
+        return "image"
+    if "file" in name_lower and ftype in ("file", "object", ""):
+        return "file"
+    if "service" in name_lower and "string" in ftype:
+        return "service"
+    if "description" in name_lower and "string" in ftype:
+        return "description"
+    if name_lower == "type" and ftype == "string":
+        return "type"
+    if name_lower == "exists" and ftype == "string":
+        return "exists"
+    if name_lower == "signed" and ftype == "boolean":
+        return "signed"
+    if name_lower == "size" and ftype == "integer":
+        return "size"
+    return "generic"
+
+
+def generate_sigma_template(type_name: str, flattened_props: dict, required: set, defs: dict) -> str:
+    """Generate a realistic, complex Sigma rule template based on the object type's fields."""
+    lines = []
+    lines.append("logsource:")
+    lines.append("    product: THOR")
+    lines.append(f'    service: "{type_name}"')
+    lines.append("")
+
+    # Categorize fields for template building
+    path_fields = []       # file/path - use |contains
+    command_fields = []    # command strings - use |contains|endswith
+    name_fields = []       # name strings - use |contains
+    user_fields = []       # user/group - use filter
+    hash_fields = []       # hashes - use exact match
+    bool_fields = []       # boolean flags
+    image_fields = []       # file objects (IMAGE, FILE, UNIT)
+    ip_fields = []          # IP addresses
+    port_fields = []        # port numbers
+    type_fields = []        # type category
+    other_string_fields = []
+
+    for field_name in sorted(flattened_props.keys()):
+        field_schema = flattened_props[field_name]
+        cat = guess_field_category(field_name, field_schema)
+        if cat == "path":
+            path_fields.append(field_name)
+        elif cat == "command":
+            command_fields.append(field_name)
+        elif cat == "name":
+            name_fields.append(field_name)
+        elif cat == "user":
+            user_fields.append(field_name)
+        elif cat == "hash":
+            hash_fields.append(field_name)
+        elif cat == "signed":
+            bool_fields.append(field_name)
+        elif cat == "exists":
+            bool_fields.append(field_name)
+        elif cat == "image" or cat == "file":
+            image_fields.append(field_name)
+        elif cat == "ip":
+            ip_fields.append(field_name)
+        elif cat == "port":
+            port_fields.append(field_name)
+        elif cat == "type":
+            type_fields.append(field_name)
+        elif cat == "service":
+            name_fields.append(field_name)
+        elif cat == "size":
+            pass  # skip size in templates
+        else:
+            other_string_fields.append(field_name)
+
+    # Build selection block
+    selection_parts = []
+    filter_parts = []
+
+    # Image/file path detection
+    if image_fields:
+        for fname in image_fields[:2]:  # Use top 2 image fields
+            sigma_parent = sigma_field_name(fname)
+            nested = get_nested_fields_flat(flattened_props[fname], defs)
+            # Find PATH sub-field
+            path_sub = next(((s, t, j) for s, t, j in nested if s.endswith("|PATH") or s == "PATH"), None)
+            if path_sub:
+                selection_parts.append((path_sub[0] + "|contains", [
+                    "'/tmp/'",
+                    "'/dev/shm/'",
+                    "'\\\\Temp\\\\'"
+                ]))
+            # Find SIGNATURE/SIGNED sub-field for filter
+            signed_sub = next(((s, t, j) for s, t, j in nested if "SIGNED" in s), None)
+            if signed_sub and signed_sub[1] == "boolean":
+                filter_parts.append((signed_sub[0], "'true'"))
+
+    # Path-based fields (non-image)
+    for fname in path_fields[:1]:
+        sigma = sigma_field_name(fname)
+        selection_parts.append((f"{sigma}|contains", [
+            "'/suspicious/'",
+            "'/tmp/'"
+        ]))
+
+    # Command fields
+    for fname in command_fields[:1]:
+        sigma = sigma_field_name(fname)
+        selection_parts.append((f"{sigma}|contains|all", [
+            "'powershell'",
+            "'-encodedcommand'"
+        ]))
+
+    # Name fields
+    for fname in name_fields[:1]:
+        sigma = sigma_field_name(fname)
+        selection_parts.append((f"{sigma}|contains", [
+            "'suspicious'",
+            "'malware'"
+        ]))
+
+    # User fields - for filtering legitimate users
+    for fname in user_fields[:1]:
+        sigma = sigma_field_name(fname)
+        filter_parts.append((f"{sigma}|contains", [
+            "'root'",
+            "'system'"
+        ]))
+
+    # Hash fields
+    for fname in hash_fields[:1]:
+        sigma = sigma_field_name(fname)
+        nested = get_nested_fields_flat(flattened_props[fname], defs)
+        sha256 = next(((s, t, j) for s, t, j in nested if "SHA256" in s), None)
+        if sha256:
+            selection_parts.append((sha256[0], "'known_bad_hash_sha256'"))
+
+    # Boolean fields for filter
+    for fname in bool_fields[:2]:
+        sigma = sigma_field_name(fname)
+        filter_parts.append((sigma, "'true'"))
+
+    # Type fields
+    for fname in type_fields[:1]:
+        sigma = sigma_field_name(fname)
+        selection_parts.append((sigma, "'relevant_type'"))
+
+    # IP fields
+    for fname in ip_fields[:1]:
+        sigma = sigma_field_name(fname)
+        selection_parts.append((f"{sigma}|contains", [
+            "'192.168.'",
+            "'10.'"
+        ]))
+
+    # Fallback: use first required string field if nothing matched
+    if not selection_parts and flattened_props:
+        for fname in sorted(flattened_props.keys()):
+            if fname in required:
+                sigma = sigma_field_name(fname)
+                selection_parts.append((f"{sigma}|contains", ["'suspicious'"]))
+                break
+        if not selection_parts:
+            first = sorted(flattened_props.keys())[0]
+            selection_parts.append((f"{sigma_field_name(first)}|contains", ["'suspicious'"]))
+
+    # Build the YAML output
+    lines.append("detection:")
+    lines.append("    selection:")
+
+    if len(selection_parts) == 1:
+        key, values = selection_parts[0]
+        if isinstance(values, list):
+            if len(values) == 1:
+                lines.append(f"        {key}: {values[0]}")
+            else:
+                lines.append(f"        {key}:")
+                for v in values:
+                    lines.append(f"            - {v}")
+        else:
+            lines.append(f"        {key}: {values}")
+    else:
+        for key, values in selection_parts:
+            if isinstance(values, list):
+                if len(values) == 1:
+                    lines.append(f"        {key}: {values[0]}")
+                else:
+                    lines.append(f"        {key}:")
+                    for v in values:
+                        lines.append(f"            - {v}")
+            else:
+                lines.append(f"        {key}: {values}")
+
+    if filter_parts:
+        lines.append("    filter_legitimate:")
+        for key, values in filter_parts:
+            if isinstance(values, list):
+                lines.append(f"        {key}:")
+                for v in values:
+                    lines.append(f"            - {v}")
+            else:
+                lines.append(f"        {key}: {values}")
+
+    if filter_parts:
+        lines.append("    condition: selection and not filter_legitimate")
+    else:
+        lines.append("    condition: selection")
+
+    return "\n".join(lines)
 
 
 def generate_markdown(type_name: str, schema: dict) -> str:
     """Generate a Markdown document for a single object type."""
     defs = schema.get("$defs", {})
 
-    # Find the root definition via $ref
     ref = schema.get("$ref", "")
     root_def = resolve_ref(ref, defs)
     root_name = get_ref_name(ref) if ref else ""
 
     if not root_def and defs:
-        # Fallback: use the first definition that matches the type name
         for dn, dd in defs.items():
             if dn.lower() == type_name.replace(" ", "").lower():
                 root_def = dd
@@ -210,19 +481,15 @@ def generate_markdown(type_name: str, schema: dict) -> str:
             root_def = next(iter(defs.values()))
             root_name = next(iter(defs.keys()))
 
-    # Resolve and flatten properties
     all_props = resolve_properties(root_def, defs)
 
-    # Flatten references in each property
     flattened_props = {}
     for name, prop_schema in all_props.items():
         flattened_props[name] = flatten_references(prop_schema, defs)
 
-    # Collect required
     required = set()
     if "required" in root_def:
         required = set(root_def["required"])
-    # Also check in allOf
     for sub in root_def.get("allOf", []):
         if isinstance(sub, dict) and "required" in sub:
             required.update(sub["required"])
@@ -253,10 +520,14 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         doc.append("")
         return "\n".join(doc)
 
+    # Field reference table — UPPERCASE Sigma names with lowercase JSON names
     doc.append("## Fields")
     doc.append("")
-    doc.append("| Field | Type | Required | Description |")
-    doc.append("|-------|------|----------|-------------|")
+    doc.append("Field names are shown in **UPPERCASE** as used in Sigma rules.")
+    doc.append("The lowercase JSON name is shown in parentheses for reference.")
+    doc.append("")
+    doc.append("| Sigma Field | JSON Name | Type | Required | Description |")
+    doc.append("|-------------|-----------|------|----------|-------------|")
 
     for field_name in sorted(flattened_props.keys()):
         field_schema = flattened_props[field_name]
@@ -265,7 +536,7 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         desc = get_description(field_schema)
         desc = desc.replace("|", "\\|")
 
-        # Add nested fields to description
+        # Nested fields
         nested = get_nested_fields(field_schema, defs)
         if nested:
             nested_desc = "; ".join([f"`{n}`: {t}" for n, t in nested])
@@ -274,24 +545,41 @@ def generate_markdown(type_name: str, schema: dict) -> str:
             else:
                 desc = f"nested: {nested_desc}"
 
-        doc.append(f"| `{field_name}` | {ftype} | {req} | {desc} |")
+        sigma_name = sigma_field_name(field_name)
+        doc.append(f"| `{sigma_name}` | `{field_name}` | {ftype} | {req} | {desc} |")
 
+    # Nested field reference for complex types
+    doc.append("")
+    doc.append("### Nested Field Reference (Sigma Pipe Notation)")
+    doc.append("")
+    doc.append("Complex types like `File` have nested fields accessed with `|` in Sigma:")
     doc.append("")
 
-    # Example Sigma rule
+    has_nested = False
+    for field_name in sorted(flattened_props.keys()):
+        field_schema = flattened_props[field_name]
+        nested_flat = get_nested_fields_flat(field_schema, defs)
+        if nested_flat:
+            has_nested = True
+            sigma_parent = sigma_field_name(field_name)
+            doc.append(f"**{sigma_parent}** (`{field_name}` — {get_type_label(field_schema, defs)}):")
+            doc.append("")
+            doc.append("| Sigma Field | JSON Path | Type |")
+            doc.append("|-------------|-----------|------|")
+            for s, t, j in nested_flat:
+                doc.append(f"| `{s}` | `{j}` | {t} |")
+            doc.append("")
+
+    if not has_nested:
+        doc.append("_No nested fields in this type._")
+        doc.append("")
+
+    # Sigma rule template
     doc.append("## Sigma Rule Template")
     doc.append("")
     doc.append("```yaml")
-    doc.append("logsource:")
-    doc.append("    product: THOR")
-    doc.append(f'    service: "{type_name}"')
-    doc.append("")
-    doc.append("detection:")
-    doc.append("    selection:")
-    if flattened_props:
-        first_field = sorted(flattened_props.keys())[0]
-        doc.append(f"        {first_field.upper()}: null")
-    doc.append("    condition: selection")
+    sigma_tmpl = generate_sigma_template(type_name, flattened_props, required, defs)
+    doc.append(sigma_tmpl)
     doc.append("```")
     doc.append("")
 
@@ -324,6 +612,10 @@ def generate_yaml(type_name: str, schema: dict) -> str:
         if isinstance(sub, dict) and "required" in sub:
             required.update(sub["required"])
 
+    flattened_props = {}
+    for name, prop_schema in all_props.items():
+        flattened_props[name] = flatten_references(prop_schema, defs)
+
     obj = {
         "name": type_name,
         "schema": schema.get("$id", ""),
@@ -332,12 +624,20 @@ def generate_yaml(type_name: str, schema: dict) -> str:
     for field_name in sorted(all_props.keys()):
         field_schema = all_props[field_name]
         flat = flatten_references(field_schema, defs)
-        obj["fields"].append({
-            "name": field_name,
+        nested = get_nested_fields_flat(flat, defs)
+        field_entry = {
+            "sigma_name": sigma_field_name(field_name),
+            "json_name": field_name,
             "type": get_type_label(flat, defs),
             "required": field_name in required,
             "description": get_description(flat)
-        })
+        }
+        if nested:
+            field_entry["nested"] = [
+                {"sigma_name": s, "json_name": j, "type": t}
+                for s, t, j in nested
+            ]
+        obj["fields"].append(field_entry)
 
     return yaml.dump(obj, sort_keys=False, allow_unicode=True)
 
@@ -350,7 +650,12 @@ def generate_summary(json_data: dict, output_dir: Path) -> str:
     doc.append(f"Source: THOR `--describe-object-type all` ({len(json_data)} object types)")
     doc.append("")
     doc.append("This reference maps every THOR object type to its available fields, types, and required status.")
-    doc.append("Use it when writing custom Sigma rules with `product: THOR`. Fields are **UPPERCASE** in Sigma.")
+    doc.append("Use it when writing custom Sigma rules with `product: THOR`.")
+    doc.append("")
+    doc.append("**Field naming convention:**")
+    doc.append("- In THOR JSON output: **lowercase** with underscores (e.g., `run_as_user`)")
+    doc.append("- In Sigma rules: **UPPERCASE** (e.g., `RUN_AS_USER`)")
+    doc.append("- Nested fields use **pipe notation** in Sigma (e.g., `IMAGE|PATH`, `UNIT|HASHES|SHA256`)")
     doc.append("")
 
     # Category grouping
@@ -373,7 +678,7 @@ def generate_summary(json_data: dict, output_dir: Path) -> str:
         name_lower = type_name.lower()
         if any(x in name_lower for x in ["platform information"]):
             cat = "Platform"
-        elif any(x in name_lower for x in ["process", "thread", "handle"]):  # removed memory
+        elif any(x in name_lower for x in ["process", "thread", "handle"]):
             cat = "Process & Memory"
         elif any(x in name_lower for x in ["service", "cron job", "scheduled task", "autorun", "kernel module", "at job", "wmi"]):
             cat = "Persistence & System"
@@ -414,10 +719,10 @@ def type_name_to_filename(type_name: str) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Convert THOR object types to reference docs.")
+    parser = argparse.ArgumentParser(description="Convert THOR object types to reference docs (v3).")
     parser.add_argument("input", help="Path to THOR --describe-object-type all JSON")
     parser.add_argument("--output-dir", "-o", default="./docs", help="Output directory (default: ./docs)")
-    parser.add_argument("--format", "-f", default="markdown", choices=["markdown", "yaml", "both"])
+    parser.add_argument("--format", "-f", default="both", choices=["markdown", "yaml", "both"])
     args = parser.parse_args()
 
     with open(args.input, "r", encoding="utf-8") as f:

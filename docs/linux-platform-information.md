@@ -4,14 +4,23 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `arch` | string | ✅ |  |
-| `kernel_name` | string | ✅ |  |
-| `kernel_version` | string | ✅ |  |
-| `name` | string | ✅ |  |
-| `proc` | string | ✅ |  |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `ARCH` | `arch` | string | ✅ |  |
+| `KERNEL_NAME` | `kernel_name` | string | ✅ |  |
+| `KERNEL_VERSION` | `kernel_version` | string | ✅ |  |
+| `NAME` | `name` | string | ✅ |  |
+| `PROC` | `proc` | string | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -22,6 +31,9 @@ logsource:
 
 detection:
     selection:
-        ARCH: null
+        KERNEL_NAME|contains:
+            - 'suspicious'
+            - 'malware'
+        TYPE: 'relevant_type'
     condition: selection
 ```

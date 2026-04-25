@@ -1,31 +1,46 @@
 name: TestObject
 schema: https://git.bsk/thorx/lib/features/truncate/testobject/test-object
 fields:
-- name: FieldDirect
+- sigma_name: FIELDDIRECT
+  json_name: FieldDirect
   type: string
   required: true
   description: ''
-- name: Interface
+- sigma_name: INTERFACE
+  json_name: Interface
   type: any
   required: true
   description: ''
-- name: Map
+- sigma_name: MAP
+  json_name: Map
   type: object (string)
   required: true
   description: ''
-- name: PointedStruct
+- sigma_name: POINTEDSTRUCT
+  json_name: PointedStruct
   type: object
   required: true
   description: ''
-- name: Slice
+  nested:
+  - sigma_name: FIELD
+    json_name: Field
+    type: string
+- sigma_name: SLICE
+  json_name: Slice
   type: array of object
   required: true
   description: ''
-- name: SubStruct
+- sigma_name: SUBSTRUCT
+  json_name: SubStruct
   type: object
   required: true
   description: ''
-- name: type
+  nested:
+  - sigma_name: FIELD
+    json_name: Field
+    type: string
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

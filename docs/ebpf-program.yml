@@ -1,55 +1,103 @@
 name: eBPF program
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ebpf-program
 fields:
-- name: attach_target
+- sigma_name: ATTACH_TARGET
+  json_name: attach_target
   type: object
   required: true
   description: ''
-- name: content
+  nested:
+  - sigma_name: PATH
+    json_name: path
+    type: string
+  - sigma_name: PID
+    json_name: pid
+    type: integer
+  - sigma_name: SYMBOLS
+    json_name: symbols
+    type: array of string
+  - sigma_name: INTERFACE
+    json_name: interface
+    type: string
+  - sigma_name: OBJECT_ID
+    json_name: object_id
+    type: integer
+  - sigma_name: PROTOCOL
+    json_name: protocol
+    type: string
+  - sigma_name: HOOK
+    json_name: hook
+    type: string
+  - sigma_name: PRIORITY
+    json_name: priority
+    type: integer
+- sigma_name: CONTENT
+  json_name: content
   type: object
   required: false
   description: ''
-- name: functions
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: ELEMENTS
+    json_name: elements
+    type: array | null
+  - sigma_name: LENGTH
+    json_name: length
+    type: integer
+- sigma_name: FUNCTIONS
+  json_name: functions
   type: array of string
   required: true
   description: ''
-- name: link_type
+- sigma_name: LINK_TYPE
+  json_name: link_type
   type: string
   required: true
   description: ''
-- name: load_time
+- sigma_name: LOAD_TIME
+  json_name: load_time
   type: string (date-time)
   required: true
   description: ''
-- name: maps
+- sigma_name: MAPS
+  json_name: maps
   type: array of string
   required: true
   description: ''
-- name: memory_locked
+- sigma_name: MEMORY_LOCKED
+  json_name: memory_locked
   type: integer
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: program_type
+- sigma_name: PROGRAM_TYPE
+  json_name: program_type
   type: string
   required: true
   description: ''
-- name: size
+- sigma_name: SIZE
+  json_name: size
   type: integer
   required: true
   description: ''
-- name: tag
+- sigma_name: TAG
+  json_name: tag
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

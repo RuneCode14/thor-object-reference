@@ -1,19 +1,23 @@
 name: network share
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-share
 fields:
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: permissions
+- sigma_name: PERMISSIONS
+  json_name: permissions
   type: array of object
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

@@ -1,11 +1,13 @@
 name: raw firewall rule
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/raw-firewall-rule
 fields:
-- name: rule
+- sigma_name: RULE
+  json_name: rule
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

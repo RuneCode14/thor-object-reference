@@ -1,11 +1,13 @@
 name: named pipe
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-pipe
 fields:
-- name: pipe
+- sigma_name: PIPE
+  json_name: pipe
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

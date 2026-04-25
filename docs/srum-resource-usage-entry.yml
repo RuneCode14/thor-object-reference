@@ -1,59 +1,73 @@
 name: SRUM Resource Usage Entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/srum-resource-usage-entry
 fields:
-- name: app_info
+- sigma_name: APP_INFO
+  json_name: app_info
   type: string
   required: true
   description: ''
-- name: background_bytes_read
+- sigma_name: BACKGROUND_BYTES_READ
+  json_name: background_bytes_read
   type: integer
   required: true
   description: ''
-- name: background_bytes_written
+- sigma_name: BACKGROUND_BYTES_WRITTEN
+  json_name: background_bytes_written
   type: integer
   required: true
   description: ''
-- name: background_num_read_operations
+- sigma_name: BACKGROUND_NUM_READ_OPERATIONS
+  json_name: background_num_read_operations
   type: integer
   required: true
   description: ''
-- name: background_num_write_operations
+- sigma_name: BACKGROUND_NUM_WRITE_OPERATIONS
+  json_name: background_num_write_operations
   type: integer
   required: true
   description: ''
-- name: face_time
+- sigma_name: FACE_TIME
+  json_name: face_time
   type: integer
   required: true
   description: ''
-- name: foreground_bytes_read
+- sigma_name: FOREGROUND_BYTES_READ
+  json_name: foreground_bytes_read
   type: integer
   required: true
   description: ''
-- name: foreground_bytes_written
+- sigma_name: FOREGROUND_BYTES_WRITTEN
+  json_name: foreground_bytes_written
   type: integer
   required: true
   description: ''
-- name: foreground_num_read_operations
+- sigma_name: FOREGROUND_NUM_READ_OPERATIONS
+  json_name: foreground_num_read_operations
   type: integer
   required: true
   description: ''
-- name: foreground_num_write_operations
+- sigma_name: FOREGROUND_NUM_WRITE_OPERATIONS
+  json_name: foreground_num_write_operations
   type: integer
   required: true
   description: ''
-- name: timestamp
+- sigma_name: TIMESTAMP
+  json_name: timestamp
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user_name
+- sigma_name: USER_NAME
+  json_name: user_name
   type: string
   required: false
   description: ''
-- name: user_sid
+- sigma_name: USER_SID
+  json_name: user_sid
   type: string
   required: true
   description: ''

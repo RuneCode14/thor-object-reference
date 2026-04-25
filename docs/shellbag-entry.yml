@@ -1,19 +1,23 @@
 name: shellbag entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/shellbag-entry
 fields:
-- name: date_access
+- sigma_name: DATE_ACCESS
+  json_name: date_access
   type: string (date-time)
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

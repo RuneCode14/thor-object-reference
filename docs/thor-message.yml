@@ -1,23 +1,47 @@
 name: THOR message
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/message
 fields:
-- name: fields
+- sigma_name: FIELDS
+  json_name: fields
   type: null | object
   required: true
   description: ''
-- name: log_version
+- sigma_name: LOG_VERSION
+  json_name: log_version
   type: string
   required: true
   description: ''
-- name: message
+- sigma_name: MESSAGE
+  json_name: message
   type: string
   required: true
   description: ''
-- name: meta
+- sigma_name: META
+  json_name: meta
   type: object
   required: true
   description: ''
-- name: type
+  nested:
+  - sigma_name: TIME
+    json_name: time
+    type: string (date-time)
+  - sigma_name: LEVEL
+    json_name: level
+    type: string
+  - sigma_name: MODULE
+    json_name: module
+    type: string
+  - sigma_name: SCAN_ID
+    json_name: scan_id
+    type: string
+  - sigma_name: EVENT_ID
+    json_name: event_id
+    type: string
+  - sigma_name: HOSTNAME
+    json_name: hostname
+    type: string
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

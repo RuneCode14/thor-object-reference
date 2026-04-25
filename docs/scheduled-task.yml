@@ -1,55 +1,68 @@
 name: scheduled task
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/scheduled-task
 fields:
-- name: com_handlers
+- sigma_name: COM_HANDLERS
+  json_name: com_handlers
   type: array of string
   required: false
   description: ''
-- name: commands
+- sigma_name: COMMANDS
+  json_name: commands
   type: array of string
   required: true
   description: ''
-- name: enabled
+- sigma_name: ENABLED
+  json_name: enabled
   type: boolean
   required: true
   description: ''
-- name: last_run
+- sigma_name: LAST_RUN
+  json_name: last_run
   type: string (date-time)
   required: true
   description: ''
-- name: logon_type
+- sigma_name: LOGON_TYPE
+  json_name: logon_type
   type: string
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: next_run
+- sigma_name: NEXT_RUN
+  json_name: next_run
   type: string (date-time)
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: privileges
+- sigma_name: PRIVILEGES
+  json_name: privileges
   type: array of string
   required: false
   description: ''
-- name: run_level
+- sigma_name: RUN_LEVEL
+  json_name: run_level
   type: string
   required: true
   description: ''
-- name: triggers
+- sigma_name: TRIGGERS
+  json_name: triggers
   type: array of string
   required: false
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

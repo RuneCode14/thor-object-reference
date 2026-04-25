@@ -1,15 +1,18 @@
 name: thread
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/thread
 fields:
-- name: id
+- sigma_name: ID
+  json_name: id
   type: integer
   required: true
   description: ''
-- name: stack
+- sigma_name: STACK
+  json_name: stack
   type: array | null
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

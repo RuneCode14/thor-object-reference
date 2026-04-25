@@ -1,15 +1,18 @@
 name: DNS cache entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/dns-cache-entry
 fields:
-- name: host
+- sigma_name: HOST
+  json_name: host
   type: string
   required: true
   description: ''
-- name: ip
+- sigma_name: IP
+  json_name: ip
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

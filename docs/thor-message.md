@@ -4,13 +4,31 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `fields` | null | object | ✅ |  |
-| `log_version` | string | ✅ |  |
-| `message` | string | ✅ |  |
-| `meta` | object | ✅ | nested: `time`: string (date-time); `level`: string; `module`: string; `scan_id`: string; `event_id`: string; `hostname`: string |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `FIELDS` | `fields` | null | object | ✅ |  |
+| `LOG_VERSION` | `log_version` | string | ✅ |  |
+| `MESSAGE` | `message` | string | ✅ |  |
+| `META` | `meta` | object | ✅ | nested: `TIME`: string (date-time); `LEVEL`: string; `MODULE`: string; `SCAN_ID`: string; `EVENT_ID`: string; `HOSTNAME`: string |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+**META** (`meta` — object):
+
+| Sigma Field | JSON Path | Type |
+|-------------|-----------|------|
+| `TIME` | `time` | string (date-time) |
+| `LEVEL` | `level` | string |
+| `MODULE` | `module` | string |
+| `SCAN_ID` | `scan_id` | string |
+| `EVENT_ID` | `event_id` | string |
+| `HOSTNAME` | `hostname` | string |
 
 ## Sigma Rule Template
 
@@ -21,6 +39,6 @@ logsource:
 
 detection:
     selection:
-        FIELDS: null
+        TYPE: 'relevant_type'
     condition: selection
 ```

@@ -1,15 +1,18 @@
 name: sparse data
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/sparse-data
 fields:
-- name: elements
+- sigma_name: ELEMENTS
+  json_name: elements
   type: array | null
   required: true
   description: ''
-- name: length
+- sigma_name: LENGTH
+  json_name: length
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

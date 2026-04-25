@@ -1,15 +1,18 @@
 name: end of life report
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/end-of-life-report
 fields:
-- name: end_of_life
+- sigma_name: END_OF_LIFE
+  json_name: end_of_life
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: version
+- sigma_name: VERSION
+  json_name: version
   type: string
   required: true
   description: ''

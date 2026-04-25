@@ -1,23 +1,28 @@
 name: authorized_keys entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/authorized-keys-entry
 fields:
-- name: comment
+- sigma_name: COMMENT
+  json_name: comment
   type: string
   required: true
   description: ''
-- name: key
+- sigma_name: KEY
+  json_name: key
   type: string
   required: true
   description: ''
-- name: key_type
+- sigma_name: KEY_TYPE
+  json_name: key_type
   type: string
   required: true
   description: ''
-- name: line
+- sigma_name: LINE
+  json_name: line
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

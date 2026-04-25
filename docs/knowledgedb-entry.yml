@@ -1,27 +1,33 @@
 name: KnowledgeDB entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/knowledge-db-entry
 fields:
-- name: created
+- sigma_name: CREATED
+  json_name: created
   type: string (date-time)
   required: true
   description: ''
-- name: duration
+- sigma_name: DURATION
+  json_name: duration
   type: integer
   required: true
   description: ''
-- name: entry
+- sigma_name: ENTRY
+  json_name: entry
   type: string
   required: true
   description: ''
-- name: primary_key
+- sigma_name: PRIMARY_KEY
+  json_name: primary_key
   type: integer
   required: true
   description: ''
-- name: started
+- sigma_name: STARTED
+  json_name: started
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

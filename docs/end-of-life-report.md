@@ -4,11 +4,20 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `end_of_life` | string (date-time) | ✅ |  |
-| `type` | string | ✅ |  |
-| `version` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `END_OF_LIFE` | `end_of_life` | string (date-time) | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+| `VERSION` | `version` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -19,6 +28,6 @@ logsource:
 
 detection:
     selection:
-        END_OF_LIFE: null
+        TYPE: 'relevant_type'
     condition: selection
 ```

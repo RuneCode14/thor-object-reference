@@ -1,23 +1,28 @@
 name: logged in user
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/logged-in-user
 fields:
-- name: domain
+- sigma_name: DOMAIN
+  json_name: domain
   type: string
   required: false
   description: ''
-- name: other_domains
+- sigma_name: OTHER_DOMAINS
+  json_name: other_domains
   type: string
   required: false
   description: ''
-- name: server
+- sigma_name: SERVER
+  json_name: server
   type: string
   required: false
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

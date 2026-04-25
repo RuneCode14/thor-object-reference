@@ -1,15 +1,18 @@
 name: shim cache
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/shim-cache
 fields:
-- name: entries
+- sigma_name: ENTRIES
+  json_name: entries
   type: integer
   required: true
   description: ''
-- name: last_known_entries
+- sigma_name: LAST_KNOWN_ENTRIES
+  json_name: last_known_entries
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

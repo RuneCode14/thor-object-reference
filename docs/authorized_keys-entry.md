@@ -4,13 +4,22 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `comment` | string | ✅ |  |
-| `key` | string | ✅ |  |
-| `key_type` | string | ✅ |  |
-| `line` | string | ✅ |  |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `COMMENT` | `comment` | string | ✅ |  |
+| `KEY` | `key` | string | ✅ |  |
+| `KEY_TYPE` | `key_type` | string | ✅ |  |
+| `LINE` | `line` | string | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -21,6 +30,6 @@ logsource:
 
 detection:
     selection:
-        COMMENT: null
+        TYPE: 'relevant_type'
     condition: selection
 ```

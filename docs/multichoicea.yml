@@ -1,11 +1,13 @@
 name: multiChoiceA
 schema: https://git.bsk/thorx/lib/features/truncate/testobject/multi-choice-object-a
 fields:
-- name: FieldA
+- sigma_name: FIELDA
+  json_name: FieldA
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

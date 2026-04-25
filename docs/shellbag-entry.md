@@ -4,12 +4,21 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `date_access` | string (date-time) | ✅ |  |
-| `name` | string | ✅ |  |
-| `path` | string | ✅ |  |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `DATE_ACCESS` | `date_access` | string (date-time) | ✅ |  |
+| `NAME` | `name` | string | ✅ |  |
+| `PATH` | `path` | string | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -20,6 +29,12 @@ logsource:
 
 detection:
     selection:
-        DATE_ACCESS: null
+        PATH|contains:
+            - '/suspicious/'
+            - '/tmp/'
+        NAME|contains:
+            - 'suspicious'
+            - 'malware'
+        TYPE: 'relevant_type'
     condition: selection
 ```

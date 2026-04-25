@@ -1,7 +1,8 @@
 name: rootkit
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/rootkit
 fields:
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

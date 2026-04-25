@@ -1,19 +1,23 @@
 name: cron job
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/cron-job
 fields:
-- name: command
+- sigma_name: COMMAND
+  json_name: command
   type: string
   required: true
   description: ''
-- name: schedule
+- sigma_name: SCHEDULE
+  json_name: schedule
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

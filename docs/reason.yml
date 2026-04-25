@@ -1,19 +1,57 @@
 name: reason
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/reason
 fields:
-- name: matched
+- sigma_name: MATCHED
+  json_name: matched
   type: array | null
   required: true
   description: ''
-- name: signature
+- sigma_name: SIGNATURE
+  json_name: signature
   type: object
   required: true
   description: ''
-- name: summary
+  nested:
+  - sigma_name: SCORE
+    json_name: score
+    type: integer
+  - sigma_name: REFERENCE
+    json_name: reference
+    type: array | null
+  - sigma_name: ORIGIN
+    json_name: origin
+    type: string
+  - sigma_name: KIND
+    json_name: kind
+    type: string
+  - sigma_name: DATE
+    json_name: date
+    type: string
+  - sigma_name: TAGS
+    json_name: tags
+    type: array | null
+  - sigma_name: RULE_NAME
+    json_name: rule_name
+    type: string
+  - sigma_name: DESCRIPTION
+    json_name: description
+    type: string
+  - sigma_name: AUTHOR
+    json_name: author
+    type: string
+  - sigma_name: ID
+    json_name: id
+    type: string
+  - sigma_name: FALSE_POSITIVES
+    json_name: false_positives
+    type: array | null
+- sigma_name: SUMMARY
+  json_name: summary
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

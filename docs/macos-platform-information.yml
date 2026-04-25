@@ -1,31 +1,38 @@
 name: MacOS platform information
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/platform-info-macos
 fields:
-- name: arch
+- sigma_name: ARCH
+  json_name: arch
   type: string
   required: true
   description: ''
-- name: kernel_name
+- sigma_name: KERNEL_NAME
+  json_name: kernel_name
   type: string
   required: true
   description: ''
-- name: kernel_version
+- sigma_name: KERNEL_VERSION
+  json_name: kernel_version
   type: string
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: proc
+- sigma_name: PROC
+  json_name: proc
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: version
+- sigma_name: VERSION
+  json_name: version
   type: string
   required: true
   description: ''

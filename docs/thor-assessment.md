@@ -4,18 +4,36 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `context` | array | null | ✅ |  |
-| `issues` | array of object |  | nested: `affected`: string; `category`: string; `description`: string |
-| `log_version` | string | ✅ |  |
-| `message` | string | ✅ |  |
-| `meta` | object | ✅ | nested: `time`: string (date-time); `level`: string; `module`: string; `scan_id`: string; `event_id`: string; `hostname`: string |
-| `reason_count` | integer |  |  |
-| `reasons` | array of object | ✅ | nested: `type`: string; `summary`: string; `signature`: object; `matched`: array | null |
-| `score` | integer | ✅ |  |
-| `subject` | any | ✅ |  |
-| `type` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `CONTEXT` | `context` | array | null | ✅ |  |
+| `ISSUES` | `issues` | array of object |  |  |
+| `LOG_VERSION` | `log_version` | string | ✅ |  |
+| `MESSAGE` | `message` | string | ✅ |  |
+| `META` | `meta` | object | ✅ | nested: `TIME`: string (date-time); `LEVEL`: string; `MODULE`: string; `SCAN_ID`: string; `EVENT_ID`: string; `HOSTNAME`: string |
+| `REASON_COUNT` | `reason_count` | integer |  |  |
+| `REASONS` | `reasons` | array of object | ✅ |  |
+| `SCORE` | `score` | integer | ✅ |  |
+| `SUBJECT` | `subject` | any | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+**META** (`meta` — object):
+
+| Sigma Field | JSON Path | Type |
+|-------------|-----------|------|
+| `TIME` | `time` | string (date-time) |
+| `LEVEL` | `level` | string |
+| `MODULE` | `module` | string |
+| `SCAN_ID` | `scan_id` | string |
+| `EVENT_ID` | `event_id` | string |
+| `HOSTNAME` | `hostname` | string |
 
 ## Sigma Rule Template
 
@@ -26,6 +44,6 @@ logsource:
 
 detection:
     selection:
-        CONTEXT: null
+        TYPE: 'relevant_type'
     condition: selection
 ```

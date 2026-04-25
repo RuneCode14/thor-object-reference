@@ -1,43 +1,72 @@
 name: THOR assessment
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/assessment
 fields:
-- name: context
+- sigma_name: CONTEXT
+  json_name: context
   type: array | null
   required: true
   description: ''
-- name: issues
+- sigma_name: ISSUES
+  json_name: issues
   type: array of object
   required: false
   description: ''
-- name: log_version
+- sigma_name: LOG_VERSION
+  json_name: log_version
   type: string
   required: true
   description: ''
-- name: message
+- sigma_name: MESSAGE
+  json_name: message
   type: string
   required: true
   description: ''
-- name: meta
+- sigma_name: META
+  json_name: meta
   type: object
   required: true
   description: ''
-- name: reason_count
+  nested:
+  - sigma_name: TIME
+    json_name: time
+    type: string (date-time)
+  - sigma_name: LEVEL
+    json_name: level
+    type: string
+  - sigma_name: MODULE
+    json_name: module
+    type: string
+  - sigma_name: SCAN_ID
+    json_name: scan_id
+    type: string
+  - sigma_name: EVENT_ID
+    json_name: event_id
+    type: string
+  - sigma_name: HOSTNAME
+    json_name: hostname
+    type: string
+- sigma_name: REASON_COUNT
+  json_name: reason_count
   type: integer
   required: false
   description: ''
-- name: reasons
+- sigma_name: REASONS
+  json_name: reasons
   type: array of object
   required: true
   description: ''
-- name: score
+- sigma_name: SCORE
+  json_name: score
   type: integer
   required: true
   description: ''
-- name: subject
+- sigma_name: SUBJECT
+  json_name: subject
   type: any
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

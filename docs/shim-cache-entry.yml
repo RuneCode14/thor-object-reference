@@ -1,19 +1,23 @@
 name: shim cache entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/shim-cache-entry
 fields:
-- name: exec_flag
+- sigma_name: EXEC_FLAG
+  json_name: exec_flag
   type: boolean
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: timestamp
+- sigma_name: TIMESTAMP
+  json_name: timestamp
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

@@ -1,35 +1,43 @@
 name: Windows platform information
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/platform-info-windows
 fields:
-- name: arch
+- sigma_name: ARCH
+  json_name: arch
   type: string
   required: true
   description: ''
-- name: build_number
+- sigma_name: BUILD_NUMBER
+  json_name: build_number
   type: string
   required: true
   description: ''
-- name: installed_on
+- sigma_name: INSTALLED_ON
+  json_name: installed_on
   type: string (date-time)
   required: true
   description: ''
-- name: name
+- sigma_name: NAME
+  json_name: name
   type: string
   required: true
   description: ''
-- name: os_type
+- sigma_name: OS_TYPE
+  json_name: os_type
   type: string
   required: true
   description: ''
-- name: proc
+- sigma_name: PROC
+  json_name: proc
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: version
+- sigma_name: VERSION
+  json_name: version
   type: string
   required: true
   description: ''

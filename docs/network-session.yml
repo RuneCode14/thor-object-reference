@@ -1,31 +1,38 @@
 name: network session
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/network-session
 fields:
-- name: active
+- sigma_name: ACTIVE
+  json_name: active
   type: integer
   required: true
   description: ''
-- name: client
+- sigma_name: CLIENT
+  json_name: client
   type: string
   required: true
   description: ''
-- name: client_type
+- sigma_name: CLIENT_TYPE
+  json_name: client_type
   type: string
   required: true
   description: ''
-- name: idle
+- sigma_name: IDLE
+  json_name: idle
   type: integer
   required: true
   description: ''
-- name: num_opens
+- sigma_name: NUM_OPENS
+  json_name: num_opens
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user_name
+- sigma_name: USER_NAME
+  json_name: user_name
   type: string
   required: true
   description: ''

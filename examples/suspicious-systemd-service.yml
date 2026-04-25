@@ -1,19 +1,29 @@
-title: Suspicious systemd service from /tmp
+title: Suspicious Systemd Service
+id: 7b3c2d1e-4a5b-6c7d-8e9f-0a1b2c3d4e5f
 status: experimental
-description: |
-  Detects systemd services running executables from /tmp,
-  /var/tmp, or /dev/shm — common persistence locations.
+description: Detects suspicious systemd service configurations
+references:
+    - https://github.com/RuneCode14/thor-object-reference
+author: Johannes Roth
+date: 2026/04/26
 logsource:
     product: THOR
     service: "systemd service"
 detection:
-    selection:
-        IMAGE|contains:
+    selection_suspicious_command:
+        COMMAND|contains|all:
+            - 'powershell'
+            - '-encodedcommand'
+    selection_suspicious_path:
+        IMAGE|PATH|contains:
             - '/tmp/'
-            - '/var/tmp/'
             - '/dev/shm/'
-    condition: selection
-falsepositives:
-    - Legitimate temporary services during installation
-    - Containerized workloads
-level: high
+    selection_suspicious_user:
+        RUN_AS_USER|contains:
+            - 'nobody'
+    selection_unsigned:
+        IMAGE|PE_INFO|SIGNED:
+            - 'false'
+    filter_legitimate:
+        IMAGE|PE_INFO|SIGNED: 'true'
+    condition: (selection_suspicious_command or selection_suspicious_path or selection_suspicious_user) and selection_unsigned and not filter_legitimate

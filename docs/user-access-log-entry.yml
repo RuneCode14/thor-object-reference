@@ -1,51 +1,63 @@
 name: User Access Log Entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ual-entry
 fields:
-- name: accesses_by_day
+- sigma_name: ACCESSES_BY_DAY
+  json_name: accesses_by_day
   type: object
   required: true
   description: ''
-- name: address
+- sigma_name: ADDRESS
+  json_name: address
   type: string
   required: true
   description: ''
-- name: authenticated_user_name
+- sigma_name: AUTHENTICATED_USER_NAME
+  json_name: authenticated_user_name
   type: string
   required: true
   description: ''
-- name: client_name
+- sigma_name: CLIENT_NAME
+  json_name: client_name
   type: string
   required: false
   description: ''
-- name: insert_date
+- sigma_name: INSERT_DATE
+  json_name: insert_date
   type: string (date-time)
   required: true
   description: ''
-- name: last_access
+- sigma_name: LAST_ACCESS
+  json_name: last_access
   type: string (date-time)
   required: true
   description: ''
-- name: product_name
+- sigma_name: PRODUCT_NAME
+  json_name: product_name
   type: string
   required: false
   description: ''
-- name: role_guid
+- sigma_name: ROLE_GUID
+  json_name: role_guid
   type: array of integer
   required: true
   description: ''
-- name: role_name
+- sigma_name: ROLE_NAME
+  json_name: role_name
   type: string
   required: false
   description: ''
-- name: tenant_id
+- sigma_name: TENANT_ID
+  json_name: tenant_id
   type: array of integer
   required: true
   description: ''
-- name: total_accesses
+- sigma_name: TOTAL_ACCESSES
+  json_name: total_accesses
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

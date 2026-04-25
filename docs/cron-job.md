@@ -4,12 +4,21 @@
 
 ## Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `command` | string | ✅ |  |
-| `schedule` | string | ✅ |  |
-| `type` | string | ✅ |  |
-| `user` | string | ✅ |  |
+Field names are shown in **UPPERCASE** as used in Sigma rules.
+The lowercase JSON name is shown in parentheses for reference.
+
+| Sigma Field | JSON Name | Type | Required | Description |
+|-------------|-----------|------|----------|-------------|
+| `COMMAND` | `command` | string | ✅ |  |
+| `SCHEDULE` | `schedule` | string | ✅ |  |
+| `TYPE` | `type` | string | ✅ |  |
+| `USER` | `user` | string | ✅ |  |
+
+### Nested Field Reference (Sigma Pipe Notation)
+
+Complex types like `File` have nested fields accessed with `|` in Sigma:
+
+_No nested fields in this type._
 
 ## Sigma Rule Template
 
@@ -20,6 +29,13 @@ logsource:
 
 detection:
     selection:
-        COMMAND: null
-    condition: selection
+        COMMAND|contains|all:
+            - 'powershell'
+            - '-encodedcommand'
+        TYPE: 'relevant_type'
+    filter_legitimate:
+        USER|contains:
+            - 'root'
+            - 'system'
+    condition: selection and not filter_legitimate
 ```

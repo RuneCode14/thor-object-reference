@@ -1,11 +1,13 @@
 name: at job
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/at-job
 fields:
-- name: command
+- sigma_name: COMMAND
+  json_name: command
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

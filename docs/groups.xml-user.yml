@@ -1,15 +1,18 @@
 name: groups.xml user
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/groups-xml-user
 fields:
-- name: password
+- sigma_name: PASSWORD
+  json_name: password
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

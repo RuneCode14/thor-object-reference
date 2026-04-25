@@ -1,11 +1,13 @@
 name: event
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/windows-event
 fields:
-- name: event
+- sigma_name: EVENT
+  json_name: event
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

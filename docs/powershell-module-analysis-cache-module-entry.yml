@@ -1,15 +1,18 @@
 name: PowerShell module analysis cache module entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/ps-mac-entry
 fields:
-- name: command
+- sigma_name: COMMAND
+  json_name: command
   type: string
   required: true
   description: ''
-- name: path
+- sigma_name: PATH
+  json_name: path
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

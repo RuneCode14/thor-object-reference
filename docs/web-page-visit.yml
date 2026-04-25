@@ -1,19 +1,23 @@
 name: web page visit
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/web-page-visit
 fields:
-- name: time
+- sigma_name: TIME
+  json_name: time
   type: string (date-time)
   required: true
   description: ''
-- name: title
+- sigma_name: TITLE
+  json_name: title
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: url
+- sigma_name: URL
+  json_name: url
   type: string
   required: true
   description: ''

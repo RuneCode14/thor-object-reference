@@ -1,35 +1,43 @@
 name: LSA session
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/lsa-session
 fields:
-- name: auth_package
+- sigma_name: AUTH_PACKAGE
+  json_name: auth_package
   type: string
   required: true
   description: ''
-- name: domain
+- sigma_name: DOMAIN
+  json_name: domain
   type: string
   required: true
   description: ''
-- name: logon_time
+- sigma_name: LOGON_TIME
+  json_name: logon_time
   type: string (date-time)
   required: true
   description: ''
-- name: lsa_session
+- sigma_name: LSA_SESSION
+  json_name: lsa_session
   type: string
   required: true
   description: ''
-- name: server
+- sigma_name: SERVER
+  json_name: server
   type: string
   required: true
   description: ''
-- name: session_type
+- sigma_name: SESSION_TYPE
+  json_name: session_type
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
-- name: user
+- sigma_name: USER
+  json_name: user
   type: string
   required: true
   description: ''

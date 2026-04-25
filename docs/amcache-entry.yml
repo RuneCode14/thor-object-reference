@@ -1,39 +1,283 @@
 name: AmCache entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/amcache-entry
 fields:
-- name: company
+- sigma_name: COMPANY
+  json_name: company
   type: string
   required: true
   description: ''
-- name: created
+- sigma_name: CREATED
+  json_name: created
   type: string (date-time)
   required: true
   description: ''
-- name: desc
+- sigma_name: DESC
+  json_name: desc
   type: string
   required: true
   description: ''
-- name: file
+- sigma_name: FILE
+  json_name: file
   type: object
   required: true
   description: ''
-- name: first_run
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: PATH
+    json_name: path
+    type: string
+  - sigma_name: EXISTS
+    json_name: exists
+    type: string
+  - sigma_name: EXTENSION
+    json_name: extension
+    type: string
+  - sigma_name: MAGIC_HEADER
+    json_name: magic_header
+    type: string
+  - sigma_name: HASHES|MD5
+    json_name: hashes.md5
+    type: string
+  - sigma_name: HASHES|SHA1
+    json_name: hashes.sha1
+    type: string
+  - sigma_name: HASHES|SHA256
+    json_name: hashes.sha256
+    type: string
+  - sigma_name: FIRST_BYTES|HEX
+    json_name: first_bytes.hex
+    type: string
+  - sigma_name: FIRST_BYTES|ASCII
+    json_name: first_bytes.ascii
+    type: string
+  - sigma_name: FILE_TIMES|MODIFIED
+    json_name: file_times.modified
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|ACCESSED
+    json_name: file_times.accessed
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|CHANGED
+    json_name: file_times.changed
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|CREATED
+    json_name: file_times.created
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|USN_CHANGE_TIME
+    json_name: file_times.usn_change_time
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|MFT_FILE_NAME_MODIFIED
+    json_name: file_times.mft_file_name_modified
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|MFT_FILE_NAME_ACCESSED
+    json_name: file_times.mft_file_name_accessed
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|MFT_FILE_NAME_CHANGED
+    json_name: file_times.mft_file_name_changed
+    type: string (date-time)
+  - sigma_name: FILE_TIMES|MFT_FILE_NAME_CREATED
+    json_name: file_times.mft_file_name_created
+    type: string (date-time)
+  - sigma_name: SIZE
+    json_name: size
+    type: integer
+  - sigma_name: PE_INFO|COMPANY
+    json_name: pe_info.company
+    type: string
+  - sigma_name: PE_INFO|DESCRIPTION
+    json_name: pe_info.description
+    type: string
+  - sigma_name: PE_INFO|LEGAL_COPYRIGHT
+    json_name: pe_info.legal_copyright
+    type: string
+  - sigma_name: PE_INFO|PRODUCT
+    json_name: pe_info.product
+    type: string
+  - sigma_name: PE_INFO|ORIGINAL_NAME
+    json_name: pe_info.original_name
+    type: string
+  - sigma_name: PE_INFO|INTERNAL_NAME
+    json_name: pe_info.internal_name
+    type: string
+  - sigma_name: PE_INFO|SIGNED
+    json_name: pe_info.signed
+    type: boolean
+  - sigma_name: PE_INFO|SIGNATURES
+    json_name: pe_info.signatures
+    type: array | null
+  - sigma_name: PE_INFO|IMPHASH
+    json_name: pe_info.imphash
+    type: string
+  - sigma_name: PE_INFO|RICH_HEADER_HASH
+    json_name: pe_info.rich_header_hash
+    type: string
+  - sigma_name: PE_INFO|CREATION_TIMESTAMP
+    json_name: pe_info.creation_timestamp
+    type: string (date-time)
+  - sigma_name: TARGET
+    json_name: target
+    type: string
+  - sigma_name: UNPACK_SOURCE
+    json_name: unpack_source
+    type: array | null
+  - sigma_name: LINK_INFO|TARGET
+    json_name: link_info.target
+    type: string
+  - sigma_name: LINK_INFO|ARGUMENTS
+    json_name: link_info.arguments
+    type: string
+  - sigma_name: LINK_INFO|COMMAND_LINE
+    json_name: link_info.command_line
+    type: string
+  - sigma_name: LINK_INFO|CREATED
+    json_name: link_info.created
+    type: string (date-time)
+  - sigma_name: LINK_INFO|MODIFIED
+    json_name: link_info.modified
+    type: string (date-time)
+  - sigma_name: LINK_INFO|ACCESSED
+    json_name: link_info.accessed
+    type: string (date-time)
+  - sigma_name: RECYCLE_BIN_INFO|ORIGINAL_FILE_NAME
+    json_name: recycle_bin_info.original_file_name
+    type: string
+  - sigma_name: RECYCLE_BIN_INFO|DELETION_TIME
+    json_name: recycle_bin_info.deletion_time
+    type: string (date-time)
+  - sigma_name: RECYCLE_BIN_INFO|ORIGINAL_FILE_SIZE
+    json_name: recycle_bin_info.original_file_size
+    type: integer
+  - sigma_name: WER_INFO|TYPE
+    json_name: wer_info.type
+    type: string
+  - sigma_name: WER_INFO|EVENT_NAME
+    json_name: wer_info.event_name
+    type: string
+  - sigma_name: WER_INFO|EVENT_TYPE
+    json_name: wer_info.event_type
+    type: string
+  - sigma_name: WER_INFO|DATE
+    json_name: wer_info.date
+    type: string (date-time)
+  - sigma_name: WER_INFO|APP_PATH
+    json_name: wer_info.app_path
+    type: string
+  - sigma_name: WER_INFO|APP_NAME
+    json_name: wer_info.app_name
+    type: string
+  - sigma_name: WER_INFO|EXE
+    json_name: wer_info.exe
+    type: string
+  - sigma_name: WER_INFO|ERROR
+    json_name: wer_info.error
+    type: string
+  - sigma_name: WER_INFO|FAULT_IN_MODULE
+    json_name: wer_info.fault_in_module
+    type: string
+  - sigma_name: CONTENT|TYPE
+    json_name: content.type
+    type: string
+  - sigma_name: CONTENT|ELEMENTS
+    json_name: content.elements
+    type: array | null
+  - sigma_name: CONTENT|LENGTH
+    json_name: content.length
+    type: integer
+  - sigma_name: BEACON_CONFIG|BEACON_TYPE
+    json_name: beacon_config.beacon_type
+    type: string
+  - sigma_name: BEACON_CONFIG|C2
+    json_name: beacon_config.c2
+    type: string
+  - sigma_name: BEACON_CONFIG|PORT
+    json_name: beacon_config.port
+    type: string
+  - sigma_name: BEACON_CONFIG|SPAWN_TO
+    json_name: beacon_config.spawn_to
+    type: string
+  - sigma_name: BEACON_CONFIG|INJECTION_PROCESS
+    json_name: beacon_config.injection_process
+    type: string
+  - sigma_name: BEACON_CONFIG|PIPE_NAME
+    json_name: beacon_config.pipe_name
+    type: string
+  - sigma_name: BEACON_CONFIG|USER_AGENT
+    json_name: beacon_config.user_agent
+    type: string
+  - sigma_name: BEACON_CONFIG|PROXY
+    json_name: beacon_config.proxy
+    type: string
+  - sigma_name: BEACON_CONFIG|FULL_CONFIG
+    json_name: beacon_config.full_config
+    type: object
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XAF_ENCODED
+    json_name: beacon_config.cipher_parameters.xaf_encoded
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR
+    json_name: beacon_config.cipher_parameters.xaf_encoding_anchor
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|XOR_KEY
+    json_name: beacon_config.cipher_parameters.xor_key
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BEACON_OFFSET
+    json_name: beacon_config.cipher_parameters.beacon_offset
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BEACON_LENGTH
+    json_name: beacon_config.cipher_parameters.beacon_length
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|BLOCK_START
+    json_name: beacon_config.cipher_parameters.block_start
+    type: any
+  - sigma_name: BEACON_CONFIG|CIPHER_PARAMETERS|PAIRWISE_SWAPPED
+    json_name: beacon_config.cipher_parameters.pairwise_swapped
+    type: any
+  - sigma_name: VIRUSTOTAL|RESULT
+    json_name: virustotal.result
+    type: string
+  - sigma_name: VIRUSTOTAL|POSITIVE_VERDICTS
+    json_name: virustotal.positive_verdicts
+    type: integer
+  - sigma_name: VIRUSTOTAL|TOTAL_VERDICTS
+    json_name: virustotal.total_verdicts
+    type: integer
+  - sigma_name: VIRUSTOTAL|HISTORY|NAMES
+    json_name: virustotal.history.names
+    type: any
+  - sigma_name: VIRUSTOTAL|HISTORY|TAGS
+    json_name: virustotal.history.tags
+    type: any
+  - sigma_name: VIRUSTOTAL|HISTORY|SUBMISSIONS
+    json_name: virustotal.history.submissions
+    type: any
+  - sigma_name: VIRUSTOTAL|HISTORY|FIRST_SUBMISSION
+    json_name: virustotal.history.first_submission
+    type: any
+  - sigma_name: VIRUSTOTAL|HISTORY|LAST_SUBMISSION
+    json_name: virustotal.history.last_submission
+    type: any
+- sigma_name: FIRST_RUN
+  json_name: first_run
   type: string (date-time)
   required: true
   description: ''
-- name: product
+- sigma_name: PRODUCT
+  json_name: product
   type: string
   required: true
   description: ''
-- name: sha1
+- sigma_name: SHA1
+  json_name: sha1
   type: string
   required: true
   description: ''
-- name: size
+- sigma_name: SIZE
+  json_name: size
   type: integer
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

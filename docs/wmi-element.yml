@@ -1,31 +1,38 @@
 name: WMI element
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/wmi-element
 fields:
-- name: event_consumer
+- sigma_name: EVENT_CONSUMER
+  json_name: event_consumer
   type: string
   required: true
   description: ''
-- name: event_consumer_name
+- sigma_name: EVENT_CONSUMER_NAME
+  json_name: event_consumer_name
   type: string
   required: true
   description: ''
-- name: event_filter
+- sigma_name: EVENT_FILTER
+  json_name: event_filter
   type: string
   required: true
   description: ''
-- name: event_filter_name
+- sigma_name: EVENT_FILTER_NAME
+  json_name: event_filter_name
   type: string
   required: true
   description: ''
-- name: filter_type
+- sigma_name: FILTER_TYPE
+  json_name: filter_type
   type: string
   required: true
   description: ''
-- name: key
+- sigma_name: KEY
+  json_name: key
   type: string
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

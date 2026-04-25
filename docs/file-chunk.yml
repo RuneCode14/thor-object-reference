@@ -1,23 +1,90 @@
 name: file chunk
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/deep-dive-chunk
 fields:
-- name: beacon_config
+- sigma_name: BEACON_CONFIG
+  json_name: beacon_config
   type: object
   required: false
   description: ''
-- name: chunk_end
+  nested:
+  - sigma_name: BEACON_TYPE
+    json_name: beacon_type
+    type: string
+  - sigma_name: C2
+    json_name: c2
+    type: string
+  - sigma_name: PORT
+    json_name: port
+    type: string
+  - sigma_name: SPAWN_TO
+    json_name: spawn_to
+    type: string
+  - sigma_name: INJECTION_PROCESS
+    json_name: injection_process
+    type: string
+  - sigma_name: PIPE_NAME
+    json_name: pipe_name
+    type: string
+  - sigma_name: USER_AGENT
+    json_name: user_agent
+    type: string
+  - sigma_name: PROXY
+    json_name: proxy
+    type: string
+  - sigma_name: FULL_CONFIG
+    json_name: full_config
+    type: object
+  - sigma_name: CIPHER_PARAMETERS|XAF_ENCODED
+    json_name: cipher_parameters.xaf_encoded
+    type: boolean
+  - sigma_name: CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR
+    json_name: cipher_parameters.xaf_encoding_anchor
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|XOR_KEY
+    json_name: cipher_parameters.xor_key
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BEACON_OFFSET
+    json_name: cipher_parameters.beacon_offset
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BEACON_LENGTH
+    json_name: cipher_parameters.beacon_length
+    type: integer
+  - sigma_name: CIPHER_PARAMETERS|BLOCK_START|HEX
+    json_name: cipher_parameters.block_start.hex
+    type: any
+  - sigma_name: CIPHER_PARAMETERS|BLOCK_START|ASCII
+    json_name: cipher_parameters.block_start.ascii
+    type: any
+  - sigma_name: CIPHER_PARAMETERS|PAIRWISE_SWAPPED
+    json_name: cipher_parameters.pairwise_swapped
+    type: boolean
+- sigma_name: CHUNK_END
+  json_name: chunk_end
   type: integer
   required: true
   description: ''
-- name: chunk_offset
+- sigma_name: CHUNK_OFFSET
+  json_name: chunk_offset
   type: integer
   required: true
   description: ''
-- name: content
+- sigma_name: CONTENT
+  json_name: content
   type: object
   required: true
   description: ''
-- name: type
+  nested:
+  - sigma_name: TYPE
+    json_name: type
+    type: string
+  - sigma_name: ELEMENTS
+    json_name: elements
+    type: array | null
+  - sigma_name: LENGTH
+    json_name: length
+    type: integer
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''

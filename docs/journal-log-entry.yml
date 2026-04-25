@@ -1,15 +1,18 @@
 name: journal log entry
 schema: https://github.com/NextronSystems/jsonlog/thorlog/v3/journald-entry
 fields:
-- name: details
+- sigma_name: DETAILS
+  json_name: details
   type: object (string)
   required: true
   description: ''
-- name: time
+- sigma_name: TIME
+  json_name: time
   type: string (date-time)
   required: true
   description: ''
-- name: type
+- sigma_name: TYPE
+  json_name: type
   type: string
   required: true
   description: ''
