@@ -9,7 +9,7 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `PROCESS` | `process` | string | ✅ |  |  |
+| `PROCESS` | `process` | string | ✅ |  | `C:\Windows\SystemTemp\A01DF562-5405-4537...`, `C:\Windows\SoftwareDistribution\Download...`, `C:\Windows\System32\la57setup.exe` |
 | `START_TIMES` | `start_times` | array of string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 

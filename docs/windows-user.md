@@ -9,18 +9,18 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `ACTIVE` | `active` | boolean | ✅ |  |  |
-| `BAD_PASSWORD_COUNT` | `bad_password_count` | integer | ✅ |  |  |
-| `COMMENT` | `comment` | string | ✅ |  |  |
+| `ACTIVE` | `active` | boolean | ✅ |  | `True` |
+| `BAD_PASSWORD_COUNT` | `bad_password_count` | integer | ✅ |  | `0` |
+| `COMMENT` | `comment` | string | ✅ |  | `` |
 | `FULL_NAME` | `full_name` | string | ✅ |  | `Built-in account for administering the c...`, ``, `Florian Roth` |
-| `IS_ADMIN` | `is_admin` | boolean | ✅ |  |  |
-| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  | `2026-04-26T10:30:00Z`, `never` |
-| `LOCKED` | `locked` | boolean | ✅ |  |  |
-| `NO_EXPIRE` | `no_expire` | boolean | ✅ |  |  |
-| `NUM_LOGONS` | `num_logons` | integer | ✅ |  |  |
-| `PASS_AGE` | `pass_age` | integer | ✅ |  |  |
+| `IS_ADMIN` | `is_admin` | boolean | ✅ |  | `True`, `False` |
+| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  | `2026-04-26T10:30:00Z`, `never`, `2026-04-26T14:28:12+02:00` |
+| `LOCKED` | `locked` | boolean | ✅ |  | `False` |
+| `NO_EXPIRE` | `no_expire` | boolean | ✅ |  | `True` |
+| `NUM_LOGONS` | `num_logons` | integer | ✅ |  | `1203`, `0` |
+| `PASS_AGE` | `pass_age` | integer | ✅ |  | `6539359000000000`, `2390831000000000` |
 | `TYPE` | `type` | string | ✅ |  | `windows user` |
-| `USER` | `user` | string | ✅ |  |  |
+| `USER` | `user` | string | ✅ |  | `Administrator`, `Guest` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

