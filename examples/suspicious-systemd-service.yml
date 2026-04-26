@@ -15,15 +15,11 @@ detection:
             - 'powershell'
             - '-encodedcommand'
     selection_suspicious_path:
-        IMAGE|PATH|contains:
+        COMMAND|contains:
             - '/tmp/'
             - '/dev/shm/'
     selection_suspicious_user:
         RUN_AS_USER|contains:
             - 'nobody'
-    selection_unsigned:
-        IMAGE|PE_INFO|SIGNED:
-            - 'false'
-    filter_legitimate:
-        IMAGE|PE_INFO|SIGNED: 'true'
-    condition: (selection_suspicious_command or selection_suspicious_path or selection_suspicious_user) and selection_unsigned and not filter_legitimate
+    condition: selection_suspicious_command or selection_suspicious_path or selection_suspicious_user
+level: high

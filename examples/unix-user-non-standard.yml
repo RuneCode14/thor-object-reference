@@ -1,0 +1,22 @@
+title: Non-Standard User with Shell Access
+id: a1b2c3d4-0028-0028-0028-000000000028
+status: experimental
+description: Detects non-standard Unix users (UID < 500) with shell access, excluding root
+references:
+    - https://thor-manual.nextron-systems.com/en/v11/signatures/sigma.html
+author: Johannes Roth
+date: 2026/04/26
+logsource:
+    product: THOR
+    service: "Unix user"
+detection:
+    selection_low_uid:
+        UID|lt: '500'
+    selection_shell:
+        SHELL|endswith: '/bash'
+    filter_root:
+        NAME: 'root'
+    condition: selection_low_uid and selection_shell and not filter_root
+level: medium
+falsepositives:
+    - System service accounts that legitimately have shell access
