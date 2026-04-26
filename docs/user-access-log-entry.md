@@ -7,20 +7,20 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACCESSES_BY_DAY` | `accesses_by_day` | object | ✅ |  |
-| `ADDRESS` | `address` | string | ✅ |  |
-| `AUTHENTICATED_USER_NAME` | `authenticated_user_name` | string | ✅ |  |
-| `CLIENT_NAME` | `client_name` | string |  |  |
-| `INSERT_DATE` | `insert_date` | string (date-time) | ✅ |  |
-| `LAST_ACCESS` | `last_access` | string (date-time) | ✅ |  |
-| `PRODUCT_NAME` | `product_name` | string |  |  |
-| `ROLE_GUID` | `role_guid` | array of integer | ✅ |  |
-| `ROLE_NAME` | `role_name` | string |  |  |
-| `TENANT_ID` | `tenant_id` | array of integer | ✅ |  |
-| `TOTAL_ACCESSES` | `total_accesses` | integer | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACCESSES_BY_DAY` | `accesses_by_day` | object | ✅ |  |  |
+| `ADDRESS` | `address` | string | ✅ |  |  |
+| `AUTHENTICATED_USER_NAME` | `authenticated_user_name` | string | ✅ |  |  |
+| `CLIENT_NAME` | `client_name` | string |  |  |  |
+| `INSERT_DATE` | `insert_date` | string (date-time) | ✅ |  |  |
+| `LAST_ACCESS` | `last_access` | string (date-time) | ✅ |  |  |
+| `PRODUCT_NAME` | `product_name` | string |  |  |  |
+| `ROLE_GUID` | `role_guid` | array of integer | ✅ |  |  |
+| `ROLE_NAME` | `role_name` | string |  |  |  |
+| `TENANT_ID` | `tenant_id` | array of integer | ✅ |  |  |
+| `TOTAL_ACCESSES` | `total_accesses` | integer | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

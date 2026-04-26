@@ -7,16 +7,16 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `AUTH_PACKAGE` | `auth_package` | string | ✅ |  |
-| `DOMAIN` | `domain` | string | ✅ |  |
-| `LOGON_TIME` | `logon_time` | string (date-time) | ✅ |  |
-| `LSA_SESSION` | `lsa_session` | string | ✅ |  |
-| `SERVER` | `server` | string | ✅ |  |
-| `SESSION_TYPE` | `session_type` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER` | `user` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `AUTH_PACKAGE` | `auth_package` | string | ✅ |  |  |
+| `DOMAIN` | `domain` | string | ✅ |  |  |
+| `LOGON_TIME` | `logon_time` | string (date-time) | ✅ |  |  |
+| `LSA_SESSION` | `lsa_session` | string | ✅ |  |  |
+| `SERVER` | `server` | string | ✅ |  |  |
+| `SESSION_TYPE` | `session_type` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `USER` | `user` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

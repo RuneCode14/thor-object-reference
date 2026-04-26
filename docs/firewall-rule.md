@@ -7,19 +7,19 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ALLOW` | `allow` | boolean | ✅ |  |
-| `ENABLED` | `enabled` | boolean | ✅ |  |
-| `INBOUND` | `inbound` | boolean | ✅ |  |
-| `LOCAL_IPS` | `local_ips` | array | null | ✅ |  |
-| `LOCAL_PORTS` | `local_ports` | array | null | ✅ |  |
-| `NAME` | `name` | string | ✅ |  |
-| `PATH` | `path` | string | ✅ |  |
-| `PROTOCOL` | `protocol` | string | ✅ |  |
-| `REMOTE_IPS` | `remote_ips` | array | null | ✅ |  |
-| `REMOTE_PORTS` | `remote_ports` | array | null | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ALLOW` | `allow` | boolean | ✅ |  |  |
+| `ENABLED` | `enabled` | boolean | ✅ |  |  |
+| `INBOUND` | `inbound` | boolean | ✅ |  |  |
+| `LOCAL_IPS` | `local_ips` | array | null | ✅ |  |  |
+| `LOCAL_PORTS` | `local_ports` | array | null | ✅ |  |  |
+| `NAME` | `name` | string | ✅ |  |  |
+| `PATH` | `path` | string | ✅ |  |  |
+| `PROTOCOL` | `protocol` | string | ✅ |  |  |
+| `REMOTE_IPS` | `remote_ips` | array | null | ✅ |  |  |
+| `REMOTE_PORTS` | `remote_ports` | array | null | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

@@ -7,19 +7,19 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACCESSED` | `accessed` | string (date-time) | ✅ |  |
-| `CHANGED` | `changed` | string (date-time) | ✅ |  |
-| `CREATED` | `created` | string (date-time) | ✅ |  |
-| `DELETED` | `deleted` | boolean |  |  |
-| `DIR` | `dir` | boolean | ✅ |  |
-| `FILENAME` | `filename` | string | ✅ |  |
-| `FLAGS` | `flags` | integer |  |  |
-| `MODIFIED` | `modified` | string (date-time) | ✅ |  |
-| `PATH` | `path` | string | ✅ |  |
-| `SIZE` | `size` | integer | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACCESSED` | `accessed` | string (date-time) | ✅ |  |  |
+| `CHANGED` | `changed` | string (date-time) | ✅ |  |  |
+| `CREATED` | `created` | string (date-time) | ✅ |  |  |
+| `DELETED` | `deleted` | boolean |  |  |  |
+| `DIR` | `dir` | boolean | ✅ |  |  |
+| `FILENAME` | `filename` | string | ✅ |  |  |
+| `FLAGS` | `flags` | integer |  |  |  |
+| `MODIFIED` | `modified` | string (date-time) | ✅ |  |  |
+| `PATH` | `path` | string | ✅ |  |  |
+| `SIZE` | `size` | integer | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

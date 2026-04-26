@@ -7,13 +7,13 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `BEACON_CONFIG` | `beacon_config` | object |  | nested: `BEACON_TYPE`: string; `C2`: string; `PORT`: string; `SPAWN_TO`: string; `INJECTION_PROCESS`: string; `PIPE_NAME`: string; `USER_AGENT`: string; `PROXY`: string; `FULL_CONFIG`: object; `CIPHER_PARAMETERS|XAF_ENCODED`: boolean; `CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR`: integer; `CIPHER_PARAMETERS|XOR_KEY`: integer; `CIPHER_PARAMETERS|BEACON_OFFSET`: integer; `CIPHER_PARAMETERS|BEACON_LENGTH`: integer; `CIPHER_PARAMETERS|BLOCK_START|HEX`: any; `CIPHER_PARAMETERS|BLOCK_START|ASCII`: any; `CIPHER_PARAMETERS|PAIRWISE_SWAPPED`: boolean |
-| `CHUNK_END` | `chunk_end` | integer | ✅ |  |
-| `CHUNK_OFFSET` | `chunk_offset` | integer | ✅ |  |
-| `CONTENT` | `content` | object | ✅ | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `BEACON_CONFIG` | `beacon_config` | object |  | nested: `BEACON_TYPE`: string; `C2`: string; `PORT`: string; `SPAWN_TO`: string; `INJECTION_PROCESS`: string; `PIPE_NAME`: string; `USER_AGENT`: string; `PROXY`: string; `FULL_CONFIG`: object; `CIPHER_PARAMETERS|XAF_ENCODED`: boolean; `CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR`: integer; `CIPHER_PARAMETERS|XOR_KEY`: integer; `CIPHER_PARAMETERS|BEACON_OFFSET`: integer; `CIPHER_PARAMETERS|BEACON_LENGTH`: integer; `CIPHER_PARAMETERS|BLOCK_START|HEX`: any; `CIPHER_PARAMETERS|BLOCK_START|ASCII`: any; `CIPHER_PARAMETERS|PAIRWISE_SWAPPED`: boolean |  |
+| `CHUNK_END` | `chunk_end` | integer | ✅ |  |  |
+| `CHUNK_OFFSET` | `chunk_offset` | integer | ✅ |  |  |
+| `CONTENT` | `content` | object | ✅ | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

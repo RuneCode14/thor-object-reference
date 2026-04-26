@@ -7,15 +7,15 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACTIVE` | `active` | integer | ✅ |  |
-| `CLIENT` | `client` | string | ✅ |  |
-| `CLIENT_TYPE` | `client_type` | string | ✅ |  |
-| `IDLE` | `idle` | integer | ✅ |  |
-| `NUM_OPENS` | `num_opens` | integer | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER_NAME` | `user_name` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACTIVE` | `active` | integer | ✅ |  |  |
+| `CLIENT` | `client` | string | ✅ |  |  |
+| `CLIENT_TYPE` | `client_type` | string | ✅ |  |  |
+| `IDLE` | `idle` | integer | ✅ |  |  |
+| `NUM_OPENS` | `num_opens` | integer | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `USER_NAME` | `user_name` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

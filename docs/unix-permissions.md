@@ -7,12 +7,12 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `GROUP` | `group` | string | ✅ |  |
-| `MASK` | `mask` | object | ✅ | nested: `USER|READABLE`: boolean; `USER|WRITABLE`: boolean; `USER|EXECUTABLE`: boolean; `GROUP|READABLE`: boolean; `GROUP|WRITABLE`: boolean; `GROUP|EXECUTABLE`: boolean; `WORLD|READABLE`: boolean; `WORLD|WRITABLE`: boolean; `WORLD|EXECUTABLE`: boolean |
-| `OWNER` | `owner` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `GROUP` | `group` | string | ✅ |  |  |
+| `MASK` | `mask` | object | ✅ | nested: `USER|READABLE`: boolean; `USER|WRITABLE`: boolean; `USER|EXECUTABLE`: boolean; `GROUP|READABLE`: boolean; `GROUP|WRITABLE`: boolean; `GROUP|EXECUTABLE`: boolean; `WORLD|READABLE`: boolean; `WORLD|WRITABLE`: boolean; `WORLD|EXECUTABLE`: boolean |  |
+| `OWNER` | `owner` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

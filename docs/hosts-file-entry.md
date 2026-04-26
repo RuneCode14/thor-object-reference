@@ -7,11 +7,11 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `HOST` | `host` | string | ✅ |  |
-| `IP` | `ip` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `HOST` | `host` | string | ✅ |  |  |
+| `IP` | `ip` | string | ✅ |  | `127.0.0.1`, `192.168.1.100`, `0.0.0.0` |
+| `TYPE` | `type` | string | ✅ |  | `hosts file entry` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

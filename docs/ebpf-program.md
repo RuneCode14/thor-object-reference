@@ -7,21 +7,21 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ATTACH_TARGET` | `attach_target` | object | ✅ | nested: `PATH`: string; `PID`: integer; `SYMBOLS`: array of string; `INTERFACE`: string; `OBJECT_ID`: integer; `PROTOCOL`: string; `HOOK`: string; `PRIORITY`: integer |
-| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |
-| `FUNCTIONS` | `functions` | array of string | ✅ |  |
-| `LINK_TYPE` | `link_type` | string | ✅ |  |
-| `LOAD_TIME` | `load_time` | string (date-time) | ✅ |  |
-| `MAPS` | `maps` | array of string | ✅ |  |
-| `MEMORY_LOCKED` | `memory_locked` | integer | ✅ |  |
-| `NAME` | `name` | string | ✅ |  |
-| `PROGRAM_TYPE` | `program_type` | string | ✅ |  |
-| `SIZE` | `size` | integer | ✅ |  |
-| `TAG` | `tag` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER` | `user` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ATTACH_TARGET` | `attach_target` | object | ✅ | nested: `PATH`: string; `PID`: integer; `SYMBOLS`: array of string; `INTERFACE`: string; `OBJECT_ID`: integer; `PROTOCOL`: string; `HOOK`: string; `PRIORITY`: integer |  |
+| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |  |
+| `FUNCTIONS` | `functions` | array of string | ✅ |  |  |
+| `LINK_TYPE` | `link_type` | string | ✅ |  |  |
+| `LOAD_TIME` | `load_time` | string (date-time) | ✅ |  |  |
+| `MAPS` | `maps` | array of string | ✅ |  |  |
+| `MEMORY_LOCKED` | `memory_locked` | integer | ✅ |  |  |
+| `NAME` | `name` | string | ✅ |  |  |
+| `PROGRAM_TYPE` | `program_type` | string | ✅ |  |  |
+| `SIZE` | `size` | integer | ✅ |  |  |
+| `TAG` | `tag` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `USER` | `user` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

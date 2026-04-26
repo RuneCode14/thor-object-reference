@@ -7,15 +7,15 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `FIELDDIRECT` | `FieldDirect` | string | ✅ |  |
-| `INTERFACE` | `Interface` | any | ✅ |  |
-| `MAP` | `Map` | object (string) | ✅ |  |
-| `POINTEDSTRUCT` | `PointedStruct` | object | ✅ | nested: `FIELD`: string |
-| `SLICE` | `Slice` | array of object | ✅ |  |
-| `SUBSTRUCT` | `SubStruct` | object | ✅ | nested: `FIELD`: string |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `FIELDDIRECT` | `FieldDirect` | string | ✅ |  |  |
+| `INTERFACE` | `Interface` | any | ✅ |  |  |
+| `MAP` | `Map` | object (string) | ✅ |  |  |
+| `POINTEDSTRUCT` | `PointedStruct` | object | ✅ | nested: `FIELD`: string |  |
+| `SLICE` | `Slice` | array of object | ✅ |  |  |
+| `SUBSTRUCT` | `SubStruct` | object | ✅ | nested: `FIELD`: string |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

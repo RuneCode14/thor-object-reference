@@ -7,16 +7,16 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ARCH` | `arch` | string | ✅ |  |
-| `BUILD_NUMBER` | `build_number` | string | ✅ |  |
-| `INSTALLED_ON` | `installed_on` | string (date-time) | ✅ |  |
-| `NAME` | `name` | string | ✅ |  |
-| `OS_TYPE` | `os_type` | string | ✅ |  |
-| `PROC` | `proc` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `VERSION` | `version` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ARCH` | `arch` | string | ✅ |  |  |
+| `BUILD_NUMBER` | `build_number` | string | ✅ |  |  |
+| `INSTALLED_ON` | `installed_on` | string (date-time) | ✅ |  |  |
+| `NAME` | `name` | string | ✅ |  |  |
+| `OS_TYPE` | `os_type` | string | ✅ |  |  |
+| `PROC` | `proc` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `VERSION` | `version` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

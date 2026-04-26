@@ -7,21 +7,21 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `COM_HANDLERS` | `com_handlers` | array of string |  |  |
-| `COMMANDS` | `commands` | array of string | ✅ |  |
-| `ENABLED` | `enabled` | boolean | ✅ |  |
-| `LAST_RUN` | `last_run` | string (date-time) | ✅ |  |
-| `LOGON_TYPE` | `logon_type` | string | ✅ |  |
-| `NAME` | `name` | string | ✅ |  |
-| `NEXT_RUN` | `next_run` | string (date-time) | ✅ |  |
-| `PATH` | `path` | string | ✅ |  |
-| `PRIVILEGES` | `privileges` | array of string |  |  |
-| `RUN_LEVEL` | `run_level` | string | ✅ |  |
-| `TRIGGERS` | `triggers` | array of string |  |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER` | `user` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `COM_HANDLERS` | `com_handlers` | array of string |  |  |  |
+| `COMMANDS` | `commands` | array of string | ✅ |  |  |
+| `ENABLED` | `enabled` | boolean | ✅ |  |  |
+| `LAST_RUN` | `last_run` | string (date-time) | ✅ |  |  |
+| `LOGON_TYPE` | `logon_type` | string | ✅ |  |  |
+| `NAME` | `name` | string | ✅ |  |  |
+| `NEXT_RUN` | `next_run` | string (date-time) | ✅ |  |  |
+| `PATH` | `path` | string | ✅ |  |  |
+| `PRIVILEGES` | `privileges` | array of string |  |  |  |
+| `RUN_LEVEL` | `run_level` | string | ✅ |  |  |
+| `TRIGGERS` | `triggers` | array of string |  |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `USER` | `user` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

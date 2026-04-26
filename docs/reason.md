@@ -7,12 +7,12 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `MATCHED` | `matched` | array | null | ✅ |  |
-| `SIGNATURE` | `signature` | object | ✅ | nested: `SCORE`: integer; `REFERENCE`: array | null; `ORIGIN`: string; `KIND`: string; `DATE`: string; `TAGS`: array | null; `RULE_NAME`: string; `DESCRIPTION`: string; `AUTHOR`: string; `ID`: string; `FALSE_POSITIVES`: array | null |
-| `SUMMARY` | `summary` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `MATCHED` | `matched` | array | null | ✅ |  |  |
+| `SIGNATURE` | `signature` | object | ✅ | nested: `SCORE`: integer; `REFERENCE`: array | null; `ORIGIN`: string; `KIND`: string; `DATE`: string; `TAGS`: array | null; `RULE_NAME`: string; `DESCRIPTION`: string; `AUTHOR`: string; `ID`: string; `FALSE_POSITIVES`: array | null |  |
+| `SUMMARY` | `summary` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

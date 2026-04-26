@@ -7,20 +7,20 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACTIVE` | `active` | boolean | ✅ |  |
-| `BAD_PASSWORD_COUNT` | `bad_password_count` | integer | ✅ |  |
-| `COMMENT` | `comment` | string | ✅ |  |
-| `FULL_NAME` | `full_name` | string | ✅ |  |
-| `IS_ADMIN` | `is_admin` | boolean | ✅ |  |
-| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  |
-| `LOCKED` | `locked` | boolean | ✅ |  |
-| `NO_EXPIRE` | `no_expire` | boolean | ✅ |  |
-| `NUM_LOGONS` | `num_logons` | integer | ✅ |  |
-| `PASS_AGE` | `pass_age` | integer | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `USER` | `user` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACTIVE` | `active` | boolean | ✅ |  |  |
+| `BAD_PASSWORD_COUNT` | `bad_password_count` | integer | ✅ |  |  |
+| `COMMENT` | `comment` | string | ✅ |  |  |
+| `FULL_NAME` | `full_name` | string | ✅ |  |  |
+| `IS_ADMIN` | `is_admin` | boolean | ✅ |  |  |
+| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  |  |
+| `LOCKED` | `locked` | boolean | ✅ |  |  |
+| `NO_EXPIRE` | `no_expire` | boolean | ✅ |  |  |
+| `NUM_LOGONS` | `num_logons` | integer | ✅ |  |  |
+| `PASS_AGE` | `pass_age` | integer | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `USER` | `user` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

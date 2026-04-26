@@ -7,17 +7,17 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACCESS_FILES` | `access_files` | array | null | ✅ |  |
-| `CRONTAB` | `crontab` | string | ✅ |  |
-| `FULL_NAME` | `full_name` | string | ✅ |  |
-| `GID` | `gid` | string | ✅ |  |
-| `HOME` | `home` | string | ✅ |  |
-| `NAME` | `name` | string | ✅ |  |
-| `SHELL` | `shell` | string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `UID` | `uid` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACCESS_FILES` | `access_files` | array | null | ✅ |  |  |
+| `CRONTAB` | `crontab` | string | ✅ |  | ``, `/var/spool/cron/neo` |
+| `FULL_NAME` | `full_name` | string | ✅ |  | `root`, `neo`, `System User` |
+| `GID` | `gid` | string | ✅ |  | `0`, `1000`, `990` |
+| `HOME` | `home` | string | ✅ |  | `/root`, `/home/neo`, `/` |
+| `NAME` | `name` | string | ✅ |  | `root`, `neo`, `sssd` |
+| `SHELL` | `shell` | string | ✅ |  | `/bin/bash`, `/usr/sbin/nologin`, `/bin/false` |
+| `TYPE` | `type` | string | ✅ |  | `unix user` |
+| `UID` | `uid` | string | ✅ |  | `0`, `1000`, `996` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

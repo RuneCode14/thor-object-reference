@@ -7,12 +7,12 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `EVENT_TIME` | `event_time` | string (date-time) | ✅ |  |
-| `FILENAME` | `filename` | string | ✅ |  |
-| `REASONS` | `reasons` | array of string | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `EVENT_TIME` | `event_time` | string (date-time) | ✅ |  |  |
+| `FILENAME` | `filename` | string | ✅ |  |  |
+| `REASONS` | `reasons` | array of string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

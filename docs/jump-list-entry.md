@@ -7,19 +7,19 @@
 Field names are shown in **UPPERCASE** as used in Sigma rules.
 The lowercase JSON name is shown in parentheses for reference.
 
-| Sigma Field | JSON Name | Type | Required | Description |
-|-------------|-----------|------|----------|-------------|
-| `ACCESS_COUNT` | `access_count` | integer | ✅ |  |
-| `BIRTH_VOLUME_ID` | `birth_volume_id` | array of integer | ✅ |  |
-| `CHECKSUM` | `checksum` | integer | ✅ |  |
-| `ENTRY_ID` | `entry_id` | integer | ✅ |  |
-| `LAST_ACCESS` | `last_access` | string (date-time) | ✅ |  |
-| `NETBIOS_NAME` | `netbios_name` | string | ✅ |  |
-| `OBJECT_ID` | `object_id` | array of integer | ✅ |  |
-| `PATH` | `path` | string | ✅ |  |
-| `PINNED` | `pinned` | boolean | ✅ |  |
-| `TYPE` | `type` | string | ✅ |  |
-| `VOLUME_ID` | `volume_id` | array of integer | ✅ |  |
+| Sigma Field | JSON Name | Type | Required | Description | Example Values |
+|-------------|-----------|------|----------|-------------|----------------|
+| `ACCESS_COUNT` | `access_count` | integer | ✅ |  |  |
+| `BIRTH_VOLUME_ID` | `birth_volume_id` | array of integer | ✅ |  |  |
+| `CHECKSUM` | `checksum` | integer | ✅ |  |  |
+| `ENTRY_ID` | `entry_id` | integer | ✅ |  |  |
+| `LAST_ACCESS` | `last_access` | string (date-time) | ✅ |  |  |
+| `NETBIOS_NAME` | `netbios_name` | string | ✅ |  |  |
+| `OBJECT_ID` | `object_id` | array of integer | ✅ |  |  |
+| `PATH` | `path` | string | ✅ |  |  |
+| `PINNED` | `pinned` | boolean | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  |  |
+| `VOLUME_ID` | `volume_id` | array of integer | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 
