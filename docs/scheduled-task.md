@@ -10,18 +10,18 @@ The lowercase JSON name is shown in parentheses for reference.
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
 | `COM_HANDLERS` | `com_handlers` | array of string |  |  |  |
-| `COMMANDS` | `commands` | array of string | ✅ |  |  |
-| `ENABLED` | `enabled` | boolean | ✅ |  |  |
-| `LAST_RUN` | `last_run` | string (date-time) | ✅ |  |  |
+| `COMMANDS` | `commands` | array of string | ✅ |  | `C:\Windows\System32\svchost.exe -k netsv...`, `powershell -Command Update-Help`, `C:\Users\Public\update.exe` |
+| `ENABLED` | `enabled` | boolean | ✅ |  | `true`, `false` |
+| `LAST_RUN` | `last_run` | string (date-time) | ✅ |  | `2026-04-26T03:00:00Z`, `never` |
 | `LOGON_TYPE` | `logon_type` | string | ✅ |  |  |
-| `NAME` | `name` | string | ✅ |  |  |
-| `NEXT_RUN` | `next_run` | string (date-time) | ✅ |  |  |
+| `NAME` | `name` | string | ✅ |  | `\Microsoft\Windows\Defender\Windows Defe...`, `\MyApp\BackupTask`, `\Malware\Persistence` |
+| `NEXT_RUN` | `next_run` | string (date-time) | ✅ |  | `2026-04-27T03:00:00Z`, `never` |
 | `PATH` | `path` | string | ✅ |  |  |
 | `PRIVILEGES` | `privileges` | array of string |  |  |  |
-| `RUN_LEVEL` | `run_level` | string | ✅ |  |  |
+| `RUN_LEVEL` | `run_level` | string | ✅ |  | `highest`, `limited` |
 | `TRIGGERS` | `triggers` | array of string |  |  |  |
-| `TYPE` | `type` | string | ✅ |  |  |
-| `USER` | `user` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  | `scheduled task` |
+| `USER` | `user` | string | ✅ |  | `SYSTEM`, `neo`, `NT AUTHORITY\SYSTEM` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

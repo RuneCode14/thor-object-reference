@@ -11,7 +11,7 @@ The lowercase JSON name is shown in parentheses for reference.
 |-------------|-----------|------|----------|-------------|----------------|
 | `KEY` | `key` | string | ✅ |  |  |
 | `MODIFIED` | `modified` | string (date-time) | ✅ |  |  |
-| `TYPE` | `type` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  | `registry key` |
 | `VALUES` | `values` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)

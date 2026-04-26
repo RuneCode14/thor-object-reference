@@ -10,7 +10,7 @@ The lowercase JSON name is shown in parentheses for reference.
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
 | `ENTRY` | `entry` | object (string) | ✅ |  |  |
-| `TYPE` | `type` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  | `eventlog entry` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 

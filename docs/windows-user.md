@@ -12,14 +12,14 @@ The lowercase JSON name is shown in parentheses for reference.
 | `ACTIVE` | `active` | boolean | ✅ |  |  |
 | `BAD_PASSWORD_COUNT` | `bad_password_count` | integer | ✅ |  |  |
 | `COMMENT` | `comment` | string | ✅ |  |  |
-| `FULL_NAME` | `full_name` | string | ✅ |  |  |
+| `FULL_NAME` | `full_name` | string | ✅ |  | `Built-in account for administering the c...`, ``, `Florian Roth` |
 | `IS_ADMIN` | `is_admin` | boolean | ✅ |  |  |
-| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  |  |
+| `LAST_LOGON` | `last_logon` | string (date-time) | ✅ |  | `2026-04-26T10:30:00Z`, `never` |
 | `LOCKED` | `locked` | boolean | ✅ |  |  |
 | `NO_EXPIRE` | `no_expire` | boolean | ✅ |  |  |
 | `NUM_LOGONS` | `num_logons` | integer | ✅ |  |  |
 | `PASS_AGE` | `pass_age` | integer | ✅ |  |  |
-| `TYPE` | `type` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  | `windows user` |
 | `USER` | `user` | string | ✅ |  |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)

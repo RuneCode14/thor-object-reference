@@ -12,8 +12,8 @@ The lowercase JSON name is shown in parentheses for reference.
 | `KEY` | `key` | string | ✅ |  |  |
 | `MODIFIED` | `modified` | string (date-time) | ✅ |  |  |
 | `SIZE` | `size` | integer | ✅ |  |  |
-| `TYPE` | `type` | string | ✅ |  |  |
-| `VALUE` | `value` | string | ✅ |  |  |
+| `TYPE` | `type` | string | ✅ |  | `registry value` |
+| `VALUE` | `value` | string | ✅ |  | `%windir%\system32\SecurityHealthSystray....`, `C:\Users\neo\AppData\Local\Microsoft\One...`, `powershell -enc ...` |
 
 ### Nested Field Reference (Sigma Pipe Notation)
 
