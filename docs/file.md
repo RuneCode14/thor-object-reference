@@ -9,8 +9,8 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `BEACON_CONFIG` | `beacon_config` | object |  | nested: `BEACON_TYPE`: string; `C2`: string; `PORT`: string; `SPAWN_TO`: string; `INJECTION_PROCESS`: string; `PIPE_NAME`: string; `USER_AGENT`: string; `PROXY`: string; `FULL_CONFIG`: object; `CIPHER_PARAMETERS|XAF_ENCODED`: boolean; `CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR`: integer; `CIPHER_PARAMETERS|XOR_KEY`: integer; `CIPHER_PARAMETERS|BEACON_OFFSET`: integer; `CIPHER_PARAMETERS|BEACON_LENGTH`: integer; `CIPHER_PARAMETERS|BLOCK_START|HEX`: any; `CIPHER_PARAMETERS|BLOCK_START|ASCII`: any; `CIPHER_PARAMETERS|PAIRWISE_SWAPPED`: boolean |  |
-| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |  |
+| `BEACON_CONFIG` | `beacon_config` | object |  | nested: `BEACON_TYPE`: string; `C2`: string; `PORT`: string; `SPAWN_TO`: string; `INJECTION_PROCESS`: string; `PIPE_NAME`: string; `USER_AGENT`: string; `PROXY`: string; `FULL_CONFIG`: object; `CIPHER_PARAMETERS\|XAF_ENCODED`: boolean; `CIPHER_PARAMETERS\|XAF_ENCODING_ANCHOR`: integer; `CIPHER_PARAMETERS\|XOR_KEY`: integer; `CIPHER_PARAMETERS\|BEACON_OFFSET`: integer; `CIPHER_PARAMETERS\|BEACON_LENGTH`: integer; `CIPHER_PARAMETERS\|BLOCK_START\|HEX`: any; `CIPHER_PARAMETERS\|BLOCK_START\|ASCII`: any; `CIPHER_PARAMETERS\|PAIRWISE_SWAPPED`: boolean |  |
+| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array \| null; `LENGTH`: integer |  |
 | `EXISTS` | `exists` | string | ✅ |  | `yes`, `no` |
 | `EXTENSION` | `extension` | string | ✅ |  | ``, `sh`, `exe` |
 | `FILE_TIMES` | `file_times` | object |  | nested: `MODIFIED`: string (date-time); `ACCESSED`: string (date-time); `CHANGED`: string (date-time); `CREATED`: string (date-time); `USN_CHANGE_TIME`: string (date-time); `MFT_FILE_NAME_MODIFIED`: string (date-time); `MFT_FILE_NAME_ACCESSED`: string (date-time); `MFT_FILE_NAME_CHANGED`: string (date-time); `MFT_FILE_NAME_CREATED`: string (date-time) |  |
@@ -19,14 +19,14 @@ The lowercase JSON name is shown in parentheses for reference.
 | `LINK_INFO` | `link_info` | object |  | nested: `TARGET`: string; `ARGUMENTS`: string; `COMMAND_LINE`: string; `CREATED`: string (date-time); `MODIFIED`: string (date-time); `ACCESSED`: string (date-time) |  |
 | `MAGIC_HEADER` | `magic_header` | string |  |  | `ASCII text`, `ELF`, `PE32` |
 | `PATH` | `path` | string | ✅ |  | `/etc/passwd`, `/etc/shadow`, `/tmp/malware.sh` |
-| `PE_INFO` | `pe_info` | object |  | nested: `COMPANY`: string; `DESCRIPTION`: string; `LEGAL_COPYRIGHT`: string; `PRODUCT`: string; `ORIGINAL_NAME`: string; `INTERNAL_NAME`: string; `SIGNED`: boolean; `SIGNATURES`: array | null; `IMPHASH`: string; `RICH_HEADER_HASH`: string; `CREATION_TIMESTAMP`: string (date-time) |  |
+| `PE_INFO` | `pe_info` | object |  | nested: `COMPANY`: string; `DESCRIPTION`: string; `LEGAL_COPYRIGHT`: string; `PRODUCT`: string; `ORIGINAL_NAME`: string; `INTERNAL_NAME`: string; `SIGNED`: boolean; `SIGNATURES`: array \| null; `IMPHASH`: string; `RICH_HEADER_HASH`: string; `CREATION_TIMESTAMP`: string (date-time) |  |
 | `PERMISSIONS` | `permissions` | any |  |  |  |
 | `RECYCLE_BIN_INFO` | `recycle_bin_info` | object |  | nested: `ORIGINAL_FILE_NAME`: string; `DELETION_TIME`: string (date-time); `ORIGINAL_FILE_SIZE`: integer |  |
 | `SIZE` | `size` | integer |  |  | `1234`, `0`, `1048576` |
 | `TARGET` | `target` | string |  |  |  |
 | `TYPE` | `type` | string | ✅ |  | `file` |
 | `UNPACK_SOURCE` | `unpack_source` | array | null |  |  |  |
-| `VIRUSTOTAL` | `virustotal` | object |  | nested: `RESULT`: string; `POSITIVE_VERDICTS`: integer; `TOTAL_VERDICTS`: integer; `HISTORY|NAMES`: any | null; `HISTORY|TAGS`: any | null; `HISTORY|SUBMISSIONS`: integer; `HISTORY|FIRST_SUBMISSION`: string (date-time); `HISTORY|LAST_SUBMISSION`: string (date-time) |  |
+| `VIRUSTOTAL` | `virustotal` | object |  | nested: `RESULT`: string; `POSITIVE_VERDICTS`: integer; `TOTAL_VERDICTS`: integer; `HISTORY\|NAMES`: any \| null; `HISTORY\|TAGS`: any \| null; `HISTORY\|SUBMISSIONS`: integer; `HISTORY\|FIRST_SUBMISSION`: string (date-time); `HISTORY\|LAST_SUBMISSION`: string (date-time) |  |
 | `WER_INFO` | `wer_info` | object |  | nested: `TYPE`: string; `EVENT_NAME`: string; `EVENT_TYPE`: string; `DATE`: string (date-time); `APP_PATH`: string; `APP_NAME`: string; `EXE`: string; `ERROR`: string; `FAULT_IN_MODULE`: string |  |
 
 ### Nested Field Reference (Sigma Pipe Notation)

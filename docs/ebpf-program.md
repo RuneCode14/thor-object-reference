@@ -10,7 +10,7 @@ The lowercase JSON name is shown in parentheses for reference.
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
 | `ATTACH_TARGET` | `attach_target` | object | ✅ | nested: `PATH`: string; `PID`: integer; `SYMBOLS`: array of string; `INTERFACE`: string; `OBJECT_ID`: integer; `PROTOCOL`: string; `HOOK`: string; `PRIORITY`: integer |  |
-| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array | null; `LENGTH`: integer |  |
+| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array \| null; `LENGTH`: integer |  |
 | `FUNCTIONS` | `functions` | array of string | ✅ |  |  |
 | `LINK_TYPE` | `link_type` | string | ✅ |  |  |
 | `LOAD_TIME` | `load_time` | string (date-time) | ✅ |  |  |

@@ -545,7 +545,6 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         ftype = get_type_label(field_schema, defs)
         req = "✅" if field_name in required else ""
         desc = get_description(field_schema)
-        desc = desc.replace("|", "\\|")
 
         # Nested fields
         nested = get_nested_fields(field_schema, defs)
@@ -555,6 +554,9 @@ def generate_markdown(type_name: str, schema: dict) -> str:
                 desc += f" — nested: {nested_desc}"
             else:
                 desc = f"nested: {nested_desc}"
+        
+        # Escape pipe chars for markdown table
+        desc = desc.replace("|", "\\|")
 
         sigma_name = sigma_field_name(field_name)
         
