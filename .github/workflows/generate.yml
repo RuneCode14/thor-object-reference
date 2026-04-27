@@ -4,12 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       thor_binary:
-        description: 'URL to THOR binary (optional, auto-downloads latest dev)'
+        description: 'URL to THOR Linux binary (requires license, optional)'
         required: false
         default: ''
-  schedule:
-    # Weekly on Mondays at 06:00 UTC
-    - cron: '0 6 * * 1'
 
 permissions:
   contents: write
@@ -29,37 +26,44 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      - name: Download THOR binary
+      - name: Generate object types JSON (via THOR binary if provided)
         run: |
           if [ -n "${{ github.event.inputs.thor_binary }}" ]; then
+            echo "Downloading THOR binary from provided URL..."
             curl -L -o thor-linux-64 "${{ github.event.inputs.thor_binary }}"
+            chmod +x thor-linux-64
+            ./thor-linux-64 --describe-object-type all > thor-object-types.json
+            THOR_VERSION=$(./thor-linux-64 --version 2>/dev/null | head -1 || echo "unknown")
+            echo "THOR_VERSION=${THOR_VERSION}" >> $GITHUB_ENV
           else
-            # Download latest dev techpreview via nextron update API
-            # (requires license; for public builds, adjust accordingly)
-            echo "Downloading latest THOR dev..."
-            # This is a placeholder - replace with actual download URL or CI token
-            curl -L -o thor-linux-64 "https://update1.nextron-systems.com/get/packages/thor10/thor-linux-64"
+            echo "No THOR binary provided. Using existing thor-object-types.json from repo."
+            if [ ! -f thor-object-types.json ]; then
+              echo "Error: thor-object-types.json not found in repository."
+              echo "Please provide a THOR binary URL or commit the JSON file first."
+              exit 1
+            fi
+            echo "THOR_VERSION=existing" >> $GITHUB_ENV
           fi
-          chmod +x thor-linux-64
-
-      - name: Generate object types JSON
-        run: |
-          ./thor-linux-64 --describe-object-type all > thor-object-types.json
 
       - name: Generate reference docs
         run: |
-          python3 generate_reference.py thor-object-types.json --output-dir docs --format both
+          python3 generate_reference_v3.py thor-object-types.json --output-dir docs --format both
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add docs/
-          git add thor-object-types.json
-          THOR_VERSION=$(./thor-linux-64 --version | head -1)
+          if [ -f thor-object-types.json.new ]; then
+            git add thor-object-types.json
+          fi
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: regenerate object reference for ${THOR_VERSION}"
+            if [ "${THOR_VERSION}" = "existing" ]; then
+              git commit -m "chore: regenerate object reference from existing schema"
+            else
+              git commit -m "chore: regenerate object reference for ${THOR_VERSION}"
+            fi
             git push
           fi
