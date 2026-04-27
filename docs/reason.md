@@ -10,29 +10,27 @@ The lowercase JSON name is shown in parentheses for reference.
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
 | `MATCHED` | `matched` | array | null | ✅ |  |  |
-| `SIGNATURE` | `signature` | object | ✅ | nested: `SCORE`: integer; `REFERENCE`: array \| null; `ORIGIN`: string; `KIND`: string; `DATE`: string; `TAGS`: array \| null; `RULE_NAME`: string; `DESCRIPTION`: string; `AUTHOR`: string; `ID`: string; `FALSE_POSITIVES`: array \| null |  |
+| `SIGNATURE` | `signature` | object | ✅ | Object, see [SIGNATURE Nested Fields](#signature-nested-fields) below |  |
 | `SUMMARY` | `summary` | string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### SIGNATURE Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `signature` (type: object):
 
-**SIGNATURE** (`signature` — object):
-
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `SCORE` | `score` | integer |
-| `REFERENCE` | `reference` | array | null |
-| `ORIGIN` | `origin` | string |
-| `KIND` | `kind` | string |
-| `DATE` | `date` | string |
-| `TAGS` | `tags` | array | null |
-| `RULE_NAME` | `rule_name` | string |
-| `DESCRIPTION` | `description` | string |
-| `AUTHOR` | `author` | string |
-| `ID` | `id` | string |
-| `FALSE_POSITIVES` | `false_positives` | array | null |
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `SIGNATURE.SCORE` | `score` | integer | |  |
+| `SIGNATURE.REFERENCE` | `reference` | array | null | |  |
+| `SIGNATURE.ORIGIN` | `origin` | string | |  |
+| `SIGNATURE.KIND` | `kind` | string | |  |
+| `SIGNATURE.DATE` | `date` | string | |  |
+| `SIGNATURE.TAGS` | `tags` | array | null | |  |
+| `SIGNATURE.RULE_NAME` | `rule_name` | string | |  |
+| `SIGNATURE.DESCRIPTION` | `description` | string | |  |
+| `SIGNATURE.AUTHOR` | `author` | string | |  |
+| `SIGNATURE.ID` | `id` | string | |  |
+| `SIGNATURE.FALSE_POSITIVES` | `false_positives` | array | null | |  |
 
 ## Sigma Rule Template
 

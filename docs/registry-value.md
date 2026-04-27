@@ -15,10 +15,6 @@ The lowercase JSON name is shown in parentheses for reference.
 | `TYPE` | `type` | string | ✅ |  | `registry value` |
 | `VALUE` | `value` | string | ✅ |  | `%windir%\system32\SecurityHealthSystray....`, `C:\Users\neo\AppData\Local\Microsoft\One...`, `powershell -enc ...` |
 
-### Nested Field Reference (Sigma Pipe Notation)
-
-Complex types like `File` have nested fields accessed with `|` in Sigma:
-
 _No nested fields in this type._
 
 ## Sigma Rule Template

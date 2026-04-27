@@ -17,7 +17,7 @@ The lowercase JSON name is shown in parentheses for reference.
 | `FILE_SIZE_LIMIT` | `file_size_limit` | integer | ✅ |  |  |
 | `FP_FILTERS` | `fp_filters` | array of string | ✅ |  |  |
 | `FREE_MEMORY_LIMIT` | `free_memory_limit` | integer | ✅ |  |  |
-| `LICENSE` | `license` | object | ✅ | nested: `OWNER`: string; `LICENSE_TYPE`: string; `STARTS`: string; `EXPIRES`: string; `SCANNER`: string; `HASH`: string |  |
+| `LICENSE` | `license` | object | ✅ | Object, see [LICENSE Nested Fields](#license-nested-fields) below |  |
 | `OUTPUTS` | `outputs` | array of object | ✅ |  |  |
 | `SCAN_ID` | `scan_id` | string | ✅ |  |  |
 | `THOR_DIR` | `thor_dir` | string | ✅ |  |  |
@@ -25,31 +25,32 @@ The lowercase JSON name is shown in parentheses for reference.
 | `TIMEOUT` | `timeout` | integer | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 | `USER` | `user` | string | ✅ |  |  |
-| `VERSIONS` | `versions` | object | ✅ | nested: `THOR`: string; `BUILD`: string; `SIGNATURES`: string; `SIGMA_RULES`: string |  |
+| `VERSIONS` | `versions` | object | ✅ | Object, see [VERSIONS Nested Fields](#versions-nested-fields) below |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### LICENSE Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `license` (type: object):
 
-**LICENSE** (`license` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `LICENSE.OWNER` | `owner` | string | |  |
+| `LICENSE.LICENSE_TYPE` | `license_type` | string | |  |
+| `LICENSE.STARTS` | `starts` | string | |  |
+| `LICENSE.EXPIRES` | `expires` | string | |  |
+| `LICENSE.SCANNER` | `scanner` | string | |  |
+| `LICENSE.HASH` | `hash` | string | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `OWNER` | `owner` | string |
-| `LICENSE_TYPE` | `license_type` | string |
-| `STARTS` | `starts` | string |
-| `EXPIRES` | `expires` | string |
-| `SCANNER` | `scanner` | string |
-| `HASH` | `hash` | string |
 
-**VERSIONS** (`versions` — object):
+### VERSIONS Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `THOR` | `thor` | string |
-| `BUILD` | `build` | string |
-| `SIGNATURES` | `signatures` | string |
-| `SIGMA_RULES` | `sigma_rules` | string |
+Nested fields within `versions` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `VERSIONS.THOR` | `thor` | string | |  |
+| `VERSIONS.BUILD` | `build` | string | |  |
+| `VERSIONS.SIGNATURES` | `signatures` | string | |  |
+| `VERSIONS.SIGMA_RULES` | `sigma_rules` | string | |  |
 
 ## Sigma Rule Template
 

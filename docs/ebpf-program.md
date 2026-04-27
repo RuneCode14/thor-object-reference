@@ -9,8 +9,8 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `ATTACH_TARGET` | `attach_target` | object | ✅ | nested: `PATH`: string; `PID`: integer; `SYMBOLS`: array of string; `INTERFACE`: string; `OBJECT_ID`: integer; `PROTOCOL`: string; `HOOK`: string; `PRIORITY`: integer |  |
-| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array \| null; `LENGTH`: integer |  |
+| `ATTACH_TARGET` | `attach_target` | object | ✅ | Object, see [ATTACH_TARGET Nested Fields](#attach_target-nested-fields) below |  |
+| `CONTENT` | `content` | object |  | Object, see [CONTENT Nested Fields](#content-nested-fields) below |  |
 | `FUNCTIONS` | `functions` | array of string | ✅ |  |  |
 | `LINK_TYPE` | `link_type` | string | ✅ |  |  |
 | `LOAD_TIME` | `load_time` | string (date-time) | ✅ |  |  |
@@ -23,30 +23,31 @@ The lowercase JSON name is shown in parentheses for reference.
 | `TYPE` | `type` | string | ✅ |  |  |
 | `USER` | `user` | string | ✅ |  |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### ATTACH_TARGET Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `attach_target` (type: object):
 
-**ATTACH_TARGET** (`attach_target` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `ATTACH_TARGET.PATH` | `path` | string | |  |
+| `ATTACH_TARGET.PID` | `pid` | integer | |  |
+| `ATTACH_TARGET.SYMBOLS` | `symbols` | array of string | |  |
+| `ATTACH_TARGET.INTERFACE` | `interface` | string | |  |
+| `ATTACH_TARGET.OBJECT_ID` | `object_id` | integer | |  |
+| `ATTACH_TARGET.PROTOCOL` | `protocol` | string | |  |
+| `ATTACH_TARGET.HOOK` | `hook` | string | |  |
+| `ATTACH_TARGET.PRIORITY` | `priority` | integer | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `PATH` | `path` | string |
-| `PID` | `pid` | integer |
-| `SYMBOLS` | `symbols` | array of string |
-| `INTERFACE` | `interface` | string |
-| `OBJECT_ID` | `object_id` | integer |
-| `PROTOCOL` | `protocol` | string |
-| `HOOK` | `hook` | string |
-| `PRIORITY` | `priority` | integer |
 
-**CONTENT** (`content` — object):
+### CONTENT Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `TYPE` | `type` | string |
-| `ELEMENTS` | `elements` | array | null |
-| `LENGTH` | `length` | integer |
+Nested fields within `content` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `CONTENT.TYPE` | `type` | string | |  |
+| `CONTENT.ELEMENTS` | `elements` | array | null | |  |
+| `CONTENT.LENGTH` | `length` | integer | |  |
 
 ## Sigma Rule Template
 

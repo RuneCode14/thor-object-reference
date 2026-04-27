@@ -9,150 +9,175 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `BEACON_CONFIG` | `beacon_config` | object |  | nested: `BEACON_TYPE`: string; `C2`: string; `PORT`: string; `SPAWN_TO`: string; `INJECTION_PROCESS`: string; `PIPE_NAME`: string; `USER_AGENT`: string; `PROXY`: string; `FULL_CONFIG`: object; `CIPHER_PARAMETERS\|XAF_ENCODED`: boolean; `CIPHER_PARAMETERS\|XAF_ENCODING_ANCHOR`: integer; `CIPHER_PARAMETERS\|XOR_KEY`: integer; `CIPHER_PARAMETERS\|BEACON_OFFSET`: integer; `CIPHER_PARAMETERS\|BEACON_LENGTH`: integer; `CIPHER_PARAMETERS\|BLOCK_START\|HEX`: any; `CIPHER_PARAMETERS\|BLOCK_START\|ASCII`: any; `CIPHER_PARAMETERS\|PAIRWISE_SWAPPED`: boolean |  |
-| `CONTENT` | `content` | object |  | nested: `TYPE`: string; `ELEMENTS`: array \| null; `LENGTH`: integer |  |
+| `BEACON_CONFIG` | `beacon_config` | object |  | Object, see [BEACON_CONFIG Nested Fields](#beacon_config-nested-fields) below |  |
+| `CONTENT` | `content` | object |  | Object, see [CONTENT Nested Fields](#content-nested-fields) below |  |
 | `EXISTS` | `exists` | string | ✅ |  | `yes`, `no` |
 | `EXTENSION` | `extension` | string | ✅ |  | ``, `sh`, `exe` |
-| `FILE_TIMES` | `file_times` | object |  | nested: `MODIFIED`: string (date-time); `ACCESSED`: string (date-time); `CHANGED`: string (date-time); `CREATED`: string (date-time); `USN_CHANGE_TIME`: string (date-time); `MFT_FILE_NAME_MODIFIED`: string (date-time); `MFT_FILE_NAME_ACCESSED`: string (date-time); `MFT_FILE_NAME_CHANGED`: string (date-time); `MFT_FILE_NAME_CREATED`: string (date-time) |  |
-| `FIRST_BYTES` | `first_bytes` | object |  | nested: `HEX`: string; `ASCII`: string |  |
-| `HASHES` | `hashes` | object |  | nested: `MD5`: string; `SHA1`: string; `SHA256`: string |  |
-| `LINK_INFO` | `link_info` | object |  | nested: `TARGET`: string; `ARGUMENTS`: string; `COMMAND_LINE`: string; `CREATED`: string (date-time); `MODIFIED`: string (date-time); `ACCESSED`: string (date-time) |  |
+| `FILE_TIMES` | `file_times` | object |  | Object, see [FILE_TIMES Nested Fields](#file_times-nested-fields) below |  |
+| `FIRST_BYTES` | `first_bytes` | object |  | Object, see [FIRST_BYTES Nested Fields](#first_bytes-nested-fields) below |  |
+| `HASHES` | `hashes` | object |  | Object, see [HASHES Nested Fields](#hashes-nested-fields) below |  |
+| `LINK_INFO` | `link_info` | object |  | Object, see [LINK_INFO Nested Fields](#link_info-nested-fields) below |  |
 | `MAGIC_HEADER` | `magic_header` | string |  |  | `ASCII text`, `ELF`, `PE32` |
 | `PATH` | `path` | string | ✅ |  | `/etc/passwd`, `/etc/shadow`, `/tmp/malware.sh` |
-| `PE_INFO` | `pe_info` | object |  | nested: `COMPANY`: string; `DESCRIPTION`: string; `LEGAL_COPYRIGHT`: string; `PRODUCT`: string; `ORIGINAL_NAME`: string; `INTERNAL_NAME`: string; `SIGNED`: boolean; `SIGNATURES`: array \| null; `IMPHASH`: string; `RICH_HEADER_HASH`: string; `CREATION_TIMESTAMP`: string (date-time) |  |
+| `PE_INFO` | `pe_info` | object |  | Object, see [PE_INFO Nested Fields](#pe_info-nested-fields) below |  |
 | `PERMISSIONS` | `permissions` | any |  |  |  |
-| `RECYCLE_BIN_INFO` | `recycle_bin_info` | object |  | nested: `ORIGINAL_FILE_NAME`: string; `DELETION_TIME`: string (date-time); `ORIGINAL_FILE_SIZE`: integer |  |
+| `RECYCLE_BIN_INFO` | `recycle_bin_info` | object |  | Object, see [RECYCLE_BIN_INFO Nested Fields](#recycle_bin_info-nested-fields) below |  |
 | `SIZE` | `size` | integer |  |  | `1234`, `0`, `1048576` |
 | `TARGET` | `target` | string |  |  |  |
 | `TYPE` | `type` | string | ✅ |  | `file` |
 | `UNPACK_SOURCE` | `unpack_source` | array | null |  |  |  |
-| `VIRUSTOTAL` | `virustotal` | object |  | nested: `RESULT`: string; `POSITIVE_VERDICTS`: integer; `TOTAL_VERDICTS`: integer; `HISTORY\|NAMES`: any \| null; `HISTORY\|TAGS`: any \| null; `HISTORY\|SUBMISSIONS`: integer; `HISTORY\|FIRST_SUBMISSION`: string (date-time); `HISTORY\|LAST_SUBMISSION`: string (date-time) |  |
-| `WER_INFO` | `wer_info` | object |  | nested: `TYPE`: string; `EVENT_NAME`: string; `EVENT_TYPE`: string; `DATE`: string (date-time); `APP_PATH`: string; `APP_NAME`: string; `EXE`: string; `ERROR`: string; `FAULT_IN_MODULE`: string |  |
+| `VIRUSTOTAL` | `virustotal` | object |  | Object, see [VIRUSTOTAL Nested Fields](#virustotal-nested-fields) below |  |
+| `WER_INFO` | `wer_info` | object |  | Object, see [WER_INFO Nested Fields](#wer_info-nested-fields) below |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### BEACON_CONFIG Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `beacon_config` (type: object):
 
-**BEACON_CONFIG** (`beacon_config` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `BEACON_CONFIG.BEACON_TYPE` | `beacon_type` | string | |  |
+| `BEACON_CONFIG.C2` | `c2` | string | |  |
+| `BEACON_CONFIG.PORT` | `port` | string | |  |
+| `BEACON_CONFIG.SPAWN_TO` | `spawn_to` | string | |  |
+| `BEACON_CONFIG.INJECTION_PROCESS` | `injection_process` | string | |  |
+| `BEACON_CONFIG.PIPE_NAME` | `pipe_name` | string | |  |
+| `BEACON_CONFIG.USER_AGENT` | `user_agent` | string | |  |
+| `BEACON_CONFIG.PROXY` | `proxy` | string | |  |
+| `BEACON_CONFIG.FULL_CONFIG` | `full_config` | object | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.XAF_ENCODED` | `cipher_parameters.xaf_encoded` | boolean | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.XAF_ENCODING_ANCHOR` | `cipher_parameters.xaf_encoding_anchor` | integer | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.XOR_KEY` | `cipher_parameters.xor_key` | integer | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.BEACON_OFFSET` | `cipher_parameters.beacon_offset` | integer | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.BEACON_LENGTH` | `cipher_parameters.beacon_length` | integer | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.BLOCK_START.HEX` | `cipher_parameters.block_start.hex` | any | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.BLOCK_START.ASCII` | `cipher_parameters.block_start.ascii` | any | |  |
+| `BEACON_CONFIG.CIPHER_PARAMETERS.PAIRWISE_SWAPPED` | `cipher_parameters.pairwise_swapped` | boolean | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `BEACON_TYPE` | `beacon_type` | string |
-| `C2` | `c2` | string |
-| `PORT` | `port` | string |
-| `SPAWN_TO` | `spawn_to` | string |
-| `INJECTION_PROCESS` | `injection_process` | string |
-| `PIPE_NAME` | `pipe_name` | string |
-| `USER_AGENT` | `user_agent` | string |
-| `PROXY` | `proxy` | string |
-| `FULL_CONFIG` | `full_config` | object |
-| `CIPHER_PARAMETERS|XAF_ENCODED` | `cipher_parameters.xaf_encoded` | boolean |
-| `CIPHER_PARAMETERS|XAF_ENCODING_ANCHOR` | `cipher_parameters.xaf_encoding_anchor` | integer |
-| `CIPHER_PARAMETERS|XOR_KEY` | `cipher_parameters.xor_key` | integer |
-| `CIPHER_PARAMETERS|BEACON_OFFSET` | `cipher_parameters.beacon_offset` | integer |
-| `CIPHER_PARAMETERS|BEACON_LENGTH` | `cipher_parameters.beacon_length` | integer |
-| `CIPHER_PARAMETERS|BLOCK_START|HEX` | `cipher_parameters.block_start.hex` | any |
-| `CIPHER_PARAMETERS|BLOCK_START|ASCII` | `cipher_parameters.block_start.ascii` | any |
-| `CIPHER_PARAMETERS|PAIRWISE_SWAPPED` | `cipher_parameters.pairwise_swapped` | boolean |
 
-**CONTENT** (`content` — object):
+### CONTENT Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `TYPE` | `type` | string |
-| `ELEMENTS` | `elements` | array | null |
-| `LENGTH` | `length` | integer |
+Nested fields within `content` (type: object):
 
-**FILE_TIMES** (`file_times` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `CONTENT.TYPE` | `type` | string | | `file` |
+| `CONTENT.ELEMENTS` | `elements` | array | null | |  |
+| `CONTENT.LENGTH` | `length` | integer | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `MODIFIED` | `modified` | string (date-time) |
-| `ACCESSED` | `accessed` | string (date-time) |
-| `CHANGED` | `changed` | string (date-time) |
-| `CREATED` | `created` | string (date-time) |
-| `USN_CHANGE_TIME` | `usn_change_time` | string (date-time) |
-| `MFT_FILE_NAME_MODIFIED` | `mft_file_name_modified` | string (date-time) |
-| `MFT_FILE_NAME_ACCESSED` | `mft_file_name_accessed` | string (date-time) |
-| `MFT_FILE_NAME_CHANGED` | `mft_file_name_changed` | string (date-time) |
-| `MFT_FILE_NAME_CREATED` | `mft_file_name_created` | string (date-time) |
 
-**FIRST_BYTES** (`first_bytes` — object):
+### FILE_TIMES Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `HEX` | `hex` | string |
-| `ASCII` | `ascii` | string |
+Nested fields within `file_times` (type: object):
 
-**HASHES** (`hashes` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `FILE_TIMES.MODIFIED` | `modified` | string (date-time) | |  |
+| `FILE_TIMES.ACCESSED` | `accessed` | string (date-time) | |  |
+| `FILE_TIMES.CHANGED` | `changed` | string (date-time) | |  |
+| `FILE_TIMES.CREATED` | `created` | string (date-time) | |  |
+| `FILE_TIMES.USN_CHANGE_TIME` | `usn_change_time` | string (date-time) | |  |
+| `FILE_TIMES.MFT_FILE_NAME_MODIFIED` | `mft_file_name_modified` | string (date-time) | |  |
+| `FILE_TIMES.MFT_FILE_NAME_ACCESSED` | `mft_file_name_accessed` | string (date-time) | |  |
+| `FILE_TIMES.MFT_FILE_NAME_CHANGED` | `mft_file_name_changed` | string (date-time) | |  |
+| `FILE_TIMES.MFT_FILE_NAME_CREATED` | `mft_file_name_created` | string (date-time) | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `MD5` | `md5` | string |
-| `SHA1` | `sha1` | string |
-| `SHA256` | `sha256` | string |
 
-**LINK_INFO** (`link_info` — object):
+### FIRST_BYTES Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `TARGET` | `target` | string |
-| `ARGUMENTS` | `arguments` | string |
-| `COMMAND_LINE` | `command_line` | string |
-| `CREATED` | `created` | string (date-time) |
-| `MODIFIED` | `modified` | string (date-time) |
-| `ACCESSED` | `accessed` | string (date-time) |
+Nested fields within `first_bytes` (type: object):
 
-**PE_INFO** (`pe_info` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `FIRST_BYTES.HEX` | `hex` | string | |  |
+| `FIRST_BYTES.ASCII` | `ascii` | string | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `COMPANY` | `company` | string |
-| `DESCRIPTION` | `description` | string |
-| `LEGAL_COPYRIGHT` | `legal_copyright` | string |
-| `PRODUCT` | `product` | string |
-| `ORIGINAL_NAME` | `original_name` | string |
-| `INTERNAL_NAME` | `internal_name` | string |
-| `SIGNED` | `signed` | boolean |
-| `SIGNATURES` | `signatures` | array | null |
-| `IMPHASH` | `imphash` | string |
-| `RICH_HEADER_HASH` | `rich_header_hash` | string |
-| `CREATION_TIMESTAMP` | `creation_timestamp` | string (date-time) |
 
-**RECYCLE_BIN_INFO** (`recycle_bin_info` — object):
+### HASHES Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `ORIGINAL_FILE_NAME` | `original_file_name` | string |
-| `DELETION_TIME` | `deletion_time` | string (date-time) |
-| `ORIGINAL_FILE_SIZE` | `original_file_size` | integer |
+Nested fields within `hashes` (type: object):
 
-**VIRUSTOTAL** (`virustotal` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `HASHES.MD5` | `md5` | string | |  |
+| `HASHES.SHA1` | `sha1` | string | |  |
+| `HASHES.SHA256` | `sha256` | string | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `RESULT` | `result` | string |
-| `POSITIVE_VERDICTS` | `positive_verdicts` | integer |
-| `TOTAL_VERDICTS` | `total_verdicts` | integer |
-| `HISTORY|NAMES` | `history.names` | any | null |
-| `HISTORY|TAGS` | `history.tags` | any | null |
-| `HISTORY|SUBMISSIONS` | `history.submissions` | integer |
-| `HISTORY|FIRST_SUBMISSION` | `history.first_submission` | string (date-time) |
-| `HISTORY|LAST_SUBMISSION` | `history.last_submission` | string (date-time) |
 
-**WER_INFO** (`wer_info` — object):
+### LINK_INFO Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `TYPE` | `type` | string |
-| `EVENT_NAME` | `event_name` | string |
-| `EVENT_TYPE` | `event_type` | string |
-| `DATE` | `date` | string (date-time) |
-| `APP_PATH` | `app_path` | string |
-| `APP_NAME` | `app_name` | string |
-| `EXE` | `exe` | string |
-| `ERROR` | `error` | string |
-| `FAULT_IN_MODULE` | `fault_in_module` | string |
+Nested fields within `link_info` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `LINK_INFO.TARGET` | `target` | string | |  |
+| `LINK_INFO.ARGUMENTS` | `arguments` | string | |  |
+| `LINK_INFO.COMMAND_LINE` | `command_line` | string | |  |
+| `LINK_INFO.CREATED` | `created` | string (date-time) | |  |
+| `LINK_INFO.MODIFIED` | `modified` | string (date-time) | |  |
+| `LINK_INFO.ACCESSED` | `accessed` | string (date-time) | |  |
+
+
+### PE_INFO Nested Fields
+
+Nested fields within `pe_info` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `PE_INFO.COMPANY` | `company` | string | |  |
+| `PE_INFO.DESCRIPTION` | `description` | string | |  |
+| `PE_INFO.LEGAL_COPYRIGHT` | `legal_copyright` | string | |  |
+| `PE_INFO.PRODUCT` | `product` | string | |  |
+| `PE_INFO.ORIGINAL_NAME` | `original_name` | string | |  |
+| `PE_INFO.INTERNAL_NAME` | `internal_name` | string | |  |
+| `PE_INFO.SIGNED` | `signed` | boolean | |  |
+| `PE_INFO.SIGNATURES` | `signatures` | array | null | |  |
+| `PE_INFO.IMPHASH` | `imphash` | string | |  |
+| `PE_INFO.RICH_HEADER_HASH` | `rich_header_hash` | string | |  |
+| `PE_INFO.CREATION_TIMESTAMP` | `creation_timestamp` | string (date-time) | |  |
+
+
+### RECYCLE_BIN_INFO Nested Fields
+
+Nested fields within `recycle_bin_info` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `RECYCLE_BIN_INFO.ORIGINAL_FILE_NAME` | `original_file_name` | string | |  |
+| `RECYCLE_BIN_INFO.DELETION_TIME` | `deletion_time` | string (date-time) | |  |
+| `RECYCLE_BIN_INFO.ORIGINAL_FILE_SIZE` | `original_file_size` | integer | |  |
+
+
+### VIRUSTOTAL Nested Fields
+
+Nested fields within `virustotal` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `VIRUSTOTAL.RESULT` | `result` | string | |  |
+| `VIRUSTOTAL.POSITIVE_VERDICTS` | `positive_verdicts` | integer | |  |
+| `VIRUSTOTAL.TOTAL_VERDICTS` | `total_verdicts` | integer | |  |
+| `VIRUSTOTAL.HISTORY.NAMES` | `history.names` | any | null | |  |
+| `VIRUSTOTAL.HISTORY.TAGS` | `history.tags` | any | null | |  |
+| `VIRUSTOTAL.HISTORY.SUBMISSIONS` | `history.submissions` | integer | |  |
+| `VIRUSTOTAL.HISTORY.FIRST_SUBMISSION` | `history.first_submission` | string (date-time) | |  |
+| `VIRUSTOTAL.HISTORY.LAST_SUBMISSION` | `history.last_submission` | string (date-time) | |  |
+
+
+### WER_INFO Nested Fields
+
+Nested fields within `wer_info` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `WER_INFO.TYPE` | `type` | string | | `file` |
+| `WER_INFO.EVENT_NAME` | `event_name` | string | |  |
+| `WER_INFO.EVENT_TYPE` | `event_type` | string | |  |
+| `WER_INFO.DATE` | `date` | string (date-time) | |  |
+| `WER_INFO.APP_PATH` | `app_path` | string | |  |
+| `WER_INFO.APP_NAME` | `app_name` | string | |  |
+| `WER_INFO.EXE` | `exe` | string | |  |
+| `WER_INFO.ERROR` | `error` | string | |  |
+| `WER_INFO.FAULT_IN_MODULE` | `fault_in_module` | string | |  |
 
 ## Sigma Rule Template
 

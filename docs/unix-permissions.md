@@ -10,27 +10,25 @@ The lowercase JSON name is shown in parentheses for reference.
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
 | `GROUP` | `group` | string | ✅ |  |  |
-| `MASK` | `mask` | object | ✅ | nested: `USER\|READABLE`: boolean; `USER\|WRITABLE`: boolean; `USER\|EXECUTABLE`: boolean; `GROUP\|READABLE`: boolean; `GROUP\|WRITABLE`: boolean; `GROUP\|EXECUTABLE`: boolean; `WORLD\|READABLE`: boolean; `WORLD\|WRITABLE`: boolean; `WORLD\|EXECUTABLE`: boolean |  |
+| `MASK` | `mask` | object | ✅ | Object, see [MASK Nested Fields](#mask-nested-fields) below |  |
 | `OWNER` | `owner` | string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### MASK Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `mask` (type: object):
 
-**MASK** (`mask` — object):
-
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `USER|READABLE` | `user.readable` | boolean |
-| `USER|WRITABLE` | `user.writable` | boolean |
-| `USER|EXECUTABLE` | `user.executable` | boolean |
-| `GROUP|READABLE` | `group.readable` | boolean |
-| `GROUP|WRITABLE` | `group.writable` | boolean |
-| `GROUP|EXECUTABLE` | `group.executable` | boolean |
-| `WORLD|READABLE` | `world.readable` | boolean |
-| `WORLD|WRITABLE` | `world.writable` | boolean |
-| `WORLD|EXECUTABLE` | `world.executable` | boolean |
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `MASK.USER.READABLE` | `user.readable` | boolean | |  |
+| `MASK.USER.WRITABLE` | `user.writable` | boolean | |  |
+| `MASK.USER.EXECUTABLE` | `user.executable` | boolean | |  |
+| `MASK.GROUP.READABLE` | `group.readable` | boolean | |  |
+| `MASK.GROUP.WRITABLE` | `group.writable` | boolean | |  |
+| `MASK.GROUP.EXECUTABLE` | `group.executable` | boolean | |  |
+| `MASK.WORLD.READABLE` | `world.readable` | boolean | |  |
+| `MASK.WORLD.WRITABLE` | `world.writable` | boolean | |  |
+| `MASK.WORLD.EXECUTABLE` | `world.executable` | boolean | |  |
 
 ## Sigma Rule Template
 

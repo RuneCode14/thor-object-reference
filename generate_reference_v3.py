@@ -505,6 +505,8 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         if isinstance(sub, dict) and "required" in sub:
             required.update(sub["required"])
 
+    type_key = type_name.lower()
+
     doc = []
     doc.append(f"# {type_name}")
     doc.append("")
@@ -546,14 +548,14 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         req = "✅" if field_name in required else ""
         desc = get_description(field_schema)
 
-        # Nested fields
-        nested = get_nested_fields(field_schema, defs)
-        if nested:
-            nested_desc = "; ".join([f"`{n}`: {t}" for n, t in nested])
+        # Nested fields — reference only in main table
+        nested_flat = get_nested_fields_flat(field_schema, defs)
+        if nested_flat:
+            sigma_parent = sigma_field_name(field_name)
             if desc:
-                desc += f" — nested: {nested_desc}"
+                desc += f" — Object, see [{sigma_parent} Nested Fields](#{sigma_parent.lower().replace(' ', '-')}-nested-fields) below"
             else:
-                desc = f"nested: {nested_desc}"
+                desc = f"Object, see [{sigma_parent} Nested Fields](#{sigma_parent.lower().replace(' ', '-')}-nested-fields) below"
         
         # Escape pipe chars for markdown table
         desc = desc.replace("|", "\\|")
@@ -562,7 +564,6 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         
         # Look up example values for this field
         examples = []
-        type_key = type_name.lower()
         if type_key in EXAMPLES_DB:
             # Check exact field name match
             if field_name in EXAMPLES_DB[type_key]:
@@ -579,13 +580,7 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         
         doc.append(f"| `{sigma_name}` | `{field_name}` | {ftype} | {req} | {desc} | {example_str} |")
 
-    # Nested field reference for complex types
-    doc.append("")
-    doc.append("### Nested Field Reference (Sigma Pipe Notation)")
-    doc.append("")
-    doc.append("Complex types like `File` have nested fields accessed with `|` in Sigma:")
-    doc.append("")
-
+    # Nested field tables for complex types
     has_nested = False
     for field_name in sorted(flattened_props.keys()):
         field_schema = flattened_props[field_name]
@@ -593,15 +588,43 @@ def generate_markdown(type_name: str, schema: dict) -> str:
         if nested_flat:
             has_nested = True
             sigma_parent = sigma_field_name(field_name)
-            doc.append(f"**{sigma_parent}** (`{field_name}` — {get_type_label(field_schema, defs)}):")
             doc.append("")
-            doc.append("| Sigma Field | JSON Path | Type |")
-            doc.append("|-------------|-----------|------|")
+            doc.append(f"### {sigma_parent} Nested Fields")
+            doc.append("")
+            doc.append(f"Nested fields within `{field_name}` (type: {get_type_label(field_schema, defs)}):")
+            doc.append("")
+            doc.append("| Full Sigma Field | JSON Path | Type | Description | Example Values |")
+            doc.append("|------------------|-----------|------|-------------|----------------|")
             for s, t, j in nested_flat:
-                doc.append(f"| `{s}` | `{j}` | {t} |")
+                # Build example lookup for nested field
+                nested_examples = []
+                # Use dot notation for nested fields (e.g., FILE.HASHES.MD5)
+                s_dot = s.replace("|", ".")
+                full_sigma = f"{sigma_parent}.{s_dot}"
+                if type_key in EXAMPLES_DB:
+                    # Try JSON path match
+                    if j in EXAMPLES_DB[type_key]:
+                        nested_examples = EXAMPLES_DB[type_key][j]
+                    # Try sigma name match
+                    elif full_sigma in EXAMPLES_DB[type_key]:
+                        nested_examples = EXAMPLES_DB[type_key][full_sigma]
+                    # Try just the nested sigma name (dot notation)
+                    elif s_dot in EXAMPLES_DB[type_key]:
+                        nested_examples = EXAMPLES_DB[type_key][s_dot]
+                    # Try pipe notation fallback
+                    elif s in EXAMPLES_DB[type_key]:
+                        nested_examples = EXAMPLES_DB[type_key][s]
+                
+                nested_ex_str = ""
+                if nested_examples:
+                    display = [f"`{str(e)[:40]}{'...' if len(str(e)) > 40 else ''}`" for e in nested_examples[:3]]
+                    nested_ex_str = ", ".join(display)
+                
+                doc.append(f"| `{full_sigma}` | `{j}` | {t} | | {nested_ex_str} |")
             doc.append("")
 
     if not has_nested:
+        doc.append("")
         doc.append("_No nested fields in this type._")
         doc.append("")
 

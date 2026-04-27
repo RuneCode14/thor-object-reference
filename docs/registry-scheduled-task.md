@@ -19,10 +19,6 @@ The lowercase JSON name is shown in parentheses for reference.
 | `TYPE` | `type` | string | ✅ |  |  |
 | `VERSION` | `version` | integer | ✅ |  |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
-
-Complex types like `File` have nested fields accessed with `|` in Sigma:
-
 _No nested fields in this type._
 
 ## Sigma Rule Template

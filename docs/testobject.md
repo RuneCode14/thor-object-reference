@@ -12,26 +12,27 @@ The lowercase JSON name is shown in parentheses for reference.
 | `FIELDDIRECT` | `FieldDirect` | string | ✅ |  |  |
 | `INTERFACE` | `Interface` | any | ✅ |  |  |
 | `MAP` | `Map` | object (string) | ✅ |  |  |
-| `POINTEDSTRUCT` | `PointedStruct` | object | ✅ | nested: `FIELD`: string |  |
+| `POINTEDSTRUCT` | `PointedStruct` | object | ✅ | Object, see [POINTEDSTRUCT Nested Fields](#pointedstruct-nested-fields) below |  |
 | `SLICE` | `Slice` | array of object | ✅ |  |  |
-| `SUBSTRUCT` | `SubStruct` | object | ✅ | nested: `FIELD`: string |  |
+| `SUBSTRUCT` | `SubStruct` | object | ✅ | Object, see [SUBSTRUCT Nested Fields](#substruct-nested-fields) below |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### Nested Field Reference (Sigma Pipe Notation)
+### POINTEDSTRUCT Nested Fields
 
-Complex types like `File` have nested fields accessed with `|` in Sigma:
+Nested fields within `PointedStruct` (type: object):
 
-**POINTEDSTRUCT** (`PointedStruct` — object):
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `POINTEDSTRUCT.FIELD` | `Field` | string | |  |
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `FIELD` | `Field` | string |
 
-**SUBSTRUCT** (`SubStruct` — object):
+### SUBSTRUCT Nested Fields
 
-| Sigma Field | JSON Path | Type |
-|-------------|-----------|------|
-| `FIELD` | `Field` | string |
+Nested fields within `SubStruct` (type: object):
+
+| Full Sigma Field | JSON Path | Type | Description | Example Values |
+|------------------|-----------|------|-------------|----------------|
+| `SUBSTRUCT.FIELD` | `Field` | string | |  |
 
 ## Sigma Rule Template
 
