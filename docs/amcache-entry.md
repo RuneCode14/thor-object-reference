@@ -113,12 +113,25 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/tmp/'
-            - '/dev/shm/'
-            - '\\Temp\\'
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        PE_INFO|SIGNED: 'true'
-    condition: selection and not filter_legitimate
+        FILE.PATH|contains: 'suspicious'
+    condition: selection
+
+level: medium
 ```
+
+## Notes
+
+### FILE Field Behavior for Deleted Files
+
+When the file referenced by an AmCache entry has been **deleted from disk**, only the following `FILE.*` fields are expected to be populated:
+
+| Field | Value | Source |
+|-------|-------|--------|
+| `FILE.PATH` | Original path (e.g. `C:\Perflogs\abc.exe`) | AmCache hive |
+| `FILE.EXISTS` | `"no"` | THOR file existence check |
+
+All other `FILE.*` sub-fields (`FILE.HASHES.MD5`, `FILE.MAGIC_HEADER`, `FILE.PE_INFO.SIGNED`, `FILE.SIZE`, etc.) are expected to be `null` or empty, since THOR cannot read file properties from a non-existent file.
+
+The top-level fields `SHA1` and `SIZE` are still populated because they come directly from the AmCache hive data, independent of the file's current presence on disk.
+
+> ⚠️ This behavior is inferred from the AmCache hive structure. Empirical verification with THOR v11 on a system with a deleted AmCache entry is pending.
