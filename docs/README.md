@@ -8,7 +8,7 @@ Use it when writing custom Sigma rules with `product: THOR`.
 **Field naming convention:**
 - In THOR JSON output: **lowercase** with underscores (e.g., `run_as_user`, `image.path`)
 - In Sigma rules: **UPPERCASE** top-level field only (e.g., `RUN_AS_USER`, `COMMAND`)
-- Object fields can be checked for null: `IMAGE: null`, `FILE: null`, `PARENT_INFO: null`
+- Object null-check syntax exists but was observed matching all objects in THOR v11.0.0 — **verify before relying on it**
 
 > ⚠️ **Nested sub-fields (e.g., `image.path`, `hashes.md5`) are NOT directly referenceable in Sigma rules.**
 > THOR's Sigma backend matches on **top-level fields only**. The tables in each object type doc show the JSON structure for reference, but you cannot write `IMAGE.PATH` or `IMAGE_PATH` in a Sigma rule.

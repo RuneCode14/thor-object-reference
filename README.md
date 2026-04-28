@@ -86,7 +86,7 @@ detection:
     condition: selection
 ```
 
-> ⚠️ In THOR v11.0.0, `FIELD: null` checks are evaluated against the top-level field. Behavior for this null-check syntax was observed to match all objects in some tests; verification with the exact THOR build you are deploying is recommended.
+> ⚠️ **Null-check behavior observed on THOR v11.0.0 (build b27216e6d92c):** `FIELD: null` checks matched **all objects** in testing, including those with non-null object values. This appears to be a bug. **Do not rely on null checks in production until verified fixed.**
 
 ## Workflow for Detection Engineers
 
