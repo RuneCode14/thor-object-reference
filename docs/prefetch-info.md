@@ -15,90 +15,92 @@ The lowercase JSON name is shown in parentheses for reference.
 | `EXECUTION_TIMES` | `execution_times` | array of string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### EXECUTABLE Nested Fields
+### EXECUTABLE JSON Sub-Fields
 
-Nested fields within `executable` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `EXECUTABLE.TYPE` | `type` | string | |  |
-| `EXECUTABLE.PATH` | `path` | string | |  |
-| `EXECUTABLE.EXISTS` | `exists` | string | |  |
-| `EXECUTABLE.EXTENSION` | `extension` | string | |  |
-| `EXECUTABLE.MAGIC_HEADER` | `magic_header` | string | |  |
-| `EXECUTABLE.HASHES.MD5` | `hashes.md5` | string | |  |
-| `EXECUTABLE.HASHES.SHA1` | `hashes.sha1` | string | |  |
-| `EXECUTABLE.HASHES.SHA256` | `hashes.sha256` | string | |  |
-| `EXECUTABLE.FIRST_BYTES.HEX` | `first_bytes.hex` | string | |  |
-| `EXECUTABLE.FIRST_BYTES.ASCII` | `first_bytes.ascii` | string | |  |
-| `EXECUTABLE.FILE_TIMES.MODIFIED` | `file_times.modified` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.ACCESSED` | `file_times.accessed` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.CHANGED` | `file_times.changed` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.CREATED` | `file_times.created` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.USN_CHANGE_TIME` | `file_times.usn_change_time` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.MFT_FILE_NAME_MODIFIED` | `file_times.mft_file_name_modified` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.MFT_FILE_NAME_ACCESSED` | `file_times.mft_file_name_accessed` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.MFT_FILE_NAME_CHANGED` | `file_times.mft_file_name_changed` | string (date-time) | |  |
-| `EXECUTABLE.FILE_TIMES.MFT_FILE_NAME_CREATED` | `file_times.mft_file_name_created` | string (date-time) | |  |
-| `EXECUTABLE.SIZE` | `size` | integer | |  |
-| `EXECUTABLE.PE_INFO.COMPANY` | `pe_info.company` | string | |  |
-| `EXECUTABLE.PE_INFO.DESCRIPTION` | `pe_info.description` | string | |  |
-| `EXECUTABLE.PE_INFO.LEGAL_COPYRIGHT` | `pe_info.legal_copyright` | string | |  |
-| `EXECUTABLE.PE_INFO.PRODUCT` | `pe_info.product` | string | |  |
-| `EXECUTABLE.PE_INFO.ORIGINAL_NAME` | `pe_info.original_name` | string | |  |
-| `EXECUTABLE.PE_INFO.INTERNAL_NAME` | `pe_info.internal_name` | string | |  |
-| `EXECUTABLE.PE_INFO.SIGNED` | `pe_info.signed` | boolean | |  |
-| `EXECUTABLE.PE_INFO.SIGNATURES` | `pe_info.signatures` | array | null | |  |
-| `EXECUTABLE.PE_INFO.IMPHASH` | `pe_info.imphash` | string | |  |
-| `EXECUTABLE.PE_INFO.RICH_HEADER_HASH` | `pe_info.rich_header_hash` | string | |  |
-| `EXECUTABLE.PE_INFO.CREATION_TIMESTAMP` | `pe_info.creation_timestamp` | string (date-time) | |  |
-| `EXECUTABLE.TARGET` | `target` | string | |  |
-| `EXECUTABLE.UNPACK_SOURCE` | `unpack_source` | array | null | |  |
-| `EXECUTABLE.LINK_INFO.TARGET` | `link_info.target` | string | |  |
-| `EXECUTABLE.LINK_INFO.ARGUMENTS` | `link_info.arguments` | string | |  |
-| `EXECUTABLE.LINK_INFO.COMMAND_LINE` | `link_info.command_line` | string | |  |
-| `EXECUTABLE.LINK_INFO.CREATED` | `link_info.created` | string (date-time) | |  |
-| `EXECUTABLE.LINK_INFO.MODIFIED` | `link_info.modified` | string (date-time) | |  |
-| `EXECUTABLE.LINK_INFO.ACCESSED` | `link_info.accessed` | string (date-time) | |  |
-| `EXECUTABLE.RECYCLE_BIN_INFO.ORIGINAL_FILE_NAME` | `recycle_bin_info.original_file_name` | string | |  |
-| `EXECUTABLE.RECYCLE_BIN_INFO.DELETION_TIME` | `recycle_bin_info.deletion_time` | string (date-time) | |  |
-| `EXECUTABLE.RECYCLE_BIN_INFO.ORIGINAL_FILE_SIZE` | `recycle_bin_info.original_file_size` | integer | |  |
-| `EXECUTABLE.WER_INFO.TYPE` | `wer_info.type` | string | |  |
-| `EXECUTABLE.WER_INFO.EVENT_NAME` | `wer_info.event_name` | string | |  |
-| `EXECUTABLE.WER_INFO.EVENT_TYPE` | `wer_info.event_type` | string | |  |
-| `EXECUTABLE.WER_INFO.DATE` | `wer_info.date` | string (date-time) | |  |
-| `EXECUTABLE.WER_INFO.APP_PATH` | `wer_info.app_path` | string | |  |
-| `EXECUTABLE.WER_INFO.APP_NAME` | `wer_info.app_name` | string | |  |
-| `EXECUTABLE.WER_INFO.EXE` | `wer_info.exe` | string | |  |
-| `EXECUTABLE.WER_INFO.ERROR` | `wer_info.error` | string | |  |
-| `EXECUTABLE.WER_INFO.FAULT_IN_MODULE` | `wer_info.fault_in_module` | string | |  |
-| `EXECUTABLE.CONTENT.TYPE` | `content.type` | string | |  |
-| `EXECUTABLE.CONTENT.ELEMENTS` | `content.elements` | array | null | |  |
-| `EXECUTABLE.CONTENT.LENGTH` | `content.length` | integer | |  |
-| `EXECUTABLE.BEACON_CONFIG.BEACON_TYPE` | `beacon_config.beacon_type` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.C2` | `beacon_config.c2` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.PORT` | `beacon_config.port` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.SPAWN_TO` | `beacon_config.spawn_to` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.INJECTION_PROCESS` | `beacon_config.injection_process` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.PIPE_NAME` | `beacon_config.pipe_name` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.USER_AGENT` | `beacon_config.user_agent` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.PROXY` | `beacon_config.proxy` | string | |  |
-| `EXECUTABLE.BEACON_CONFIG.FULL_CONFIG` | `beacon_config.full_config` | object | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.XAF_ENCODED` | `beacon_config.cipher_parameters.xaf_encoded` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.XAF_ENCODING_ANCHOR` | `beacon_config.cipher_parameters.xaf_encoding_anchor` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.XOR_KEY` | `beacon_config.cipher_parameters.xor_key` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.BEACON_OFFSET` | `beacon_config.cipher_parameters.beacon_offset` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.BEACON_LENGTH` | `beacon_config.cipher_parameters.beacon_length` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.BLOCK_START` | `beacon_config.cipher_parameters.block_start` | any | |  |
-| `EXECUTABLE.BEACON_CONFIG.CIPHER_PARAMETERS.PAIRWISE_SWAPPED` | `beacon_config.cipher_parameters.pairwise_swapped` | any | |  |
-| `EXECUTABLE.VIRUSTOTAL.RESULT` | `virustotal.result` | string | |  |
-| `EXECUTABLE.VIRUSTOTAL.POSITIVE_VERDICTS` | `virustotal.positive_verdicts` | integer | |  |
-| `EXECUTABLE.VIRUSTOTAL.TOTAL_VERDICTS` | `virustotal.total_verdicts` | integer | |  |
-| `EXECUTABLE.VIRUSTOTAL.HISTORY.NAMES` | `virustotal.history.names` | any | |  |
-| `EXECUTABLE.VIRUSTOTAL.HISTORY.TAGS` | `virustotal.history.tags` | any | |  |
-| `EXECUTABLE.VIRUSTOTAL.HISTORY.SUBMISSIONS` | `virustotal.history.submissions` | any | |  |
-| `EXECUTABLE.VIRUSTOTAL.HISTORY.FIRST_SUBMISSION` | `virustotal.history.first_submission` | any | |  |
-| `EXECUTABLE.VIRUSTOTAL.HISTORY.LAST_SUBMISSION` | `virustotal.history.last_submission` | any | |  |
+Nested JSON structure within `executable` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `type` | string | |  |
+| `path` | string | |  |
+| `exists` | string | |  |
+| `extension` | string | |  |
+| `magic_header` | string | |  |
+| `hashes.md5` | string | |  |
+| `hashes.sha1` | string | |  |
+| `hashes.sha256` | string | |  |
+| `first_bytes.hex` | string | |  |
+| `first_bytes.ascii` | string | |  |
+| `file_times.modified` | string (date-time) | |  |
+| `file_times.accessed` | string (date-time) | |  |
+| `file_times.changed` | string (date-time) | |  |
+| `file_times.created` | string (date-time) | |  |
+| `file_times.usn_change_time` | string (date-time) | |  |
+| `file_times.mft_file_name_modified` | string (date-time) | |  |
+| `file_times.mft_file_name_accessed` | string (date-time) | |  |
+| `file_times.mft_file_name_changed` | string (date-time) | |  |
+| `file_times.mft_file_name_created` | string (date-time) | |  |
+| `size` | integer | |  |
+| `pe_info.company` | string | |  |
+| `pe_info.description` | string | |  |
+| `pe_info.legal_copyright` | string | |  |
+| `pe_info.product` | string | |  |
+| `pe_info.original_name` | string | |  |
+| `pe_info.internal_name` | string | |  |
+| `pe_info.signed` | boolean | |  |
+| `pe_info.signatures` | array | null | |  |
+| `pe_info.imphash` | string | |  |
+| `pe_info.rich_header_hash` | string | |  |
+| `pe_info.creation_timestamp` | string (date-time) | |  |
+| `target` | string | |  |
+| `unpack_source` | array | null | |  |
+| `link_info.target` | string | |  |
+| `link_info.arguments` | string | |  |
+| `link_info.command_line` | string | |  |
+| `link_info.created` | string (date-time) | |  |
+| `link_info.modified` | string (date-time) | |  |
+| `link_info.accessed` | string (date-time) | |  |
+| `recycle_bin_info.original_file_name` | string | |  |
+| `recycle_bin_info.deletion_time` | string (date-time) | |  |
+| `recycle_bin_info.original_file_size` | integer | |  |
+| `wer_info.type` | string | |  |
+| `wer_info.event_name` | string | |  |
+| `wer_info.event_type` | string | |  |
+| `wer_info.date` | string (date-time) | |  |
+| `wer_info.app_path` | string | |  |
+| `wer_info.app_name` | string | |  |
+| `wer_info.exe` | string | |  |
+| `wer_info.error` | string | |  |
+| `wer_info.fault_in_module` | string | |  |
+| `content.type` | string | |  |
+| `content.elements` | array | null | |  |
+| `content.length` | integer | |  |
+| `beacon_config.beacon_type` | string | |  |
+| `beacon_config.c2` | string | |  |
+| `beacon_config.port` | string | |  |
+| `beacon_config.spawn_to` | string | |  |
+| `beacon_config.injection_process` | string | |  |
+| `beacon_config.pipe_name` | string | |  |
+| `beacon_config.user_agent` | string | |  |
+| `beacon_config.proxy` | string | |  |
+| `beacon_config.full_config` | object | |  |
+| `beacon_config.cipher_parameters.xaf_encoded` | any | |  |
+| `beacon_config.cipher_parameters.xaf_encoding_anchor` | any | |  |
+| `beacon_config.cipher_parameters.xor_key` | any | |  |
+| `beacon_config.cipher_parameters.beacon_offset` | any | |  |
+| `beacon_config.cipher_parameters.beacon_length` | any | |  |
+| `beacon_config.cipher_parameters.block_start` | any | |  |
+| `beacon_config.cipher_parameters.pairwise_swapped` | any | |  |
+| `virustotal.result` | string | |  |
+| `virustotal.positive_verdicts` | integer | |  |
+| `virustotal.total_verdicts` | integer | |  |
+| `virustotal.history.names` | any | |  |
+| `virustotal.history.tags` | any | |  |
+| `virustotal.history.submissions` | any | |  |
+| `virustotal.history.first_submission` | any | |  |
+| `virustotal.history.last_submission` | any | |  |
 
 ## Sigma Rule Template
 

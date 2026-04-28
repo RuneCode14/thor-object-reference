@@ -24,7 +24,7 @@ logsource:
 
 detection:
     selection:
-        DETAILS|contains: 'sudo:'
+        TYPE: 'journal log entry'
     condition: selection
 
 level: medium

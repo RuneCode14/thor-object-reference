@@ -23,7 +23,7 @@ logsource:
 
 detection:
     selection:
-        ENTRY|contains: '4688'
+        TYPE: 'eventlog entry'
     condition: selection
 
 level: medium

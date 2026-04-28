@@ -15,18 +15,15 @@ _No nested fields in this type._
 
 ## Sigma Rule Template
 
-This is a passive detection object. The only available field is the object type itself.
-Use this in correlation rules or when rootkit findings need to be explicitly selected.
-
 ```yaml
 logsource:
     product: THOR
-    service: rootkit
+    service: "rootkit"
 
 detection:
     selection:
         TYPE: 'rootkit'
     condition: selection
 
-level: high
+level: medium
 ```

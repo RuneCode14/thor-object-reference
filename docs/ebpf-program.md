@@ -23,31 +23,35 @@ The lowercase JSON name is shown in parentheses for reference.
 | `TYPE` | `type` | string | ✅ |  |  |
 | `USER` | `user` | string | ✅ |  |  |
 
-### ATTACH_TARGET Nested Fields
+### ATTACH_TARGET JSON Sub-Fields
 
-Nested fields within `attach_target` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `ATTACH_TARGET.PATH` | `path` | string | |  |
-| `ATTACH_TARGET.PID` | `pid` | integer | |  |
-| `ATTACH_TARGET.SYMBOLS` | `symbols` | array of string | |  |
-| `ATTACH_TARGET.INTERFACE` | `interface` | string | |  |
-| `ATTACH_TARGET.OBJECT_ID` | `object_id` | integer | |  |
-| `ATTACH_TARGET.PROTOCOL` | `protocol` | string | |  |
-| `ATTACH_TARGET.HOOK` | `hook` | string | |  |
-| `ATTACH_TARGET.PRIORITY` | `priority` | integer | |  |
+Nested JSON structure within `attach_target` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `path` | string | |  |
+| `pid` | integer | |  |
+| `symbols` | array of string | |  |
+| `interface` | string | |  |
+| `object_id` | integer | |  |
+| `protocol` | string | |  |
+| `hook` | string | |  |
+| `priority` | integer | |  |
 
 
-### CONTENT Nested Fields
+### CONTENT JSON Sub-Fields
 
-Nested fields within `content` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `CONTENT.TYPE` | `type` | string | |  |
-| `CONTENT.ELEMENTS` | `elements` | array | null | |  |
-| `CONTENT.LENGTH` | `length` | integer | |  |
+Nested JSON structure within `content` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `type` | string | |  |
+| `elements` | array | null | |  |
+| `length` | integer | |  |
 
 ## Sigma Rule Template
 

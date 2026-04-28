@@ -16,10 +16,6 @@ _No nested fields in this type._
 
 ## Sigma Rule Template
 
-This is a passive object type. The `ENTRY` field is an opaque object without
-meaningful sub-fields for detection. Use this service to explicitly select
-shim database entries in correlation rules.
-
 ```yaml
 logsource:
     product: THOR

@@ -17,10 +17,6 @@ _No nested fields in this type._
 
 ## Sigma Rule Template
 
-This is a passive object type with scalar fields only. The `LENGTH` and `ELEMENTS`
-fields are not useful for threat detection. Use this service to explicitly
-select sparse data objects in correlation rules.
-
 ```yaml
 logsource:
     product: THOR

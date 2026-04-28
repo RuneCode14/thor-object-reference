@@ -14,23 +14,25 @@ The lowercase JSON name is shown in parentheses for reference.
 | `SUMMARY` | `summary` | string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### SIGNATURE Nested Fields
+### SIGNATURE JSON Sub-Fields
 
-Nested fields within `signature` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `SIGNATURE.SCORE` | `score` | integer | |  |
-| `SIGNATURE.REFERENCE` | `reference` | array | null | |  |
-| `SIGNATURE.ORIGIN` | `origin` | string | |  |
-| `SIGNATURE.KIND` | `kind` | string | |  |
-| `SIGNATURE.DATE` | `date` | string | |  |
-| `SIGNATURE.TAGS` | `tags` | array | null | |  |
-| `SIGNATURE.RULE_NAME` | `rule_name` | string | |  |
-| `SIGNATURE.DESCRIPTION` | `description` | string | |  |
-| `SIGNATURE.AUTHOR` | `author` | string | |  |
-| `SIGNATURE.ID` | `id` | string | |  |
-| `SIGNATURE.FALSE_POSITIVES` | `false_positives` | array | null | |  |
+Nested JSON structure within `signature` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `score` | integer | |  |
+| `reference` | array | null | |  |
+| `origin` | string | |  |
+| `kind` | string | |  |
+| `date` | string | |  |
+| `tags` | array | null | |  |
+| `rule_name` | string | |  |
+| `description` | string | |  |
+| `author` | string | |  |
+| `id` | string | |  |
+| `false_positives` | array | null | |  |
 
 ## Sigma Rule Template
 

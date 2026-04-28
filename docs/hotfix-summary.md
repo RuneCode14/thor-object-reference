@@ -23,7 +23,7 @@ logsource:
 
 detection:
     selection:
-        LAST_HOTFIX|contains: '2020'
+        TYPE: 'hotfix summary'
     condition: selection
 
 level: medium

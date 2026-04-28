@@ -17,22 +17,26 @@ The lowercase JSON name is shown in parentheses for reference.
 | `SUBSTRUCT` | `SubStruct` | object | ✅ | Object, see [SUBSTRUCT Nested Fields](#substruct-nested-fields) below |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### POINTEDSTRUCT Nested Fields
+### POINTEDSTRUCT JSON Sub-Fields
 
-Nested fields within `PointedStruct` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `POINTEDSTRUCT.FIELD` | `Field` | string | |  |
+Nested JSON structure within `PointedStruct` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `Field` | string | |  |
 
 
-### SUBSTRUCT Nested Fields
+### SUBSTRUCT JSON Sub-Fields
 
-Nested fields within `SubStruct` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `SUBSTRUCT.FIELD` | `Field` | string | |  |
+Nested JSON structure within `SubStruct` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `Field` | string | |  |
 
 ## Sigma Rule Template
 

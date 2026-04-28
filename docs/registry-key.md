@@ -9,10 +9,10 @@ The lowercase JSON name is shown in parentheses for reference.
 
 | Sigma Field | JSON Name | Type | Required | Description | Example Values |
 |-------------|-----------|------|----------|-------------|----------------|
-| `KEY` | `key` | string | ✅ |  | `SOFTWARE\Classes\CLSID\{E15E1D68-0D1C-49F7-BEB8-812B1E00FA60}\InProcServer32` |
-| `MODIFIED` | `modified` | string (date-time) | ✅ |  | `2026-03-29T12:10:29.5119743+02:00` |
+| `KEY` | `key` | string | ✅ |  |  |
+| `MODIFIED` | `modified` | string (date-time) | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  | `registry key` |
-| `VALUES` | `values` | string | ✅ |  | `SOFTWARE\Classes\CLSID\{E15E1D68-0D1C-49F7-BEB8-812B1E00FA60}\InProcServer32;(Default);C:\Program Files (x86)\WinSCP\DragExt64.dll` |
+| `VALUES` | `values` | string | ✅ |  |  |
 
 _No nested fields in this type._
 

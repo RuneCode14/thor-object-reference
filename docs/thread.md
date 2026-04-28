@@ -17,19 +17,15 @@ _No nested fields in this type._
 
 ## Sigma Rule Template
 
-This is a passive object type. The `ID` and `STACK` fields are not useful for
-standard threat detection rules. Use this service to explicitly select thread
-objects in correlation or forensic analysis rules.
-
 ```yaml
 logsource:
     product: THOR
-    service: thread
+    service: "thread"
 
 detection:
     selection:
         TYPE: 'thread'
     condition: selection
 
-level: low
+level: medium
 ```

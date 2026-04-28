@@ -24,7 +24,7 @@ logsource:
 
 detection:
     selection:
-        ENTRIES: 0
+        TYPE: 'shim cache'
     condition: selection
 
 level: medium

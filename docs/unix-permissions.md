@@ -14,21 +14,23 @@ The lowercase JSON name is shown in parentheses for reference.
 | `OWNER` | `owner` | string | ✅ |  |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### MASK Nested Fields
+### MASK JSON Sub-Fields
 
-Nested fields within `mask` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `MASK.USER.READABLE` | `user.readable` | boolean | |  |
-| `MASK.USER.WRITABLE` | `user.writable` | boolean | |  |
-| `MASK.USER.EXECUTABLE` | `user.executable` | boolean | |  |
-| `MASK.GROUP.READABLE` | `group.readable` | boolean | |  |
-| `MASK.GROUP.WRITABLE` | `group.writable` | boolean | |  |
-| `MASK.GROUP.EXECUTABLE` | `group.executable` | boolean | |  |
-| `MASK.WORLD.READABLE` | `world.readable` | boolean | |  |
-| `MASK.WORLD.WRITABLE` | `world.writable` | boolean | |  |
-| `MASK.WORLD.EXECUTABLE` | `world.executable` | boolean | |  |
+Nested JSON structure within `mask` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `user.readable` | boolean | |  |
+| `user.writable` | boolean | |  |
+| `user.executable` | boolean | |  |
+| `group.readable` | boolean | |  |
+| `group.writable` | boolean | |  |
+| `group.executable` | boolean | |  |
+| `world.readable` | boolean | |  |
+| `world.writable` | boolean | |  |
+| `world.executable` | boolean | |  |
 
 ## Sigma Rule Template
 

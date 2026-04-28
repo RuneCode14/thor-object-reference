@@ -23,7 +23,7 @@ logsource:
 
 detection:
     selection:
-        ENTRY|contains: 'execve'
+        TYPE: 'audit log entry'
     condition: selection
 
 level: medium

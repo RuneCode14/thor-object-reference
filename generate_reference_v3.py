@@ -3,10 +3,10 @@
 thor-object-reference v3
 Convert THOR's --describe-object-type all JSON output into readable documentation.
 
-Changes from v2:
-- Field names shown in UPPERCASE (as used in Sigma rules), with lowercase JSON name noted
-- More complete Sigma rule templates with multiple fields and realistic detection logic
-- Nested object fields shown with UPPERCASE dot-notation (e.g., IMAGE|PATH, UNIT|HASHES|SHA256)
+Design principles:
+- Top-level JSON fields can be used in Sigma rules via UPPERCASE names
+- Nested sub-fields are documented as JSON structure reference only (not Sigma-usable)
+- Sigma field mappings are verified through testing against real THOR scans
 
 Usage:
     python3 generate-reference.py /path/to/thor-object-types.json --output-dir ./docs
@@ -562,12 +562,14 @@ def generate_markdown(type_name: str, schema: dict) -> str:
             has_nested = True
             sigma_parent = sigma_field_name(field_name)
             doc.append("")
-            doc.append(f"### {sigma_parent} Nested Fields")
+            doc.append(f"### {sigma_parent} JSON Sub-Fields")
             doc.append("")
-            doc.append(f"Nested fields within `{field_name}` (type: {get_type_label(field_schema, defs)}):")
+            doc.append(f"> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.")
             doc.append("")
-            doc.append("| Full Sigma Field | JSON Path | Type | Description | Example Values |")
-            doc.append("|------------------|-----------|------|-------------|----------------|")
+            doc.append(f"Nested JSON structure within `{field_name}` (type: {get_type_label(field_schema, defs)}):")
+            doc.append("")
+            doc.append("| JSON Path | Type | Description | Example Values |")
+            doc.append("|-----------|------|-------------|----------------|")
             for s, t, j in nested_flat:
                 # Build example lookup for nested field
                 nested_examples = []
@@ -593,7 +595,7 @@ def generate_markdown(type_name: str, schema: dict) -> str:
                     display = [f"`{str(e)[:40]}{'...' if len(str(e)) > 40 else ''}`" for e in nested_examples[:3]]
                     nested_ex_str = ", ".join(display)
                 
-                doc.append(f"| `{full_sigma}` | `{j}` | {t} | | {nested_ex_str} |")
+                doc.append(f"| `{j}` | {t} | | {nested_ex_str} |")
             doc.append("")
 
     if not has_nested:
@@ -680,9 +682,16 @@ def generate_summary(json_data: dict, output_dir: Path) -> str:
     doc.append("Use it when writing custom Sigma rules with `product: THOR`.")
     doc.append("")
     doc.append("**Field naming convention:**")
-    doc.append("- In THOR JSON output: **lowercase** with underscores (e.g., `run_as_user`)")
-    doc.append("- In Sigma rules: **UPPERCASE** (e.g., `RUN_AS_USER`)")
-    doc.append("- Nested fields use **pipe notation** in Sigma (e.g., `IMAGE|PATH`, `UNIT|HASHES|SHA256`)")
+    doc.append("- In THOR JSON output: **lowercase** with underscores (e.g., `run_as_user`, `image.path`)")
+    doc.append("- In Sigma rules: **UPPERCASE** top-level field only (e.g., `RUN_AS_USER`, `COMMAND`)")
+    doc.append("- Object fields can be checked for null: `IMAGE: null`, `FILE: null`, `PARENT_INFO: null`")
+    doc.append("")
+    doc.append("> ⚠️ **Nested sub-fields (e.g., `image.path`, `hashes.md5`) are NOT directly referenceable in Sigma rules.**")
+    doc.append("> THOR's Sigma backend matches on **top-level fields only**. The tables in each object type doc show the JSON structure for reference, but you cannot write `IMAGE.PATH` or `IMAGE_PATH` in a Sigma rule.")
+    doc.append("")
+    doc.append("**Standard Sigma field mappings** (from `tmpl-sigma.yml`):")
+    doc.append("- `CommandLine` → `command` | `ProcessId` → `pid` | `Image` → `image` (object)")
+    doc.append("- `ParentImage` → `parent_info` (object) | `User` → `owner` | `TargetFilename` → `path`")
     doc.append("")
 
     # Category grouping

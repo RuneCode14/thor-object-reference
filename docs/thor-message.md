@@ -15,18 +15,20 @@ The lowercase JSON name is shown in parentheses for reference.
 | `META` | `meta` | object | ✅ | Object, see [META Nested Fields](#meta-nested-fields) below |  |
 | `TYPE` | `type` | string | ✅ |  |  |
 
-### META Nested Fields
+### META JSON Sub-Fields
 
-Nested fields within `meta` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `META.TIME` | `time` | string (date-time) | |  |
-| `META.LEVEL` | `level` | string | |  |
-| `META.MODULE` | `module` | string | |  |
-| `META.SCAN_ID` | `scan_id` | string | |  |
-| `META.EVENT_ID` | `event_id` | string | |  |
-| `META.HOSTNAME` | `hostname` | string | |  |
+Nested JSON structure within `meta` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `time` | string (date-time) | |  |
+| `level` | string | |  |
+| `module` | string | |  |
+| `scan_id` | string | |  |
+| `event_id` | string | |  |
+| `hostname` | string | |  |
 
 ## Sigma Rule Template
 

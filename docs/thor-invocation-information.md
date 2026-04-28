@@ -27,30 +27,34 @@ The lowercase JSON name is shown in parentheses for reference.
 | `USER` | `user` | string | ✅ |  |  |
 | `VERSIONS` | `versions` | object | ✅ | Object, see [VERSIONS Nested Fields](#versions-nested-fields) below |  |
 
-### LICENSE Nested Fields
+### LICENSE JSON Sub-Fields
 
-Nested fields within `license` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `LICENSE.OWNER` | `owner` | string | |  |
-| `LICENSE.LICENSE_TYPE` | `license_type` | string | |  |
-| `LICENSE.STARTS` | `starts` | string | |  |
-| `LICENSE.EXPIRES` | `expires` | string | |  |
-| `LICENSE.SCANNER` | `scanner` | string | |  |
-| `LICENSE.HASH` | `hash` | string | |  |
+Nested JSON structure within `license` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `owner` | string | |  |
+| `license_type` | string | |  |
+| `starts` | string | |  |
+| `expires` | string | |  |
+| `scanner` | string | |  |
+| `hash` | string | |  |
 
 
-### VERSIONS Nested Fields
+### VERSIONS JSON Sub-Fields
 
-Nested fields within `versions` (type: object):
+> ⚠️ **These nested fields are for JSON reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules. Object fields like `IMAGE` and `PARENT_INFO` can be checked with `FIELD: null` for fileless/orphan detection.
 
-| Full Sigma Field | JSON Path | Type | Description | Example Values |
-|------------------|-----------|------|-------------|----------------|
-| `VERSIONS.THOR` | `thor` | string | |  |
-| `VERSIONS.BUILD` | `build` | string | |  |
-| `VERSIONS.SIGNATURES` | `signatures` | string | |  |
-| `VERSIONS.SIGMA_RULES` | `sigma_rules` | string | |  |
+Nested JSON structure within `versions` (type: object):
+
+| JSON Path | Type | Description | Example Values |
+|-----------|------|-------------|----------------|
+| `thor` | string | |  |
+| `build` | string | |  |
+| `signatures` | string | |  |
+| `sigma_rules` | string | |  |
 
 ## Sigma Rule Template
 

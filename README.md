@@ -43,25 +43,50 @@ The `service` field must match the object type name exactly. THOR includes 90+ o
 
 ### Field Naming Convention
 
-Fields from the JSON schema are converted to **UPPERCASE** in Sigma rules:
+Fields from the JSON schema are converted to **UPPERCASE** in Sigma rules — but **only top-level fields** are directly matchable:
 
-| JSON Schema Field | Sigma Field |
-|-------------------|-------------|
-| `command` | `COMMAND` |
-| `name` | `NAME` |
-| `pid` | `PID` |
-| `service_name` | `SERVICE_NAME` |
-| `included_in_kernel` | `INCLUDED_IN_KERNEL` |
+| JSON Schema Field | Sigma Field | Works? |
+|-------------------|-------------|--------|
+| `command` | `COMMAND` | ✅ Yes |
+| `name` | `NAME` | ✅ Yes |
+| `pid` | `PID` | ✅ Yes |
+| `owner` | `OWNER` | ✅ Yes |
+| `path` | `PATH` | ✅ Yes (file objects) |
+| `image` | `IMAGE` | ⚠️ Null-check only (`IMAGE: null`) |
+| `parent_info` | `PARENT_INFO` | ⚠️ Null-check only |
+| `hashes.md5` | *N/A* | ❌ **Not directly usable** |
+| `image.path` | *N/A* | ❌ **Not directly usable** |
 
-Standard Sigma modifiers work as expected: `|contains`, `|endswith`, `|startswith`, `|re`.
+Standard Sigma modifiers work on top-level fields: `|contains`, `|endswith`, `|startswith`, `|re`.
 
-To match null or empty fields:
+> ⚠️ **Nested sub-fields are NOT directly referenceable in Sigma rules.** THOR's Sigma backend matches on **top-level fields only**. You cannot write `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in a Sigma rule. The nested structure is documented in each object type for JSON reference and context analysis, but Sigma rules must use the top-level field name only.
+
+### Standard Sigma Field Mappings
+
+THOR ships with `tmpl-sigma.yml` which maps standard Sigma field names (from SigmaHQ rules) to THOR JSON fields:
+
+| Standard Sigma Name | THOR JSON Field | Object Type |
+|---------------------|------------------|-------------|
+| `CommandLine` | `command` | process |
+| `ProcessId` | `pid` | process |
+| `Image` | `image` (object) | process |
+| `ParentImage` | `parent_info` (object) | process |
+| `User` | `owner` | process |
+| `TargetFilename` | `path` | file |
+| `FilePath` | `path` | file |
+
+### Null Checks for Object Fields
+
+Object fields like `IMAGE`, `FILE`, and `PARENT_INFO` can be checked for null to detect fileless/orphan processes:
 
 ```yaml
 detection:
     selection:
-        FILE: null
+        IMAGE: null
+    condition: selection
 ```
+
+> ⚠️ In THOR v11.0.0, `FIELD: null` checks are evaluated against the top-level field. Behavior for this null-check syntax was observed to match all objects in some tests; verification with the exact THOR build you are deploying is recommended.
 
 ## Workflow for Detection Engineers
 
@@ -215,17 +240,19 @@ Browse the [`docs/`](docs/) directory or search for the object type you need.
 
 ### Quick Reference: Common Object Types
 
-| Use Case | Object Type | Key Fields |
-|----------|-------------|------------|
-| Process monitoring | `process` | `COMMAND`, `NAME`, `OWNER`, `PID` |
+| Use Case | Object Type | Top-Level Sigma Fields |
+|----------|-------------|------------------------|
+| Process monitoring | `process` | `COMMAND`, `NAME`, `OWNER`, `PID`, `CREATED` |
 | Linux persistence | `cron job` | `COMMAND`, `USER`, `SCHEDULE` |
 | Windows persistence | `scheduled task` | `COMMANDS`, `USER`, `RUN_LEVEL` |
 | Autoruns | `autorun entry` | `LAUNCH_STRING`, `LOCATION` |
-| Windows services | `Windows service` | `SERVICE_NAME`, `IMAGE` |
+| Windows services | `Windows service` | `SERVICE_NAME`, `IMAGE` (null-check) |
 | Linux services | `systemd service` | `COMMAND`, `RUN_AS_USER` |
-| Kernel rootkits | `Linux kernel module` | `FILE`, `INCLUDED_IN_KERNEL` |
-| File hashes | `file` | `MD5`, `SHA1`, `SHA256`, `PATH` |
-| Execution history | `AmCache entry` | `SHA1`, `PATH`, `PRODUCT` |
+| Kernel rootkits | `Linux kernel module` | `FILE` (null-check), `INCLUDED_IN_KERNEL` |
+| File hashes | `file` | `PATH`, `SIZE`, `MAGIC_HEADER`, `HASHES` (null-check) |
+| Execution history | `AmCache entry` | `SHA1`, `SIZE`, `FILE` (object) |
+
+> **Note:** Fields marked as `(null-check)` are object fields — you can check `FIELD: null` but cannot access sub-fields like `IMAGE.PATH` or `HASHES.MD5` directly in Sigma.
 
 ## Generating the Reference
 
