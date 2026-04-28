@@ -26,6 +26,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        FILE: 'suspicious_value'
     condition: selection
+
+level: medium
 ```

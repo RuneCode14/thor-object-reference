@@ -109,6 +109,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        ACCESSED_FILES: 'suspicious_value'
     condition: selection
+
+level: medium
 ```

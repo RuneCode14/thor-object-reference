@@ -23,6 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        ENTRY|contains: 'execve'
     condition: selection
+
+level: medium
 ```

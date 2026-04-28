@@ -24,6 +24,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        DETAILS|contains: 'sudo:'
     condition: selection
+
+level: medium
 ```

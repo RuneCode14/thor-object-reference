@@ -26,6 +26,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        IMAGE: 'suspicious_value'
     condition: selection
+
+level: medium
 ```

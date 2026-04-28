@@ -26,12 +26,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/suspicious/'
-            - '/tmp/'
-        NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        PATH|contains: 'suspicious_path'
     condition: selection
+
+level: medium
 ```

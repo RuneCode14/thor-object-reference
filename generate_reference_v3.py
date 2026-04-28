@@ -286,124 +286,97 @@ def guess_field_category(field_name: str, field_schema: dict) -> str:
 
 
 def generate_sigma_template(type_name: str, flattened_props: dict, required: set, defs: dict) -> str:
-    """Generate a realistic, complex Sigma rule template based on the object type's fields."""
+    """Generate a simple, realistic Sigma rule template for the object type."""
     lines = []
     lines.append("logsource:")
     lines.append("    product: THOR")
     lines.append(f'    service: "{type_name}"')
     lines.append("")
 
-    # Categorize fields for template building
-    path_fields = []       # file/path - use |contains
-    command_fields = []    # command strings - use |contains|endswith
-    name_fields = []       # name strings - use |contains
-    user_fields = []       # user/group - use filter
-    hash_fields = []       # hashes - use exact match
-    bool_fields = []       # boolean flags
-    image_fields = []       # file objects (IMAGE, FILE, UNIT)
-    ip_fields = []          # IP addresses
-    port_fields = []        # port numbers
-    type_fields = []        # type category
-    other_string_fields = []
+    # Find a good top-level field for the detection
+    selection_field = None
+    selection_values = []
+    
+    # Build a priority list of field names to use as template
+    priority_keywords = [
+        ("command", "|contains", ["'suspicious_command'"]),
+        ("path", "|contains", ["'suspicious_path'"]),
+        ("launch_string", "|contains", ["'suspicious_command'"]),
+        ("image", None, None),  # object - handle specially
+        ("file", None, None),   # object - handle specially
+        ("service_name", "|contains", ["'suspicious_name'"]),
+        ("name", "|contains", ["'suspicious_name'"]),
+        ("sha1", "", ["'known_bad_hash'"]),
+        ("sha256", "", ["'known_bad_hash'"]),
+        ("md5", "", ["'known_bad_hash'"]),
+        ("ip", "", ["'192.168.1.100'"]),
+        ("pid", "", ["9999"]),
+        ("port", "", ["9999"]),
+    ]
+    
+    # First pass: try priority keywords on top-level fields
+    for kw, modifier, values in priority_keywords:
+        for field_name in sorted(flattened_props.keys()):
+            if field_name == "type":
+                continue
+            if kw in field_name.lower():
+                sigma = sigma_field_name(field_name)
+                schema = flattened_props[field_name]
+                ftype = get_type_label(schema, defs)
+                
+                if ftype == "object":
+                    # Look for nested path/name field
+                    nested = get_nested_fields_flat(schema, defs)
+                    for s, t, j in nested:
+                        if t == "string" and ("path" in s.lower() or "name" in s.lower()):
+                            dot_path = s.replace("|", ".")
+                            selection_field = f"{sigma}.{dot_path}|contains"
+                            selection_values = ["'suspicious'"]
+                            break
+                    if selection_field:
+                        break
+                elif modifier is not None:
+                    selection_field = f"{sigma}{modifier}"
+                    selection_values = values
+                    break
+                else:
+                    selection_field = sigma
+                    selection_values = values or ["'suspicious_value'"]
+                    break
+        if selection_field:
+            break
+    
+    # Second pass: any string field
+    if not selection_field:
+        for field_name in sorted(flattened_props.keys()):
+            if field_name == "type":
+                continue
+            schema = flattened_props[field_name]
+            ftype = get_type_label(schema, defs)
+            if ftype == "string":
+                sigma = sigma_field_name(field_name)
+                selection_field = f"{sigma}|contains"
+                selection_values = ["'suspicious_string'"]
+                break
+    
+    # Final fallback
+    if not selection_field:
+        selection_field = "TYPE"
+        selection_values = [f"'{type_name}'"]
 
-    for field_name in sorted(flattened_props.keys()):
-        field_schema = flattened_props[field_name]
-        cat = guess_field_category(field_name, field_schema)
-        if cat == "path":
-            path_fields.append(field_name)
-        elif cat == "command":
-            command_fields.append(field_name)
-        elif cat == "name":
-            name_fields.append(field_name)
-        elif cat == "user":
-            user_fields.append(field_name)
-        elif cat == "hash":
-            hash_fields.append(field_name)
-        elif cat == "signed":
-            bool_fields.append(field_name)
-        elif cat == "exists":
-            bool_fields.append(field_name)
-        elif cat == "image" or cat == "file":
-            image_fields.append(field_name)
-        elif cat == "ip":
-            ip_fields.append(field_name)
-        elif cat == "port":
-            port_fields.append(field_name)
-        elif cat == "type":
-            type_fields.append(field_name)
-        elif cat == "service":
-            name_fields.append(field_name)
-        elif cat == "size":
-            pass  # skip size in templates
-        else:
-            other_string_fields.append(field_name)
+    lines.append("detection:")
+    lines.append("    selection:")
+    if len(selection_values) == 1:
+        lines.append(f"        {selection_field}: {selection_values[0]}")
+    else:
+        lines.append(f"        {selection_field}:")
+        for v in selection_values:
+            lines.append(f"            - {v}")
+    lines.append("    condition: selection")
+    lines.append("")
+    lines.append("level: medium")
 
-    # Build selection block
-    selection_parts = []
-    filter_parts = []
-
-    # Image/file path detection
-    if image_fields:
-        for fname in image_fields[:2]:  # Use top 2 image fields
-            sigma_parent = sigma_field_name(fname)
-            nested = get_nested_fields_flat(flattened_props[fname], defs)
-            # Find PATH sub-field
-            path_sub = next(((s, t, j) for s, t, j in nested if s.endswith("|PATH") or s == "PATH"), None)
-            if path_sub:
-                selection_parts.append((path_sub[0] + "|contains", [
-                    "'/tmp/'",
-                    "'/dev/shm/'",
-                    "'\\\\Temp\\\\'"
-                ]))
-            # Find SIGNATURE/SIGNED sub-field for filter
-            signed_sub = next(((s, t, j) for s, t, j in nested if "SIGNED" in s), None)
-            if signed_sub and signed_sub[1] == "boolean":
-                filter_parts.append((signed_sub[0], "'true'"))
-
-    # Path-based fields (non-image)
-    for fname in path_fields[:1]:
-        sigma = sigma_field_name(fname)
-        selection_parts.append((f"{sigma}|contains", [
-            "'/suspicious/'",
-            "'/tmp/'"
-        ]))
-
-    # Command fields
-    for fname in command_fields[:1]:
-        sigma = sigma_field_name(fname)
-        selection_parts.append((f"{sigma}|contains|all", [
-            "'powershell'",
-            "'-encodedcommand'"
-        ]))
-
-    # Name fields
-    for fname in name_fields[:1]:
-        sigma = sigma_field_name(fname)
-        selection_parts.append((f"{sigma}|contains", [
-            "'suspicious'",
-            "'malware'"
-        ]))
-
-    # User fields - for filtering legitimate users
-    for fname in user_fields[:1]:
-        sigma = sigma_field_name(fname)
-        filter_parts.append((f"{sigma}|contains", [
-            "'root'",
-            "'system'"
-        ]))
-
-    # Hash fields
-    for fname in hash_fields[:1]:
-        sigma = sigma_field_name(fname)
-        nested = get_nested_fields_flat(flattened_props[fname], defs)
-        sha256 = next(((s, t, j) for s, t, j in nested if "SHA256" in s), None)
-        if sha256:
-            selection_parts.append((sha256[0], "'known_bad_hash_sha256'"))
-
-    # Boolean fields for filter
-    for fname in bool_fields[:2]:
-        sigma = sigma_field_name(fname)
-        filter_parts.append((sigma, "'true'"))
+    return "\n".join(lines)
 
     # Type fields
     for fname in type_fields[:1]:

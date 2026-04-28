@@ -28,9 +28,8 @@ logsource:
 
 detection:
     selection:
-        KERNEL_NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        KERNEL_NAME|contains: 'suspicious_name'
     condition: selection
+
+level: medium
 ```

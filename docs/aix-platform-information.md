@@ -30,6 +30,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        MODEL|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

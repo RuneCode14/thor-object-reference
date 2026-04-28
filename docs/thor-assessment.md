@@ -42,6 +42,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        LOG_VERSION|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

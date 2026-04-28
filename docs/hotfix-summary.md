@@ -23,6 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        LAST_HOTFIX|contains: '2020'
     condition: selection
+
+level: medium
 ```

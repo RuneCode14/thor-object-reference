@@ -24,6 +24,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        ENTRIES: 0
     condition: selection
+
+level: medium
 ```

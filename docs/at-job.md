@@ -23,9 +23,8 @@ logsource:
 
 detection:
     selection:
-        COMMAND|contains|all:
-            - 'powershell'
-            - '-encodedcommand'
-        TYPE: 'relevant_type'
+        COMMAND|contains: 'suspicious_command'
     condition: selection
+
+level: medium
 ```

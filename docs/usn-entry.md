@@ -25,9 +25,8 @@ logsource:
 
 detection:
     selection:
-        FILENAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        FILENAME: 'suspicious_value'
     condition: selection
+
+level: medium
 ```

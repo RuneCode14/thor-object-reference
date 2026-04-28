@@ -25,9 +25,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/suspicious/'
-            - '/tmp/'
-        TYPE: 'relevant_type'
+        PATH|contains: 'suspicious_path'
     condition: selection
+
+level: medium
 ```

@@ -23,6 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        EVENT|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

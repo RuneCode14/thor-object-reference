@@ -24,6 +24,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        PLUGIN|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

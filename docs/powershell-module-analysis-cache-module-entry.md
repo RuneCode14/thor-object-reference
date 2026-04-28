@@ -24,12 +24,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/suspicious/'
-            - '/tmp/'
-        COMMAND|contains|all:
-            - 'powershell'
-            - '-encodedcommand'
-        TYPE: 'relevant_type'
+        COMMAND|contains: 'suspicious_command'
     condition: selection
+
+level: medium
 ```

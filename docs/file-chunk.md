@@ -52,6 +52,11 @@ Nested fields within `content` (type: object):
 
 ## Sigma Rule Template
 
+This is primarily a passive metadata object. Real detection value comes from
+`BEACON_CONFIG` sub-fields (Cobalt Strike configuration extraction). Use this
+service to select all file chunks, or target `BEACON_CONFIG.*` fields for
+specific detections.
+
 ```yaml
 logsource:
     product: THOR
@@ -59,6 +64,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        TYPE: 'file chunk'
     condition: selection
+
+level: medium
 ```

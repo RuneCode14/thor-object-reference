@@ -23,6 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        ENTRY|contains: '4688'
     condition: selection
+
+level: medium
 ```

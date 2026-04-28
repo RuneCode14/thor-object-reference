@@ -33,9 +33,8 @@ logsource:
 
 detection:
     selection:
-        HOSTNAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        HOSTNAME|contains: 'suspicious_name'
     condition: selection
+
+level: medium
 ```

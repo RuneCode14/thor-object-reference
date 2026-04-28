@@ -34,16 +34,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/suspicious/'
-            - '/tmp/'
-        NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        USER|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        COMMANDS|contains: 'suspicious_command'
+    condition: selection
+
+level: medium
 ```

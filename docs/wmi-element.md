@@ -28,9 +28,8 @@ logsource:
 
 detection:
     selection:
-        EVENT_CONSUMER_NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        EVENT_CONSUMER_NAME|contains: 'suspicious_name'
     condition: selection
+
+level: medium
 ```

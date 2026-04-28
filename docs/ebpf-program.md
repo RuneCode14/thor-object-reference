@@ -58,13 +58,8 @@ logsource:
 
 detection:
     selection:
-        NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        USER|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        NAME|contains: 'suspicious_name'
+    condition: selection
+
+level: medium
 ```

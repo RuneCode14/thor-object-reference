@@ -30,9 +30,8 @@ logsource:
 
 detection:
     selection:
-        FULL_NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        ACCESS_FILES: 'suspicious_value'
     condition: selection
+
+level: medium
 ```

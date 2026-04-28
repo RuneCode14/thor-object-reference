@@ -61,10 +61,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        USER|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        FILE_SIZE_LIMIT: 'suspicious_value'
+    condition: selection
+
+level: medium
 ```

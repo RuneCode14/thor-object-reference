@@ -23,6 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        PIPES: '192.168.1.100'
     condition: selection
+
+level: medium
 ```

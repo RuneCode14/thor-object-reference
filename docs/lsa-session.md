@@ -29,10 +29,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        USER|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        AUTH_PACKAGE|contains: 'suspicious_string'
+    condition: selection
+
+level: medium
 ```

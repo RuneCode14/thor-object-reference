@@ -119,15 +119,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/tmp/'
-            - '/dev/shm/'
-            - '\\Temp\\'
-        NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        PE_INFO|SIGNED: 'true'
-    condition: selection and not filter_legitimate
+        FILE.PATH|contains: 'suspicious'
+    condition: selection
+
+level: medium
 ```

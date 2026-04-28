@@ -28,10 +28,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        USER_NAME|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        USER_NAME|contains: 'suspicious_name'
+    condition: selection
+
+level: medium
 ```

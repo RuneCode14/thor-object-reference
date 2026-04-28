@@ -196,18 +196,8 @@ logsource:
 
 detection:
     selection:
-        PATH|contains:
-            - '/tmp/'
-            - '/dev/shm/'
-            - '\\Temp\\'
-        COMMAND|contains|all:
-            - 'powershell'
-            - '-encodedcommand'
-        TYPE: 'relevant_type'
-    filter_legitimate:
-        PE_INFO|SIGNED: 'true'
-        RUN_AS_USER|contains:
-            - 'root'
-            - 'system'
-    condition: selection and not filter_legitimate
+        COMMAND|contains: 'suspicious_command'
+    condition: selection
+
+level: medium
 ```

@@ -43,6 +43,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        FIELDDIRECT|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

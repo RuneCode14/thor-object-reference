@@ -24,9 +24,8 @@ logsource:
 
 detection:
     selection:
-        NAME|contains:
-            - 'suspicious'
-            - 'malware'
-        TYPE: 'relevant_type'
+        NAME|contains: 'suspicious_name'
     condition: selection
+
+level: medium
 ```

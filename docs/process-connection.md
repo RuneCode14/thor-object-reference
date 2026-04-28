@@ -28,9 +28,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
-        IP|contains:
-            - '192.168.'
-            - '10.'
+        IP: '192.168.1.100'
     condition: selection
+
+level: medium
 ```

@@ -24,6 +24,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
+        HANDSHAKE_TYPE|contains: 'suspicious_string'
     condition: selection
+
+level: medium
 ```

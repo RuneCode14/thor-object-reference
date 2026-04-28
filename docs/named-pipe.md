@@ -23,9 +23,8 @@ logsource:
 
 detection:
     selection:
-        TYPE: 'relevant_type'
-        PIPE|contains:
-            - '192.168.'
-            - '10.'
+        PIPE: '192.168.1.100'
     condition: selection
+
+level: medium
 ```
