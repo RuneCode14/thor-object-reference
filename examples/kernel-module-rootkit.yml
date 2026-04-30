@@ -21,7 +21,7 @@ detection:
             - 'hide_'
             - 'injector'
     selection_suspicious_path:
-        FILE|PATH|contains:
+        FILE_PATH|contains:
             - '/tmp/'
             - '/dev/shm/'
     selection_not_builtin:

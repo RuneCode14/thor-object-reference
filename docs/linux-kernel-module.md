@@ -11,6 +11,7 @@ The lowercase JSON name is shown in parentheses for reference.
 |-------------|-----------|------|----------|-------------|----------------|
 | `AUTHOR` | `author` | string | ✅ |  |  |
 | `DESCRIPTION` | `description` | array of string | ✅ |  |  |
+| `FILE_PATH` | `file.path` | string |  | Flattened file path for Sigma matching | `/lib/modules/6.8.0-101-generic/kernel/drivers/firmware/efi/efi-pstore.ko.zst` |
 | `FILE` | `file` | object | ✅ | Object, see [FILE Nested Fields](#file-nested-fields) below | `/lib/modules/6.18.6-200.fc43.x86_64/kern...`, `null` |
 | `IN_PROC_MODULES` | `in_proc_modules` | boolean | ✅ |  |  |
 | `IN_SYS_MODULE` | `in_sys_module` | boolean | ✅ |  |  |
@@ -29,6 +30,8 @@ The lowercase JSON name is shown in parentheses for reference.
 
 > ⚠️ **These nested fields are JSON structure reference only.** THOR's Sigma backend matches on **top-level fields only**. You cannot use `IMAGE.PATH`, `IMAGE_PATH`, or `PARENT_INFO.PID` in Sigma rules.
 > Object null-check syntax (`FIELD: null`) exists but matched **all objects** in THOR v11.0.0 testing — verify behavior before relying on it.
+> 
+> For matching on the module's `.ko` file path, use the top-level **`FILE_PATH`** field (which maps from `file.path`) rather than the nested `FILE` object.
 
 Nested JSON structure within `file` (type: object):
 
@@ -122,7 +125,7 @@ logsource:
 
 detection:
     selection:
-        FILE.PATH|contains: 'suspicious'
+        FILE_PATH|contains: 'suspicious'
     condition: selection
 
 level: medium

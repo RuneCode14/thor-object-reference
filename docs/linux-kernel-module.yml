@@ -11,6 +11,11 @@ fields:
   type: array of string
   required: true
   description: ''
+- sigma_name: FILE_PATH
+  json_name: file.path
+  type: string
+  required: false
+  description: Flattened file path for Sigma matching (maps from file.path; requires THOR backend support for top-level flattened fields)
 - sigma_name: FILE
   json_name: file
   type: object
